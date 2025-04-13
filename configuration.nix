@@ -1,10 +1,13 @@
-
-{inputs, config, pkgs, ... }:
 {
-  imports =
-    [ 
-      ./hardware-configuration.nix
-    ];
+  inputs,
+  config,
+  pkgs,
+  ...
+}:
+{
+  imports = [
+    ./hardware-configuration.nix
+  ];
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -12,16 +15,18 @@
   nix = {
     settings = {
       substituters = [
-	      "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
+        "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
         "https://nix-community.cachix.org"
         "https://cache.nixos.org/"
-	      "https://hyprland.cachix.org"
+        "https://hyprland.cachix.org"
       ];
-    trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
+      trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
     };
   };
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -50,18 +55,17 @@
     enabled = "fcitx5";
     type = "fcitx5";
     fcitx5.addons = with pkgs; [
-	    fcitx5-rime
-	    fcitx5-chinese-addons
+      fcitx5-rime
+      fcitx5-chinese-addons
     ];
   };
-
 
   fonts = {
     fonts = with pkgs; [
       noto-fonts
       noto-fonts-cjk-sans
       noto-fonts-cjk-serif
-      sarasa-gothic  #更纱黑体
+      sarasa-gothic # 更纱黑体
       source-code-pro
       hack-font
       jetbrains-mono
@@ -87,9 +91,6 @@
   # Enable sound with pipewire.
   hardware.pulseaudio.enable = false;
 
-
-
-
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -111,10 +112,13 @@
   users.users.linsoap = {
     isNormalUser = true;
     description = "LinSoap";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
     packages = with pkgs; [
-	    pkgs.git
-	    pkgs.librime
+      pkgs.git
+      pkgs.librime
     ];
   };
 
@@ -129,17 +133,16 @@
   # Install firefox.
   programs.firefox.enable = true;
 
-
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-	pkgs.vim
-	pkgs.tree
-  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #  wget
+    pkgs.vim
+    pkgs.tree
+    #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    #  wget
   ];
 
   environment.sessionVariables = rec {
@@ -148,7 +151,7 @@
     GTK_IM_MODULE = "fcitx";
     QT_IM_MODULE = "fcitx";
     XMODIFIERS = "@im=fcitx";
-  
+
   };
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -177,6 +180,5 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "24.11"; # Did you read the comment?
-
 
 }

@@ -1,11 +1,9 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [ 
-      ./gnome/home.nix
-    ];
-
+  imports = [
+    ./gnome/home.nix
+  ];
 
   home.username = "linsoap";
   home.homeDirectory = "/home/linsoap";
@@ -34,13 +32,16 @@
   # 通过 home.packages 安装一些常用的软件
   # 这些软件将仅在当前用户下可用，不会影响系统级别的配置
   # 建议将所有 GUI 软件，以及与 OS 关系不大的 CLI 软件，都通过 home.packages 安装
-  home.packages = with pkgs;[
+  home.packages = with pkgs; [
     #GUI 软件
     obsidian
     wechat-uos
     google-chrome
     vscode
     gui-for-singbox
+
+    marble-shell-theme
+    nixfmt-rfc-style
 
     fastfetch
 
@@ -51,11 +52,11 @@
     eza # A modern replacement for ‘ls’
     fzf # A command-line fuzzy finder
 
-     # nix related
+    # nix related
 
     # productivity
     glow # markdown previewer in terminal
-    btop  # replacement of htop/nmon
+    btop # replacement of htop/nmon
     iotop # io monitoring
     iftop # network monitoring
 
@@ -72,32 +73,32 @@
   };
 
   # 启用 starship，这是一个漂亮的 shell 提示符
-#  programs.starship = {
-#    enable = true;
-#    # 自定义配置
-#    settings = {
-#      add_newline = false;
-#      aws.disabled = true;
-#      gcloud.disabled = true;
-#      line_break.disabled = true;
-#    };
-#  };
+  #  programs.starship = {
+  #    enable = true;
+  #    # 自定义配置
+  #    settings = {
+  #      add_newline = false;
+  #      aws.disabled = true;
+  #      gcloud.disabled = true;
+  #      line_break.disabled = true;
+  #    };
+  #  };
 
   # alacritty - 一个跨平台终端，带 GPU 加速功能
-#  programs.alacritty = {
-#    enable = true;
-#    # 自定义配置
-#    settings = {
-#      env.TERM = "xterm-256color";
-#      font = {
-#        size = 12;
-#        draw_bold_text_with_bright_colors = true;
-#	pkgs.wayland-protocols
-#      };
-#      scrolling.multiplier = 5;
-#      selection.save_to_clipboard = true;
-#    };
-#  };
+  #  programs.alacritty = {
+  #    enable = true;
+  #    # 自定义配置
+  #    settings = {
+  #      env.TERM = "xterm-256color";
+  #      font = {
+  #        size = 12;
+  #        draw_bold_text_with_bright_colors = true;
+  #	pkgs.wayland-protocols
+  #      };
+  #      scrolling.multiplier = 5;
+  #      selection.save_to_clipboard = true;
+  #    };
+  #  };
 
   programs.bash = {
     enable = true;

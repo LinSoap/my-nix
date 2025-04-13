@@ -4,16 +4,18 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     home-manager = {
-	    url = "github:nix-community/home-manager/master";
-	    inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:nix-community/home-manager/master";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = {nixpkgs, home-manager, ...}@ inputs: {
-    nixosConfigurations.linsoap = nixpkgs.lib.nixosSystem {
-      specialArgs = { inherit inputs; };
-      modules = [
-        ./configuration.nix
+  outputs =
+    { nixpkgs, home-manager, ... }@inputs:
+    {
+      nixosConfigurations.linsoap = nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs; };
+        modules = [
+          ./configuration.nix
 
           home-manager.nixosModules.home-manager
           {
@@ -26,7 +28,7 @@
             # 取消注释下面这一行，就可以在 home.nix 中使用 flake 的所有 inputs 参数了
             home-manager.extraSpecialArgs = inputs;
           }
-      ];
+        ];
+      };
     };
-  };
 }
