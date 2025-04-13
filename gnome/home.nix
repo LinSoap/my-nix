@@ -10,6 +10,7 @@
 
   home.packages = with pkgs; [
     pkgs.gnome-tweaks
+    marble-shell-theme
     gnomeExtensions.user-themes
     gnomeExtensions.auto-move-windows
     gnomeExtensions.kimpanel
