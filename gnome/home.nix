@@ -78,7 +78,7 @@
       application-list = [
         "code.desktop:2"
         "com.tencent.wechat.desktop:4"
-        "chrome-cinhimbnkkaeohfgghhklpknlkffjgod-Default.desktop:4"
+        "chrome-cinhimbnkkaeohfgghhklpknlkffjgod-Default.desktop:5"
         "obsidian.desktop:3"
       ];
     };
@@ -174,6 +174,7 @@
       inactive-workspace-font-size = 12;
       inactive-workspace-padding-h = 0;
       inactive-workspace-padding-v = 0;
+      enable-activate-workspace-shortcuts = true;
       workspace-margin = 5;
       workspaces-bar-padding = 2;
     };

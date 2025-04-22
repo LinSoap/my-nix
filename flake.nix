@@ -10,7 +10,11 @@
   };
 
   outputs =
-    { nixpkgs, home-manager, ... }@inputs:
+    {
+      nixpkgs,
+      home-manager,
+      ...
+    }@inputs:
     {
       nixosConfigurations.linsoap = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };

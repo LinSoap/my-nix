@@ -12,15 +12,15 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  virtualisation.waydroid.enable = true;
+
   nix = {
     settings = {
       substituters = [
         "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
         "https://nix-community.cachix.org"
         "https://cache.nixos.org/"
-        "https://hyprland.cachix.org"
       ];
-      trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
     };
   };
   nix.settings.experimental-features = [
@@ -133,6 +133,16 @@
   # Install firefox.
   programs.firefox.enable = true;
 
+  #Clash 代理
+  #programs.clash-verge.enable = true;
+
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
+    dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+    localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
+  };
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
@@ -153,6 +163,8 @@
     XMODIFIERS = "@im=fcitx";
 
   };
+
+  networking.firewall.enable = false;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

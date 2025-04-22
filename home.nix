@@ -1,4 +1,8 @@
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  ...
+}:
 
 {
   imports = [
@@ -42,6 +46,10 @@
     vscode # Visual Studio Code 编辑器
     gui-for-singbox # Sing-box 的图形界面
 
+    waydroid-helper
+    android-tools
+
+    afterglow-cursors-recolored # 鼠标指针主题
     nerd-fonts.fira-code
     nerd-fonts.droid-sans-mono
     noto-fonts-emoji # 🤓️
@@ -61,6 +69,7 @@
 
     #开发工具
     asdf-vm # 版本管理工具
+    uv
   ];
 
   # git 相关配置
@@ -94,16 +103,7 @@
     };
   };
 
-  # This value determines the Home Manager release that your
-  # configuration is compatible with. This helps avoid breakage
-  # when a new Home Manager release introduces backwards
-  # incompatible changes.
-  #
-  # You can update Home Manager without changing this value. See
-  # the Home Manager release notes for a list of state version
-  # changes in each release.
   home.stateVersion = "25.05";
 
-  # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 }
