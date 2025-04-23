@@ -68,8 +68,9 @@
     lsof # 查看打开文件的工具
 
     #开发工具
-    asdf-vm # 版本管理工具
+    nodejs_23
     uv
+    asdf-vm
   ];
 
   # git 相关配置
@@ -93,9 +94,12 @@
   programs.bash = {
     enable = true;
     enableCompletion = true;
-    # TODO 在这里添加你的自定义 bashrc 内容
     bashrcExtra = ''
       export PATH="$PATH:$HOME/bin:$HOME/.local/bin:$HOME/go/bin"
+    '';
+    initExtra = ''
+      . "${pkgs.asdf-vm}/share/asdf-vm/asdf.sh"
+      . "${pkgs.asdf-vm}/share/asdf-vm/completions/asdf.bash"
     '';
 
     shellAliases = {

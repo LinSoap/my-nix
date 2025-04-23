@@ -136,6 +136,14 @@
   #Clash 代理
   #programs.clash-verge.enable = true;
 
+  programs.nix-ld = {
+    enable = true;
+    libraries = with pkgs; [
+      uv
+      asdf-vm
+    ];
+  };
+
   programs.steam = {
     enable = true;
     remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
