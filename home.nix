@@ -45,6 +45,9 @@
     google-chrome # 谷歌浏览器
     vscode # Visual Studio Code 编辑器
     gui-for-singbox # Sing-box 的图形界面
+    krita # 数字绘画软件
+    krita-plugin-gmic
+    dconf-editor
 
     waydroid-helper
     android-tools
@@ -66,6 +69,9 @@
     iotop # IO 监控工具
     iftop # 网络流量监控工具
     lsof # 查看打开文件的工具
+    joshuto # 终端文件管理器
+    z-lua # zsh 的 cd 命令替代工具
+    wl-clipboard # 终端剪贴板工具
 
     #开发工具
     nodejs_23
@@ -104,6 +110,7 @@
 
     shellAliases = {
       ls = "eza";
+      jo = "joshuto";
     };
   };
 

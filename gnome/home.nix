@@ -50,6 +50,40 @@
       increase-thumbnails-size = "400%";
     };
 
+    "org/gnome/shell/keybindings" = {
+      focus-active-notification = [ ];
+      open-new-window-application-1 = [ ];
+      open-new-window-application-2 = [ ];
+      open-new-window-application-3 = [ ];
+      open-new-window-application-4 = [ ];
+      open-new-window-application-5 = [ ];
+      open-new-window-application-6 = [ ];
+      open-new-window-application-7 = [ ];
+      open-new-window-application-8 = [ ];
+      open-new-window-application-9 = [ ];
+      switch-to-application-1 = [ ];
+      switch-to-application-2 = [ ];
+      switch-to-application-3 = [ ];
+      switch-to-application-4 = [ ];
+      switch-to-application-5 = [ ];
+      switch-to-application-6 = [ ];
+      switch-to-application-7 = [ ];
+      switch-to-application-8 = [ ];
+      switch-to-application-9 = [ ];
+    };
+
+    "org/gnome/desktop/wm/keybindings" = {
+      switch-to-workspace-1 = [ "<Super>1" ];
+      switch-to-workspace-2 = [ "<Super>2" ];
+      switch-to-workspace-3 = [ "<Super>3" ];
+      switch-to-workspace-4 = [ "<Super>4" ];
+      switch-to-workspace-5 = [ "<Super>5" ];
+      switch-to-workspace-6 = [ "<Super>6" ];
+      switch-to-workspace-7 = [ "<Super>7" ];
+      switch-to-workspace-8 = [ "<Super>8" ];
+      switch-to-workspace-9 = [ "<Super>9" ];
+    };
+
     # 快捷键配置
     "org/gnome/settings-daemon/plugins/media-keys" = {
       custom-keybindings = [
@@ -196,7 +230,8 @@
         SIMPLE = 1;
       };
       dot-position = "BOTTOM";
-      hotkeys-overlay-combo = "TEMPORARILY";
+      hotkeys-overlay-combo = "NEVER";
+      # hotkeys-overlay-combo = "TEMPORARILY";
       panel-anchors = builtins.toJSON {
         "LHC-0000000000000" = "MIDDLE";
       };
