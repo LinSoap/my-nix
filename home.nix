@@ -48,6 +48,10 @@
     krita # 数字绘画软件
     krita-plugin-gmic
     dconf-editor
+    wpsoffice-cn # WPS 办公软件
+    feishu # 飞书
+    # follow # RSS 阅读器
+    chromium
 
     waydroid-helper
     android-tools
@@ -70,11 +74,14 @@
     iftop # 网络流量监控工具
     lsof # 查看打开文件的工具
     joshuto # 终端文件管理器
+    lua # Lua 语言
     z-lua # zsh 的 cd 命令替代工具
     wl-clipboard # 终端剪贴板工具
 
     #开发工具
     nodejs_23
+    python312
+    python312Packages.pip
     uv
     asdf-vm
   ];
@@ -112,6 +119,24 @@
       ls = "eza";
       jo = "joshuto";
     };
+  };
+
+  programs.zsh = {
+    enable = true;
+    # enableCompletions = true;
+    # autosuggestions.enable = true;
+    syntaxHighlighting.enable = true;
+
+    shellAliases = {
+      ll = "ls -l";
+
+      ls = "eza";
+      nixupdate = "sudo nixos-rebuild switch";
+    };
+    history.size = 10000;
+    initContent = ''
+      eval "$(${pkgs.z-lua}/bin/z --init zsh)"
+    '';
   };
 
   home.stateVersion = "25.05";

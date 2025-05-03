@@ -17,7 +17,7 @@
   nix = {
     settings = {
       substituters = [
-        "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
+        # "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
         "https://nix-community.cachix.org"
         "https://cache.nixos.org/"
       ];
@@ -29,6 +29,7 @@
   ];
 
   networking.hostName = "nixos"; # Define your hostname.
+  # networking.enableIPv6 = false;
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -61,7 +62,7 @@
   };
 
   fonts = {
-    fonts = with pkgs; [
+    packages = with pkgs; [
       noto-fonts
       noto-fonts-cjk-sans
       noto-fonts-cjk-serif
@@ -78,6 +79,9 @@
   # Enable the GNOME Desktop Environment.
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
+  environment.gnome.excludePackages = with pkgs.gnome; [
+
+  ];
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -89,7 +93,7 @@
   services.printing.enable = true;
 
   # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
 
   security.rtkit.enable = true;
   services.pipewire = {
@@ -123,8 +127,8 @@
   };
 
   # Enable automatic login for the user.
-  services.xserver.displayManager.autoLogin.enable = false;
-  services.xserver.displayManager.autoLogin.user = "linsoap";
+  services.displayManager.autoLogin.enable = false;
+  services.displayManager.autoLogin.user = "linsoap";
 
   # Workaround for GNOME autologin: https://github.com/NixOS/nixpkgs/issues/103746#issuecomment-945091229
   systemd.services."getty@tty1".enable = false;
@@ -133,8 +137,12 @@
   # Install firefox.
   programs.firefox.enable = true;
 
+  programs.zsh.enable = true;
+  users.users.linsoap.shell = pkgs.zsh;
+
   #Clash 代理
   #programs.clash-verge.enable = true;
+
   programs.obs-studio = {
     enable = true;
     plugins = with pkgs.obs-studio-plugins; [
@@ -165,8 +173,13 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    pkgs.vim
-    pkgs.tree
+    vim
+    tree
+    gnumake
+    gcc
+    libglibutil
+    glib
+
     #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     #  wget
   ];

@@ -50,6 +50,23 @@
       increase-thumbnails-size = "400%";
     };
 
+    #----------快捷键配置----------
+
+    "org/gnome/mutter" = {
+      dynamic-workspaces = false;
+    };
+    "org/gnome/mutter/keybindings" = {
+      toggle-tiled-left = [ "<Super>h" ];
+      toggle-tiled-right = [ "<Super>l" ];
+    };
+
+    "org/gnome/settings-daemon/plugins/media-keys" = {
+      play = [ "<Shift><Super>space" ];
+      next = [ "<Shift><Super>n" ];
+      previous = [ "<Shift><Super>p" ];
+      volume-down = [ "<Shift><Super>z" ];
+      volume-up = [ "<Shift><Super>x" ];
+    };
     "org/gnome/shell/keybindings" = {
       focus-active-notification = [ ];
       open-new-window-application-1 = [ ];
@@ -70,6 +87,7 @@
       switch-to-application-7 = [ ];
       switch-to-application-8 = [ ];
       switch-to-application-9 = [ ];
+      show-screenshot-ui = [ "<Control>Delete" ];
     };
 
     "org/gnome/desktop/wm/keybindings" = {
@@ -82,9 +100,17 @@
       switch-to-workspace-7 = [ "<Super>7" ];
       switch-to-workspace-8 = [ "<Super>8" ];
       switch-to-workspace-9 = [ "<Super>9" ];
+      move-to-workspace-1 = [ "<Shift><Super>1" ];
+      move-to-workspace-2 = [ "<Shift><Super>2" ];
+      move-to-workspace-3 = [ "<Shift><Super>3" ];
+      move-to-workspace-4 = [ "<Shift><Super>4" ];
+      move-to-workspace-5 = [ "<Shift><Super>5" ];
+      close = [ "<Super>q" ];
+      toggle-maximized = [ "<Super>k" ];
+      raise-or-lower = [ "<Super>j" ];
+
     };
 
-    # 快捷键配置
     "org/gnome/settings-daemon/plugins/media-keys" = {
       custom-keybindings = [
         "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
@@ -101,7 +127,7 @@
       command = "kgx";
       name = "open-terminal";
     };
-
+    #----------快捷键配置结束----------
     # appindicator配置
     "org/gnome/shell/extensions/appindicator" = {
       tray-pos = "right";
