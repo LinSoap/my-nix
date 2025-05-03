@@ -77,6 +77,7 @@
     lua # Lua 语言
     z-lua # zsh 的 cd 命令替代工具
     wl-clipboard # 终端剪贴板工具
+    cacert # CA 证书
 
     #开发工具
     nodejs_23
@@ -109,6 +110,7 @@
     enableCompletion = true;
     bashrcExtra = ''
       export PATH="$PATH:$HOME/bin:$HOME/.local/bin:$HOME/go/bin"
+      export SSL_CERT_FILE=/etc/ssl/certs/ca-bundle.crt
     '';
     initExtra = ''
       . "${pkgs.asdf-vm}/share/asdf-vm/asdf.sh"
@@ -123,20 +125,29 @@
 
   programs.zsh = {
     enable = true;
-    # enableCompletions = true;
-    # autosuggestions.enable = true;
+    enableCompletion = true;
+    # enableBashCompletion = true;
+    autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
-
     shellAliases = {
-      ll = "ls -l";
-
       ls = "eza";
-      nixupdate = "sudo nixos-rebuild switch";
     };
     history.size = 10000;
     initContent = ''
+      export SSL_CERT_FILE=${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt
       eval "$(${pkgs.z-lua}/bin/z --init zsh)"
     '';
+    oh-my-zsh = {
+      enable = true;
+      plugins = [
+        "git"
+        "sudo"
+        "docker"
+        "z"
+        "vi-mode"
+        "copypath"
+      ];
+    };
   };
 
   home.stateVersion = "25.05";

@@ -11,6 +11,7 @@
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.kernelModules = [ "tun" ];
 
   virtualisation.waydroid.enable = true;
 
@@ -179,7 +180,6 @@
     gcc
     libglibutil
     glib
-
     #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     #  wget
   ];
@@ -190,7 +190,6 @@
     GTK_IM_MODULE = "fcitx";
     QT_IM_MODULE = "fcitx";
     XMODIFIERS = "@im=fcitx";
-
   };
 
   networking.firewall.enable = false;
