@@ -14,6 +14,16 @@
   boot.kernelModules = [ "tun" ];
 
   virtualisation.waydroid.enable = true;
+  virtualisation.docker = {
+    enable = true;
+    rootless = {
+      enable = true;
+      setSocketVariable = true;
+    };
+    daemon.settings = {
+      data-root = "/home/linsoap/Docker";
+    };
+  };
 
   nix = {
     settings = {
@@ -120,12 +130,14 @@
     extraGroups = [
       "networkmanager"
       "wheel"
+      "docker"
     ];
     packages = with pkgs; [
       pkgs.git
       pkgs.librime
     ];
   };
+  users.extraGroups.docker.members = [ "linsoap" ];
 
   # Enable automatic login for the user.
   services.displayManager.autoLogin.enable = false;

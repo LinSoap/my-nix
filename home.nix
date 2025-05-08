@@ -78,6 +78,7 @@
     z-lua # zsh 的 cd 命令替代工具
     wl-clipboard # 终端剪贴板工具
     cacert # CA 证书
+    lazydocker # Docker 管理工具
 
     #开发工具
     nodejs_23
