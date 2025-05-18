@@ -9,8 +9,17 @@
     ./hardware-configuration.nix
   ];
 
-  boot.loader.systemd-boot.enable = true;
+  # boot.loader.systemd-boot.enable = true;
+  boot.loader.systemd-boot.enable = false;
+  boot.loader.grub = {
+    enable = true;
+    device = "nodev";
+    useOSProber = true;
+    efiSupport = true;
+    theme = pkgs.catppuccin-grub;
+  };
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.efi.efiSysMountPoint = "/boot";
   boot.kernelModules = [ "tun" ];
 
   virtualisation.waydroid.enable = true;
@@ -148,7 +157,12 @@
   systemd.services."autovt@tty1".enable = false;
 
   # Install firefox.
-  programs.firefox.enable = true;
+
+  programs.firefox = {
+    enable = true;
+    package = pkgs.firefox;
+    nativeMessagingHosts.packages = [ pkgs.firefoxpwa ];
+  };
 
   programs.zsh.enable = true;
   users.users.linsoap.shell = pkgs.zsh;
@@ -192,6 +206,9 @@
     gcc
     libglibutil
     glib
+    firefoxpwa
+    wineWowPackages.waylandFull
+    winetricks
     #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     #  wget
   ];

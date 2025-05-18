@@ -52,6 +52,7 @@
     feishu # 飞书
     # follow # RSS 阅读器
     chromium
+    dbeaver-bin
 
     waydroid-helper
     android-tools
@@ -79,6 +80,7 @@
     wl-clipboard # 终端剪贴板工具
     cacert # CA 证书
     lazydocker # Docker 管理工具
+    scrcpy # Android 设备屏幕投射工具
 
     #开发工具
     nodejs_23
@@ -137,6 +139,23 @@
     initContent = ''
       export SSL_CERT_FILE=${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt
       eval "$(${pkgs.z-lua}/bin/z --init zsh)"
+      # --- 常用的命令行快捷键配置 (Emacs 风格) ---
+      # 光标移动
+      bindkey '^A' beginning-of-line       # Ctrl+A: 移动到行首
+      bindkey '^E' end-of-line             # Ctrl+E: 移动到行尾
+      bindkey '^F' forward-char           # Ctrl+F: 光标向前移动一个字符 
+      bindkey '^B' backward-char          # Ctrl+B: 光标向后移动一个字符 
+      bindkey '\M-f' forward-word          # Alt+F: 光标向前移动一个单词 (使用 Esc+f 也行)
+      bindkey '\M-b' backward-word         # Alt+B: 光标向后移动一个单词 (使用 Esc+b 也行)
+
+      # 编辑/剪切/粘贴 (Emacs 术语叫 kill/yank)
+      bindkey '^K' kill-line              # Ctrl+K: 剪切从光标到行尾的内容
+      bindkey '^U' backward-kill-line     # Ctrl+U: 剪切从行首到光标的内容
+      bindkey '^W' backward-kill-word     # Ctrl+W: 剪切光标前的一个单词
+      bindkey '^Y' yank                   # Ctrl+Y: 粘贴最近剪切的内容
+
+      # 清屏
+      bindkey '^L' clear-screen           # Ctrl+L: 清空终端屏幕，当前命令行会移到顶部
     '';
     oh-my-zsh = {
       enable = true;
