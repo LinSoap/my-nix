@@ -53,6 +53,7 @@
     # follow # RSS 阅读器
     chromium
     dbeaver-bin
+    discord
 
     waydroid-helper
     android-tools
@@ -81,11 +82,12 @@
     cacert # CA 证书
     lazydocker # Docker 管理工具
     scrcpy # Android 设备屏幕投射工具
+    postgresql # PostgreSQL 数据库
 
     #开发工具
     nodejs_23
-    python312
-    python312Packages.pip
+    # python312
+    # python312Packages.pip
     uv
     asdf-vm
   ];
