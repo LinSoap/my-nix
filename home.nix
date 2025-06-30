@@ -54,6 +54,7 @@
     chromium
     dbeaver-bin
     discord
+    vlc
 
     waydroid-helper
     android-tools
@@ -85,7 +86,7 @@
     postgresql # PostgreSQL 数据库
 
     #开发工具
-    nodejs_23
+    nodejs
     # python312
     # python312Packages.pip
     uv

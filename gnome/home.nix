@@ -21,6 +21,7 @@
     gnomeExtensions.space-bar
     gnomeExtensions.system-monitor
     gnomeExtensions.gnome-40-ui-improvements
+    gnomeExtensions.color-picker
   ];
 
   dconf.settings = {
@@ -37,6 +38,7 @@
         gnomeExtensions.space-bar.extensionUuid
         gnomeExtensions.system-monitor.extensionUuid
         gnomeExtensions.gnome-40-ui-improvements.extensionUuid
+        gnomeExtensions.color-picker.extensionUuid
       ];
     };
     # 自定义主题
