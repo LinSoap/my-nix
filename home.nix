@@ -51,6 +51,7 @@
     wpsoffice-cn # WPS 办公软件
     feishu # 飞书
     # follow # RSS 阅读器
+    fragments
     chromium
     dbeaver-bin
     discord
@@ -82,6 +83,7 @@
     wl-clipboard # 终端剪贴板工具
     cacert # CA 证书
     lazydocker # Docker 管理工具
+    lazygit # Git 管理工具
     scrcpy # Android 设备屏幕投射工具
     postgresql # PostgreSQL 数据库
 
