@@ -52,7 +52,6 @@
     feishu # 飞书
     # follow # RSS 阅读器
     fragments
-    chromium
     dbeaver-bin
     discord
     vlc
