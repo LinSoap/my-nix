@@ -1,12 +1,14 @@
 {
   config,
   pkgs,
+  inputs,
   ...
 }:
 
 {
   imports = [
     ./gnome/home.nix
+    inputs.zen-browser.homeModules.beta
   ];
 
   home.username = "linsoap";
@@ -55,6 +57,7 @@
     dbeaver-bin # 数据库管理工具
     discord # Discord 聊天软件
     vlc # VLC 媒体播放器
+    animeko
 
     waydroid-helper
     android-tools
@@ -129,6 +132,8 @@
       jo = "joshuto";
     };
   };
+
+  programs.zen-browser.enable = true;
 
   services.flameshot = {
     enable = true;

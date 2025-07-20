@@ -7,6 +7,11 @@
       url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    zen-browser = {
+      url = "github:0xc000022070/zen-browser-flake";
+      # IMPORTANT: we're using "libgbm" and is only available in unstable so ensure
+      # to have it up-to-date or simply don't specify the nixpkgs input
+    };
   };
 
   outputs =
@@ -28,9 +33,8 @@
 
             home-manager.users.linsoap = import ./home.nix;
 
-            # 使用 home-manager.extraSpecialArgs 自定义传递给 ./home.nix 的参数
-            # 取消注释下面这一行，就可以在 home.nix 中使用 flake 的所有 inputs 参数了
-            home-manager.extraSpecialArgs = inputs;
+            # 使用 extraSpecialArgs 但确保不会循环引用
+            home-manager.extraSpecialArgs = { inherit inputs; };
           }
         ];
       };
