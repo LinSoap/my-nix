@@ -209,6 +209,7 @@
     firefoxpwa
     wineWowPackages.waylandFull
     winetricks
+    xdg-desktop-portal-gnome
     #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     #  wget
   ];
@@ -219,6 +220,7 @@
     GTK_IM_MODULE = "fcitx";
     QT_IM_MODULE = "fcitx";
     XMODIFIERS = "@im=fcitx";
+    QT_QPA_PLATFORM = "wayland";
   };
 
   networking.firewall.enable = false;

@@ -51,10 +51,10 @@
     wpsoffice-cn # WPS 办公软件
     feishu # 飞书
     # follow # RSS 阅读器
-    fragments
-    dbeaver-bin
-    discord
-    vlc
+    fragments # 种子下载器
+    dbeaver-bin # 数据库管理工具
+    discord # Discord 聊天软件
+    vlc # VLC 媒体播放器
 
     waydroid-helper
     android-tools
@@ -127,6 +127,14 @@
     shellAliases = {
       ls = "eza";
       jo = "joshuto";
+    };
+  };
+
+  services.flameshot = {
+    enable = true;
+    # 确保启用 Wayland 支持
+    package = pkgs.flameshot.override {
+      enableWlrSupport = true;
     };
   };
 
