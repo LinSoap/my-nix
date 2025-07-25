@@ -21,22 +21,44 @@
       ...
     }@inputs:
     {
-      nixosConfigurations.linsoap = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs; };
-        modules = [
-          ./configuration.nix
+      nixosConfigurations = {
+        # 主机1 - 台式机/主机 (使用 hardware-configuration.nix)
+        desktop = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs; };
+          modules = [
+            ./hosts/desktop/configuration.nix
 
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
 
-            home-manager.users.linsoap = import ./home.nix;
+              home-manager.users.linsoap = import ./home.nix;
 
-            # 使用 extraSpecialArgs 但确保不会循环引用
-            home-manager.extraSpecialArgs = { inherit inputs; };
-          }
-        ];
+              # 使用 extraSpecialArgs 但确保不会循环引用
+              home-manager.extraSpecialArgs = { inherit inputs; };
+            }
+          ];
+        };
+
+        # 主机2 - 笔记本 (使用 hardware-configuration-light.nix)
+        laptop = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs; };
+          modules = [
+            ./hosts/laptop/configuration.nix
+
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+
+              home-manager.users.linsoap = import ./home.nix;
+
+              # 使用 extraSpecialArgs 但确保不会循环引用
+              home-manager.extraSpecialArgs = { inherit inputs; };
+            }
+          ];
+        };
       };
     };
 }

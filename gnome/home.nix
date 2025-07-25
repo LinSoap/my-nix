@@ -258,13 +258,61 @@
         SIMPLE = 1;
       };
       dot-position = "BOTTOM";
+      extension-version = 68;
       hotkeys-overlay-combo = "NEVER";
-      # hotkeys-overlay-combo = "TEMPORARILY";
       panel-anchors = builtins.toJSON {
         "LHC-0000000000000" = "MIDDLE";
+        "SDC-0x00000000" = "MIDDLE";
       };
       panel-element-positions = builtins.toJSON {
         "LHC-0000000000000" = [
+          {
+            element = "showAppsButton";
+            position = "stackedTL";
+            visible = false;
+          }
+          {
+            element = "activitiesButton";
+            position = "stackedTL";
+            visible = false;
+          }
+          {
+            element = "leftBox";
+            position = "stackedTL";
+            visible = true;
+          }
+          {
+            element = "taskbar";
+            position = "stackedTL";
+            visible = false;
+          }
+          {
+            element = "centerBox";
+            position = "centerMonitor";
+            visible = true;
+          }
+          {
+            element = "rightBox";
+            position = "stackedBR";
+            visible = true;
+          }
+          {
+            element = "dateMenu";
+            position = "stackedBR";
+            visible = true;
+          }
+          {
+            element = "systemMenu";
+            position = "stackedBR";
+            visible = true;
+          }
+          {
+            element = "desktopButton";
+            position = "stackedBR";
+            visible = false;
+          }
+        ];
+        "SDC-0x00000000" = [
           {
             element = "showAppsButton";
             visible = false;
@@ -286,17 +334,17 @@
             position = "stackedTL";
           }
           {
-            element = "centerBox";
+            element = "dateMenu";
             visible = true;
             position = "centerMonitor";
           }
           {
-            element = "rightBox";
+            element = "centerBox";
             visible = true;
             position = "stackedBR";
           }
           {
-            element = "dateMenu";
+            element = "rightBox";
             visible = true;
             position = "stackedBR";
           }
@@ -315,11 +363,13 @@
       panel-lengths = builtins.toJSON { };
       panel-positions = builtins.toJSON {
         "LHC-0000000000000" = "TOP";
+        "SDC-0x00000000" = "TOP";
       };
       panel-sizes = builtins.toJSON {
-        "LHC-0000000000000" = 32;
+        "LHC-0000000000000" = 30;
+        "SDC-0x00000000" = 30;
       };
-      prefs-opened = false;
+      prefs-opened = true;
       primary-monitor = "LHC-0000000000000";
       scroll-icon-action = "NOTHING";
       scroll-panel-action = "NOTHING";
