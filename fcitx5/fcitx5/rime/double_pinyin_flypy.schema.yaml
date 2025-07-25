@@ -3,7 +3,7 @@
 
 schema:
   schema_id: double_pinyin_flypy
-  name: ✏️
+  name: 小鶴雙拼
   version: "0.18"
   author:
     - double pinyin layout by 鶴
@@ -20,7 +20,7 @@ switches:
   - name: full_shape
     states: [半角, 全角]
   - name: simplification
-    states: [汉字, 漢字]
+    states: [漢字, 汉字]
   - name: ascii_punct
     states: [。，, ．，]
 
@@ -137,8 +137,3 @@ punctuator:
 
 key_binder:
   import_preset: default
-
-recognizer:
-  import_preset: default
-  patterns:
-    reverse_lookup: "`[a-z]*'?$"
