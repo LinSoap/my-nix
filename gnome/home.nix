@@ -260,9 +260,11 @@
       dot-position = "BOTTOM";
       extension-version = 68;
       hotkeys-overlay-combo = "NEVER";
+      multi-monitors = false;
       panel-anchors = builtins.toJSON {
         "LHC-0000000000000" = "MIDDLE";
         "SDC-0x00000000" = "MIDDLE";
+        "SGT-demoset-1" = "MIDDLE";
       };
       panel-element-positions = builtins.toJSON {
         "LHC-0000000000000" = [
@@ -360,14 +362,17 @@
           }
         ];
       };
+      panel-element-positions-monitors-sync = true;
       panel-lengths = builtins.toJSON { };
       panel-positions = builtins.toJSON {
         "LHC-0000000000000" = "TOP";
         "SDC-0x00000000" = "TOP";
+        "SGT-demoset-1" = "TOP";
       };
       panel-sizes = builtins.toJSON {
         "LHC-0000000000000" = 30;
         "SDC-0x00000000" = 30;
+        "SGT-demoset-1" = 32;
       };
       prefs-opened = true;
       primary-monitor = "LHC-0000000000000";
