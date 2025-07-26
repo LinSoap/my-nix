@@ -52,11 +52,19 @@
       increase-thumbnails-size = "400%";
     };
 
-    #----------快捷键配置----------
-
     "org/gnome/mutter" = {
       dynamic-workspaces = false;
+      workspaces-only-on-primary = false;
     };
+
+    "org/gnome/desktop/interface" = {
+      show-battery-percentage = true;
+      cursor-theme = "Afterglow-Recolored-Original-Blue";
+      font-hinting = "full";
+    };
+
+    #----------快捷键配置----------
+
     "org/gnome/mutter/keybindings" = {
       toggle-tiled-left = [ "<Super>h" ];
       toggle-tiled-right = [ "<Super>l" ];
