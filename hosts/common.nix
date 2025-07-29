@@ -47,7 +47,7 @@
   };
 
   # 网络配置
-  networking.enableIPv6 = false;
+  networking.enableIPv6 = true;
   networking.proxy.default = "http://127.0.0.1:20122";
   networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
   networking.networkmanager.enable = true;
