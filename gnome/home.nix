@@ -339,19 +339,19 @@
             position = "stackedTL";
           }
           {
+            element = "dateMenu";
+            visible = true;
+            position = "stackedTL";
+          }
+          {
             element = "taskbar";
             visible = false;
             position = "stackedTL";
           }
           {
-            element = "dateMenu";
-            visible = true;
-            position = "centerMonitor";
-          }
-          {
             element = "centerBox";
             visible = true;
-            position = "stackedBR";
+            position = "centerMonitor";
           }
           {
             element = "rightBox";

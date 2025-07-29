@@ -8,6 +8,7 @@
 {
   imports = [
     ./gnome/home.nix
+    ./fcitx5/home.nix
     inputs.zen-browser.homeModules.beta
   ];
 

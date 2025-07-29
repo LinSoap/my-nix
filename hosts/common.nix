@@ -67,16 +67,6 @@
     LC_TIME = "zh_CN.UTF-8";
   };
 
-  # 输入法配置
-  i18n.inputMethod = {
-    enable = true;
-    type = "fcitx5";
-    fcitx5.addons = with pkgs; [
-      fcitx5-rime
-      fcitx5-chinese-addons
-    ];
-  };
-
   # 字体配置
   fonts = {
     packages = with pkgs; [
@@ -126,7 +116,6 @@
     ];
     packages = with pkgs; [
       pkgs.git
-      pkgs.librime
     ];
   };
   users.extraGroups.docker.members = [ "linsoap" ];
@@ -192,9 +181,6 @@
   environment.sessionVariables = rec {
     ENABLE_DEPRECATED_SPECIAL_OUTBOUNDS = "true";
     ENABLE_DEPRECATED_TUN_ADDRESS_X = "true";
-    GTK_IM_MODULE = "fcitx";
-    QT_IM_MODULE = "fcitx";
-    XMODIFIERS = "@im=fcitx";
     QT_QPA_PLATFORM = "wayland";
   };
 
