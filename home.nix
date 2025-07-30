@@ -91,6 +91,7 @@
     scrcpy # Android 设备屏幕投射工具
     postgresql # PostgreSQL 数据库
     tmux
+    lunarvim
 
     #开发工具
     nodejs
@@ -154,6 +155,7 @@
     syntaxHighlighting.enable = true;
     shellAliases = {
       ls = "eza";
+      vim = "lvim";
     };
     history.size = 10000;
     initContent = ''
@@ -186,6 +188,7 @@
         "z"
         "vi-mode"
         "copypath"
+        "copyfile"
       ];
     };
   };
