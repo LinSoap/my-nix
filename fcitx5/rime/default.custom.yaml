@@ -1,0 +1,5 @@
+patch:
+  menu:
+    page_size: 8 # 候选词数量
+  schema_list:
+    - schema: double_pinyin_flypy # 使用小鹤双拼

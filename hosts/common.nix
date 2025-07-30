@@ -51,6 +51,18 @@
   networking.proxy.default = "http://127.0.0.1:20122";
   networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
   networking.networkmanager.enable = true;
+  networking.nameservers = [ "8.8.8.8" ];
+
+  # 配置 fcitx5 输入法
+  i18n.inputMethod = {
+    enable = true;
+    type = "fcitx5";
+    fcitx5.addons = with pkgs; [
+      fcitx5-rime
+      fcitx5-configtool
+      fcitx5-chinese-addons
+    ];
+  };
 
   # 时区和语言
   time.timeZone = "Asia/Shanghai";

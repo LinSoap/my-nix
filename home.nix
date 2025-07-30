@@ -59,6 +59,7 @@
     discord # Discord 聊天软件
     vlc # VLC 媒体播放器
     animeko
+    gemini-cli
 
     waydroid-helper
     android-tools
@@ -98,25 +99,6 @@
     uv
     asdf-vm
   ];
-
-  # 配置 Rime 输入法
-  # 通过 home.file 将 Rime 的配置文件链接到指定位置
-  home.file = {
-    ".local/share/fcitx5/rime/default.custom.yaml".source = ./rime/default.custom.yaml;
-    ".local/share/fcitx5/rime/double_pinyin_flypy.custom.yaml".source =
-      ./rime/double_pinyin_flypy.custom.yaml;
-    ".local/share/fcitx5/rime/double_pinyin_flypy.schema.yaml".source =
-      ./rime/double_pinyin_flypy.schema.yaml;
-    ".local/share/fcitx5/rime/luna_pinyin.dict.yaml".source = ./rime/luna_pinyin.dict.yaml;
-    ".local/share/fcitx5/rime/luna_pinyin.sogou.dict.yaml".source = ./rime/luna_pinyin.sogou.dict.yaml;
-    ".local/share/fcitx5/rime/luna_pinyin.extended.dict.yaml".source =
-      ./rime/luna_pinyin.extended.dict.yaml;
-    ".local/share/fcitx5/rime/luna_pinyin_simp.custom.yaml".source =
-      ./rime/luna_pinyin_simp.custom.yaml;
-    ".local/share/fcitx5/rime/luna_pinyin_simp.schema.yaml".source =
-      ./rime/luna_pinyin_simp.schema.yaml;
-    ".local/share/fcitx5/rime/user.yaml".source = ./rime/user.yaml;
-  };
 
   # git 相关配置
   programs.git = {
