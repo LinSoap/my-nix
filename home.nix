@@ -9,6 +9,7 @@
   imports = [
     ./gnome/home.nix
     ./fcitx5/home.nix
+    ./kitty/home.nix
     inputs.zen-browser.homeModules.beta
   ];
 
@@ -157,6 +158,7 @@
     shellAliases = {
       ls = "eza";
       vim = "lvim";
+      kk = "kitty";
     };
     history.size = 10000;
     initContent = ''
