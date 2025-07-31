@@ -60,6 +60,7 @@
     vlc # VLC 媒体播放器
     animeko
     gemini-cli
+    kitty
 
     waydroid-helper
     android-tools
