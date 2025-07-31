@@ -1,14 +1,6 @@
 { config, pkgs, ... }:
 
 {
-  # 安装 fcitx5 及相关插件
-  home.packages = with pkgs; [
-    fcitx5
-    fcitx5-rime
-    fcitx5-configtool
-    fcitx5-chinese-addons
-    librime
-  ];
 
   # 设置环境变量
   home.sessionVariables = {
