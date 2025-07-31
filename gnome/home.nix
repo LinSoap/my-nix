@@ -101,6 +101,16 @@
     };
 
     "org/gnome/desktop/wm/keybindings" = {
+      close = [ "<Super>q" ];
+      minimize = [ ];
+      move-to-workspace-1 = [ "<Shift><Super>1" ];
+      move-to-workspace-2 = [ "<Shift><Super>2" ];
+      move-to-workspace-3 = [ "<Shift><Super>3" ];
+      move-to-workspace-4 = [ "<Shift><Super>4" ];
+      move-to-workspace-5 = [ "<Shift><Super>5" ];
+      move-to-workspace-left = [ "<Shift><Super>h" ];
+      move-to-workspace-right = [ "<Shift><Super>l" ];
+      raise-or-lower = [ "<Super>j" ];
       switch-to-workspace-1 = [ "<Super>1" ];
       switch-to-workspace-2 = [ "<Super>2" ];
       switch-to-workspace-3 = [ "<Super>3" ];
@@ -110,15 +120,7 @@
       switch-to-workspace-7 = [ "<Super>7" ];
       switch-to-workspace-8 = [ "<Super>8" ];
       switch-to-workspace-9 = [ "<Super>9" ];
-      move-to-workspace-1 = [ "<Shift><Super>1" ];
-      move-to-workspace-2 = [ "<Shift><Super>2" ];
-      move-to-workspace-3 = [ "<Shift><Super>3" ];
-      move-to-workspace-4 = [ "<Shift><Super>4" ];
-      move-to-workspace-5 = [ "<Shift><Super>5" ];
-      close = [ "<Super>q" ];
       toggle-maximized = [ "<Super>k" ];
-      raise-or-lower = [ "<Super>j" ];
-
     };
 
     "org/gnome/settings-daemon/plugins/media-keys" = {
@@ -134,7 +136,7 @@
     };
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1" = {
       binding = "<Control><Alt>t";
-      command = "kgx";
+      command = "kitty";
       name = "open-terminal";
     };
     #----------快捷键配置结束----------
