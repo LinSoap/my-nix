@@ -58,9 +58,12 @@
     enable = true;
     type = "fcitx5";
     fcitx5.addons = with pkgs; [
+      fcitx5
       fcitx5-rime
       fcitx5-configtool
       fcitx5-chinese-addons
+      rime-data
+      librime
     ];
   };
 
@@ -115,6 +118,17 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
+  };
+
+  #ssh 服务配置
+  services.openssh = {
+    enable = true;
+    settings = {
+      X11Forwarding = true;
+      PermitRootLogin = "no"; # disable root login
+      PasswordAuthentication = true; # enable password login
+    };
+    openFirewall = true;
   };
 
   # 用户配置
