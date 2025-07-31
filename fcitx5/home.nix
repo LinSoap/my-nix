@@ -4,12 +4,12 @@
 
   # 设置环境变量
   home.sessionVariables = {
-    GTK_IM_MODULE = "fcitx";
-    QT_IM_MODULE = "fcitx";
-    XMODIFIERS = "@im=fcitx";
-    INPUT_METHOD = "fcitx";
-    SDL_IM_MODULE = "fcitx";
-    GLFW_IM_MODULE = "fcitx";
+    GTK_IM_MODULE = "fcitx5";
+    QT_IM_MODULE = "fcitx5";
+    XMODIFIERS = "@im=fcitx5";
+    INPUT_METHOD = "fcitx5";
+    SDL_IM_MODULE = "fcitx5";
+    GLFW_IM_MODULE = "fcitx5";
   };
 
   # 批量导入 rime 目录
