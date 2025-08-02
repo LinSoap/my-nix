@@ -8,6 +8,12 @@
 
       background_opacity 0.98
       font_size 15.0
+
+      tab_bar_style powerline
+      tab_bar_min_tabs 1
+
+      wayland_titlebar_color #232537
+
     '';
     force = true;
   };

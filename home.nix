@@ -9,7 +9,8 @@
   imports = [
     ./gnome/home.nix
     ./fcitx5/home.nix
-    ./kitty/home.nix
+    ./cli/kitty/home.nix
+    ./cli/fastfetch/home.nix
     inputs.zen-browser.homeModules.beta
   ];
 
@@ -159,6 +160,7 @@
       ls = "eza";
       vim = "lvim";
       kk = "kitty";
+      jo = "joshuto";
     };
     history.size = 10000;
     initContent = ''
