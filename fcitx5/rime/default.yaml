@@ -1,17 +1,10 @@
 # Rime default settings
 # encoding: utf-8
 
-config_version: '0.40'
+config_version: "0.40"
 
 schema_list:
-  - schema: luna_pinyin
-  - schema: luna_pinyin_simp
-  - schema: luna_pinyin_fluency
-  - schema: bopomofo
-  - schema: bopomofo_tw
-  - schema: cangjie5
-  - schema: stroke
-  - schema: terra_pinyin
+  - schema: double_pinyin_flypy # 使用小鹤双拼
 
 switcher:
   caption: 〔方案選單〕
@@ -29,10 +22,10 @@ switcher:
     - zh_hant_tw
   fold_options: true
   abbreviate_options: true
-  option_list_separator: '／'
+  option_list_separator: "／"
 
 menu:
-  page_size: 5
+  page_size: 8 # 候选词数量，优先 custom 配置
 
 punctuator:
   full_shape:
@@ -48,6 +41,7 @@ key_binder:
       - key_bindings:/paging_with_minus_equal
       - key_bindings:/paging_with_comma_period
       - key_bindings:/numbered_mode_switch
+    # 追加 custom 的翻页按键
 
 recognizer:
   patterns:
