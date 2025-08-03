@@ -55,7 +55,6 @@
     dconf-editor
     wpsoffice-cn # WPS 办公软件
     feishu # 飞书
-    # follow # RSS 阅读器
     fragments # 种子下载器
     dbeaver-bin # 数据库管理工具
     discord # Discord 聊天软件
@@ -63,6 +62,7 @@
     animeko
     gemini-cli
     kitty
+    proton-pass
 
     waydroid-helper
     android-tools
@@ -98,6 +98,7 @@
 
     #开发工具
     nodejs
+    android-studio
     # python312
     # python312Packages.pip
     uv
