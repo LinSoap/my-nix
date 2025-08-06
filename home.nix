@@ -2,6 +2,7 @@
   config,
   pkgs,
   inputs,
+  unstable,
   ...
 }:
 
@@ -61,6 +62,7 @@
     vlc # VLC 媒体播放器
     animeko
     gemini-cli
+    claude-code
     kitty
     proton-pass
 

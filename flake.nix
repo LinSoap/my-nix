@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     home-manager = {
       url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -17,14 +18,21 @@
   outputs =
     {
       nixpkgs,
+      nixpkgs-unstable,
       home-manager,
       ...
     }@inputs:
+    let
+      system = "x86_64-linux"; # 或 "aarch64-linux"，根据你的实际架构
+    in
     {
       nixosConfigurations = {
         # 主机1 - 台式机/主机 (使用 hardware-configuration.nix)
         desktop = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs; };
+          specialArgs = {
+            inherit inputs;
+            unstable = nixpkgs-unstable.legacyPackages.${system};
+          };
           modules = [
             ./hosts/desktop/configuration.nix
 
@@ -35,15 +43,20 @@
 
               home-manager.users.linsoap = import ./home.nix;
 
-              # 使用 extraSpecialArgs 但确保不会循环引用
-              home-manager.extraSpecialArgs = { inherit inputs; };
+              home-manager.extraSpecialArgs = {
+                inherit inputs;
+                unstable = nixpkgs-unstable.legacyPackages.${system};
+              };
             }
           ];
         };
 
         # 主机2 - 笔记本 (使用 hardware-configuration-light.nix)
         laptop = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs; };
+          specialArgs = {
+            inherit inputs;
+            unstable = nixpkgs-unstable.legacyPackages.${system};
+          };
           modules = [
             ./hosts/laptop/configuration.nix
 
@@ -54,8 +67,11 @@
 
               home-manager.users.linsoap = import ./home.nix;
 
-              # 使用 extraSpecialArgs 但确保不会循环引用
-              home-manager.extraSpecialArgs = { inherit inputs; };
+              # 修正：把 unstable 也传递进去
+              home-manager.extraSpecialArgs = {
+                inherit inputs;
+                unstable = nixpkgs-unstable.legacyPackages.${system};
+              };
             }
           ];
         };
