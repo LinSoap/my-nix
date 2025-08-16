@@ -60,14 +60,14 @@
     dbeaver-bin # 数据库管理工具
     discord # Discord 聊天软件
     vlc # VLC 媒体播放器
-    animeko
-    gemini-cli
-    claude-code
-    kitty
-    proton-pass
+    animeko # 动漫播放器
+    gemini-cli # Gemini CLI
+    claude-code # Claude Code
+    kitty # Kitty 终端
+    proton-pass # Proton Pass
 
-    waydroid-helper
-    android-tools
+    waydroid-helper # Waydroid 助手
+    android-tools # Android 工具
 
     afterglow-cursors-recolored # 鼠标指针主题
     nerd-fonts.fira-code
@@ -100,6 +100,7 @@
     lunarvim
 
     #开发工具
+    devbox
     nodejs
     android-studio
     # python312
@@ -163,7 +164,8 @@
     shellAliases = {
       ls = "eza";
       vim = "lvim";
-      kk = "kitty";
+      icat = "kitty +kitten icat";
+      ssh = "kitty +kitten ssh";
       jo = "joshuto";
     };
     history.size = 10000;
