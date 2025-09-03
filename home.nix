@@ -66,6 +66,7 @@
     kitty # Kitty 终端
     proton-pass # Proton Pass
     insomnia # Insomnia API 客户端
+    appimage-run # AppImage 运行工具
 
     waydroid-helper # Waydroid 助手
     android-tools # Android 工具

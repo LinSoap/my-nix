@@ -22,6 +22,7 @@
     gnomeExtensions.system-monitor
     gnomeExtensions.gnome-40-ui-improvements
     gnomeExtensions.color-picker
+    gnomeExtensions.pano
   ];
 
   dconf.settings = {
@@ -39,6 +40,7 @@
         gnomeExtensions.system-monitor.extensionUuid
         gnomeExtensions.gnome-40-ui-improvements.extensionUuid
         gnomeExtensions.color-picker.extensionUuid
+        gnomeExtensions.pano.extensionUuid
       ];
     };
     # 自定义主题
