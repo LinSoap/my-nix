@@ -62,7 +62,6 @@
     vlc # VLC 媒体播放器
     animeko # 动漫播放器
     gemini-cli # Gemini CLI
-    claude-code # Claude Code
     kitty # Kitty 终端
     proton-pass # Proton Pass
     insomnia # Insomnia API 客户端
