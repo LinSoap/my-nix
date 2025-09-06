@@ -22,54 +22,99 @@
     text = ''
       # vim:ft=kitty
 
-      ## name: Tokyo Night Moon
+      ## name: Base2Tone Suburb Dark
+      ## author: Bram de Haan (https://github.com/atelierbram)
       ## license: MIT
-      ## author: Folke Lemaitre
-      ## upstream: https://github.com/folke/tokyonight.nvim/raw/main/extras/kitty/tokyonight_moon.conf
+      ## upstream: https://github.com/atelierbram/Base2Tone-kitty/blob/main/themes/base2tone-suburb-dark.conf
+      ## blurb: duotone theme | warm blue - bright pink
 
 
-      background #222436
-      foreground #c8d3f5
-      selection_background #2d3f76
-      selection_foreground #c8d3f5
-      url_color #4fd6be
-      cursor #c8d3f5
-      cursor_text_color #222436
+      #: The basic colors
 
-      # Tabs
-      active_tab_background #82aaff
-      active_tab_foreground #1e2030
-      inactive_tab_background #2f334d
-      inactive_tab_foreground #545c7e
-      #tab_bar_background #1b1d2b
+      foreground #878ba6
+      background #27273a
+      selection_foreground #878ba6
+      selection_background #3b4a6b
 
-      # Windows
-      active_border_color #82aaff
-      inactive_border_color #2f334d
 
-      # normal
-      color0 #1b1d2b
-      color1 #ff757f
-      color2 #c3e88d
-      color3 #ffc777
-      color4 #82aaff
-      color5 #c099ff
-      color6 #86e1fc
-      color7 #828bb8
+      #: Cursor colors
 
-      # bright
-      color8 #444a73
-      color9 #ff757f
-      color10 #c3e88d
-      color11 #ffc777
-      color12 #82aaff
-      color13 #c099ff
-      color14 #86e1fc
-      color15 #c8d3f5
+      cursor #87d18d
+      cursor_text_color #27273a
 
-      # extended colors
-      color16 #ff966c
-      color17 #c53b53    
+
+      #: URL underline color when hovering with mouse
+
+      url_color #d2d8fe
+
+
+      #: kitty window border colors and terminal bell colors
+
+      active_border_color #444864
+      inactive_border_color #27273a
+      bell_border_color #5165e6
+      visual_bell_color none
+
+
+      #: OS Window titlebar colors
+
+      wayland_titlebar_color #3b4a6b
+      macos_titlebar_color #3b4a6b
+
+
+      #: Tab bar colors
+
+      active_tab_foreground #fbf9fa
+      active_tab_background #7586f5
+      inactive_tab_foreground #b0a6aa
+      inactive_tab_background #3b4a6b
+      tab_bar_background #27273a
+      tab_bar_margin_color none
+
+
+      #: Colors for marks (marked text in the terminal)
+
+      mark1_foreground #27273a
+      mark1_background #6375ee
+      mark2_foreground #27273a
+      mark2_background #8d8186
+      mark3_foreground #27273a
+      mark3_background #e44e8c
+
+
+      #: The basic 16 colors
+
+      #: black
+      color0 #27273a
+      color8 #4f5472
+
+      #: red
+      color1 #7586f5
+      color9 #fe81b5
+
+      #: green
+      color2 #f36f98
+      color10 #3b4a6b
+
+      #: yellow
+      color3 #ffb3d2
+      color11 #444864
+
+      #: blue
+      color4 #50dffe
+      color12 #5b6080
+
+      #: magenta
+      color5 #f36f98
+      color13 #d2d8fe
+
+      #: cyan
+      color6 #a0acfe
+      color14 #f764a1
+
+      #: white
+      color7 #878ba6
+      color15 #ebedff
     '';
     force = true;
   };
