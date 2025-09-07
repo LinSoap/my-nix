@@ -22,44 +22,44 @@
     text = ''
       # vim:ft=kitty
 
-      ## name: Base2Tone Suburb Dark
+      ## name: Base2Tone Suburb Dark (Modified for VSCode Theme Match)
       ## author: Bram de Haan (https://github.com/atelierbram)
       ## license: MIT
       ## upstream: https://github.com/atelierbram/Base2Tone-kitty/blob/main/themes/base2tone-suburb-dark.conf
-      ## blurb: duotone theme | warm blue - bright pink
+      ## blurb: duotone theme | warm blue - bright pink (adapted to match VSCode theme)
 
 
       #: The basic colors
 
-      foreground #878ba6
+      foreground #f6f0ff
       background #27273a
-      selection_foreground #878ba6
-      selection_background #3b4a6b
+      selection_foreground #25313e
+      selection_background #42557b
 
 
       #: Cursor colors
 
-      cursor #87d18d
+      cursor #97ee91
       cursor_text_color #27273a
 
 
       #: URL underline color when hovering with mouse
 
-      url_color #d2d8fe
+      url_color #40afee
 
 
       #: kitty window border colors and terminal bell colors
 
-      active_border_color #444864
-      inactive_border_color #27273a
-      bell_border_color #5165e6
+      active_border_color #24e8d8
+      inactive_border_color #0f1320
+      bell_border_color #e34f8c
       visual_bell_color none
 
 
       #: OS Window titlebar colors
 
-      wayland_titlebar_color #3b4a6b
-      macos_titlebar_color #3b4a6b
+      wayland_titlebar_color #1f2330
+      macos_titlebar_color #1f2330
 
 
       #: Tab bar colors
@@ -85,36 +85,36 @@
       #: The basic 16 colors
 
       #: black
-      color0 #27273a
-      color8 #4f5472
+      color0 #353551
+      color8 #919cb9
 
       #: red
-      color1 #7586f5
-      color9 #fe81b5
+      color1 #e34f8c
+      color9 #f36f98
 
       #: green
-      color2 #f36f98
-      color10 #3b4a6b
+      color2 #97f36d
+      color10 #affa90
 
       #: yellow
-      color3 #ffb3d2
-      color11 #444864
+      color3 #f8c275
+      color11 #fafaa0
 
       #: blue
-      color4 #50dffe
-      color12 #5b6080
+      color4 #c7adfb
+      color12 #74d6e9
 
       #: magenta
-      color5 #f36f98
-      color13 #d2d8fe
+      color5 #e752a1
+      color13 #f799c7
 
       #: cyan
-      color6 #a0acfe
-      color14 #f764a1
+      color6 #24e8d8
+      color14 #8df9f9
 
       #: white
-      color7 #878ba6
-      color15 #ebedff
+      color7 #fbd3e1
+      color15 #d7d6df
     '';
     force = true;
   };
