@@ -173,6 +173,11 @@
     ];
   };
 
+  programs.nautilus-open-any-terminal = {
+    enable = true;
+    terminal = "kitty";
+  };
+
   programs.nix-ld = {
     enable = true;
     libraries = with pkgs; [
@@ -191,6 +196,7 @@
   # 系统包
   nixpkgs.config.allowUnfree = true;
   environment.systemPackages = with pkgs; [
+    nautilus
     vim
     tree
     gnumake

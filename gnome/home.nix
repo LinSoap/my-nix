@@ -262,6 +262,11 @@
       version = 32;
     };
 
+    "org/gnome/desktop/applications/terminal" = {
+      exec = "kitty";
+      exec-arg = "";
+    };
+
     # dash-to-panel配置
     "org/gnome/shell/extensions/dash-to-panel" = {
       animate-appicon-hover-animation-extent = builtins.toJSON {
