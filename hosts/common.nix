@@ -155,11 +155,11 @@
   systemd.services."autovt@tty1".enable = false;
 
   # 程序配置
-  programs.firefox = {
-    enable = true;
-    package = pkgs.firefox;
-    nativeMessagingHosts.packages = [ pkgs.firefoxpwa ];
-  };
+  # programs.firefox = {
+  #   enable = true;
+  #   package = pkgs.firefox;
+  #   nativeMessagingHosts.packages = [ pkgs.firefoxpwa ];
+  # };
 
   programs.zsh.enable = true;
   users.users.linsoap.shell = pkgs.zsh;

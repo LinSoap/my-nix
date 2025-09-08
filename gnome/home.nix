@@ -152,7 +152,6 @@
       application-list = [
         "code.desktop:2"
         "com.tencent.wechat.desktop:4"
-        "chrome-cinhimbnkkaeohfgghhklpknlkffjgod-Default.desktop:5"
         "obsidian.desktop:3"
       ];
     };

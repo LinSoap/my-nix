@@ -48,7 +48,6 @@
     # GUI 软件
     obsidian # 笔记软件
     wechat-uos # 微信客户端
-    google-chrome # 谷歌浏览器
     vscode # Visual Studio Code 编辑器
     gui-for-singbox # Sing-box 的图形界面
     krita # 数字绘画软件
