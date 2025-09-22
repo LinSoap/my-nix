@@ -110,6 +110,7 @@
     uv
     asdf-vm
     pnpm
+    wrangler
     nodePackages_latest.vercel
   ];
 
