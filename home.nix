@@ -65,7 +65,8 @@
     proton-pass # Proton Pass
     insomnia # Insomnia API 客户端
     appimage-run # AppImage 运行工具
-    codex # AI 代码助手
+    unstable.codex # AI 代码助手
+    unstable.claude-code # AI 代码助手
     google-chrome
 
     waydroid-helper # Waydroid 助手

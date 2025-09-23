@@ -10,6 +10,9 @@
     ../common.nix # 通用配置
   ];
 
+  # 允许评估未自由 (unfree) 软件包（例如 claude-code）
+  nixpkgs.config.allowUnfree = true;
+
   # 笔记本特定配置
   networking.hostName = "nixos-laptop";
 

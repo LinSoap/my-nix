@@ -24,6 +24,10 @@
     }@inputs:
     let
       system = "x86_64-linux"; # 或 "aarch64-linux"，根据你的实际架构
+      unstable = import nixpkgs-unstable {
+        inherit system;
+        config.allowUnfree = true;
+      };
     in
     {
       nixosConfigurations = {
@@ -31,7 +35,7 @@
         desktop = nixpkgs.lib.nixosSystem {
           specialArgs = {
             inherit inputs;
-            unstable = nixpkgs-unstable.legacyPackages.${system};
+            unstable = unstable;
           };
           modules = [
             ./hosts/desktop/configuration.nix
@@ -45,7 +49,7 @@
 
               home-manager.extraSpecialArgs = {
                 inherit inputs;
-                unstable = nixpkgs-unstable.legacyPackages.${system};
+                unstable = unstable;
               };
             }
           ];
@@ -55,7 +59,7 @@
         laptop = nixpkgs.lib.nixosSystem {
           specialArgs = {
             inherit inputs;
-            unstable = nixpkgs-unstable.legacyPackages.${system};
+            unstable = unstable;
           };
           modules = [
             ./hosts/laptop/configuration.nix
@@ -70,7 +74,7 @@
               # 修正：把 unstable 也传递进去
               home-manager.extraSpecialArgs = {
                 inherit inputs;
-                unstable = nixpkgs-unstable.legacyPackages.${system};
+                unstable = unstable;
               };
             }
           ];
