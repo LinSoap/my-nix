@@ -23,6 +23,7 @@
     gnomeExtensions.gnome-40-ui-improvements
     gnomeExtensions.color-picker
     gnomeExtensions.pano
+    gnomeExtensions.blur-my-shell
   ];
 
   dconf.settings = {
@@ -41,6 +42,7 @@
         gnomeExtensions.gnome-40-ui-improvements.extensionUuid
         gnomeExtensions.color-picker.extensionUuid
         gnomeExtensions.pano.extensionUuid
+        gnomeExtensions.blur-my-shell.extensionUuid
       ];
     };
     # 自定义主题
@@ -63,6 +65,15 @@
       show-battery-percentage = true;
       cursor-theme = "Afterglow-Recolored-Original-Blue";
       font-hinting = "full";
+    };
+
+    # 桌面背景配置
+    "org/gnome/desktop/background" = {
+      picture-options = "zoom";
+      picture-uri = "file://${config.home.homeDirectory}/my-nix/assets/wallpaper.jpg";
+      picture-uri-dark = "file://${config.home.homeDirectory}/my-nix/assets/wallpaper.jpg";
+      primary-color = "#3a4ba0";
+      secondary-color = "#2f302f";
     };
 
     #----------快捷键配置----------
@@ -254,7 +265,6 @@
       inactive-workspace-font-size = 12;
       inactive-workspace-padding-h = 0;
       inactive-workspace-padding-v = 0;
-      enable-activate-workspace-shortcuts = true;
       workspace-margin = 5;
       workspaces-bar-padding = 2;
     };
@@ -266,6 +276,9 @@
     };
     "org/gnome/shell/extensions/space-bar/state" = {
       version = 32;
+    };
+    "org/gnome/shell/extensions/space-bar" = {
+      enable-activate-workspace-shortcuts = true;
     };
 
     "org/gnome/desktop/applications/terminal" = {
@@ -280,14 +293,23 @@
         PLANK = 4;
         SIMPLE = 1;
       };
+      appicon-margin = 8;
+      appicon-padding = 4;
       dot-position = "BOTTOM";
       extension-version = 68;
+      global-border-radius = 5;
+      highlight-appicon-hover = true;
       hotkeys-overlay-combo = "NEVER";
+      intellihide = false;
+      isolate-monitors = false;
+      leftbox-padding = -1;
+      leftbox-size = 0;
       multi-monitors = false;
       panel-anchors = builtins.toJSON {
         "LHC-0000000000000" = "MIDDLE";
         "SDC-0x00000000" = "MIDDLE";
         "SGT-demoset-1" = "MIDDLE";
+        "SAM-0x304a4b36" = "MIDDLE";
       };
       panel-element-positions = builtins.toJSON {
         "LHC-0000000000000" = [
@@ -340,48 +362,48 @@
         "SDC-0x00000000" = [
           {
             element = "showAppsButton";
-            visible = false;
             position = "stackedTL";
+            visible = false;
           }
           {
             element = "activitiesButton";
-            visible = false;
             position = "stackedTL";
+            visible = false;
           }
           {
             element = "leftBox";
-            visible = true;
             position = "stackedTL";
+            visible = true;
           }
           {
             element = "dateMenu";
-            visible = true;
             position = "stackedTL";
+            visible = true;
           }
           {
             element = "taskbar";
-            visible = false;
             position = "stackedTL";
+            visible = false;
           }
           {
             element = "centerBox";
-            visible = true;
             position = "centerMonitor";
+            visible = true;
           }
           {
             element = "rightBox";
-            visible = true;
             position = "stackedBR";
+            visible = true;
           }
           {
             element = "systemMenu";
-            visible = true;
             position = "stackedBR";
+            visible = true;
           }
           {
             element = "desktopButton";
-            visible = false;
             position = "stackedBR";
+            visible = false;
           }
         ];
       };
@@ -391,21 +413,78 @@
         "LHC-0000000000000" = "TOP";
         "SDC-0x00000000" = "TOP";
         "SGT-demoset-1" = "TOP";
+        "SAM-0x304a4b36" = "TOP";
       };
+      panel-side-margins = 2;
+      panel-side-padding = 0;
       panel-sizes = builtins.toJSON {
         "LHC-0000000000000" = 30;
         "SDC-0x00000000" = 30;
         "SGT-demoset-1" = 32;
+        "SAM-0x304a4b36" = 30;
       };
-      prefs-opened = true;
+      panel-top-bottom-margins = 2;
+      panel-top-bottom-padding = 0;
+      prefs-opened = false;
       primary-monitor = "LHC-0000000000000";
       scroll-icon-action = "NOTHING";
       scroll-panel-action = "NOTHING";
+      status-icon-padding = -1;
+      stockgs-keep-dash = false;
       stockgs-keep-top-panel = false;
+      stockgs-panelbtn-click-only = false;
+      trans-bg-color = "#555555";
       trans-panel-opacity = 0.0;
-      trans-use-custom-opacity = true;
+      trans-use-custom-bg = true;
+      trans-use-custom-gradient = false;
+      trans-use-custom-opacity = false;
+      trans-use-dynamic-opacity = false;
+      tray-padding = -1;
       tray-size = 16;
       window-preview-title-position = "TOP";
+    };
+
+    # blur-my-shell配置
+    "org/gnome/shell/extensions/blur-my-shell" = {
+      debug = false;
+      "settings-version" = 2;
+    };
+    "org/gnome/shell/extensions/blur-my-shell/appfolder" = {
+      blur = false;
+    };
+    "org/gnome/shell/extensions/blur-my-shell/coverflow-alt-tab" = {
+      blur = false;
+      pipeline = "pipeline_default";
+    };
+    "org/gnome/shell/extensions/blur-my-shell/dash-to-dock" = {
+      blur = true;
+      pipeline = "pipeline_default_rounded";
+      "style-dash-to-dock" = 0;
+      "unblur-in-overview" = false;
+    };
+    "org/gnome/shell/extensions/blur-my-shell/dash-to-panel" = {
+      "blur-original-panel" = false;
+    };
+    "org/gnome/shell/extensions/blur-my-shell/lockscreen" = {
+      blur = true;
+      pipeline = "pipeline_default";
+    };
+    "org/gnome/shell/extensions/blur-my-shell/overview" = {
+      blur = true;
+      pipeline = "pipeline_default";
+    };
+    "org/gnome/shell/extensions/blur-my-shell/panel" = {
+      blur = false;
+      "override-background" = false;
+      pipeline = "pipeline_default";
+      "unblur-in-overview" = false;
+    };
+    "org/gnome/shell/extensions/blur-my-shell/screenshot" = {
+      blur = false;
+      pipeline = "pipeline_default";
+    };
+    "org/gnome/shell/extensions/blur-my-shell/window-list" = {
+      blur = false;
     };
   };
 }
