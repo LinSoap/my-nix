@@ -217,8 +217,12 @@
   environment.sessionVariables = rec {
     ENABLE_DEPRECATED_SPECIAL_OUTBOUNDS = "true";
     ENABLE_DEPRECATED_TUN_ADDRESS_X = "true";
-    QT_QPA_PLATFORM = "wayland";
+    QT_QPA_PLATFORM = "wayland;xcb";
+    QT_SCALE_FACTOR_ROUNDING_POLICY = "RoundPreferFloor";
+    QT_AUTO_SCREEN_SCALE_FACTOR = "1";
+    ELECTRON_OZONE_PLATFORM_HINT = "auto";
   };
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
   # 防火墙
   networking.firewall.enable = false;

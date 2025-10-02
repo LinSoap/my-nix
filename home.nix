@@ -47,8 +47,8 @@
   home.packages = with pkgs; [
     # GUI 软件
     obsidian # 笔记软件
-    wechat-uos # 微信客户端
-    vscode # Visual Studio Code 编辑器
+    unstable.wechat
+    unstable.vscode # Visual Studio Code 编辑器
     gui-for-singbox # Sing-box 的图形界面
     krita # 数字绘画软件
     krita-plugin-gmic
@@ -105,6 +105,9 @@
     #开发工具
     devbox
     nodejs
+
+    ffmpeg
+    portaudio
     android-studio
     # python312
     # python312Packages.pip
@@ -113,6 +116,7 @@
     pnpm
     wrangler
     nodePackages_latest.vercel
+
   ];
 
   # git 相关配置
@@ -176,6 +180,7 @@
     };
     history.size = 10000;
     initContent = ''
+      export PATH="$PATH:$HOME/bin:$HOME/.local/bin:$HOME/go/bin"
       export SSL_CERT_FILE=${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt
       eval "$(${pkgs.z-lua}/bin/z --init zsh)"
       # --- 常用的命令行快捷键配置 (Emacs 风格) ---

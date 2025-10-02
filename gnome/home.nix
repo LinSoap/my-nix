@@ -71,7 +71,6 @@
       toggle-tiled-left = [ "<Super>h" ];
       toggle-tiled-right = [ "<Super>l" ];
     };
-
     "org/gnome/settings-daemon/plugins/media-keys" = {
       play = [ "<Shift><Super>space" ];
       next = [ "<Shift><Super>n" ];
@@ -175,6 +174,14 @@
       show-control-icons = false;
       show-label = true;
       show-player-icon = true;
+    };
+
+    #开启缩放功能
+    "org/gnome/mutter" = {
+      experimental-features = [
+        "scale-monitor-framebuffer"
+        "xwayland-native-scaling"
+      ];
     };
 
     # system monitor配置
