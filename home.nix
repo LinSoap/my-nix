@@ -47,12 +47,12 @@
   home.packages = with pkgs; [
     # GUI 软件
     obsidian # 笔记软件
-    unstable.wechat
+    unstable.wechat # 微信客户端
     unstable.vscode # Visual Studio Code 编辑器
     gui-for-singbox # Sing-box 的图形界面
     krita # 数字绘画软件
-    krita-plugin-gmic
-    dconf-editor
+    krita-plugin-gmic # GMIC 插件
+    dconf-editor # dconf 配置编辑器
     wpsoffice-cn # WPS 办公软件
     feishu # 飞书
     fragments # 种子下载器
@@ -60,21 +60,23 @@
     discord # Discord 聊天软件
     vlc # VLC 媒体播放器
     animeko # 动漫播放器
-    gemini-cli # Gemini CLI
+    unstable.gemini-cli # Gemini CLI
     kitty # Kitty 终端
     proton-pass # Proton Pass
     insomnia # Insomnia API 客户端
     appimage-run # AppImage 运行工具
     unstable.codex # AI 代码助手
     unstable.claude-code # AI 代码助手
-    google-chrome
+    koodo-reader # 电子书阅读器
+    kooha # 屏幕录制工具
+    google-chrome # Google Chrome 浏览器
 
     waydroid-helper # Waydroid 助手
     android-tools # Android 工具
 
     afterglow-cursors-recolored # 鼠标指针主题
-    nerd-fonts.fira-code
-    nerd-fonts.droid-sans-mono
+    nerd-fonts.fira-code # Fira Code 字体
+    nerd-fonts.droid-sans-mono # Droid Sans Mono 字体
     noto-fonts-emoji # 🤓️
 
     # 实用工具
@@ -99,14 +101,15 @@
     lazysql # SQL 管理工具
     scrcpy # Android 设备屏幕投射工具
     postgresql # PostgreSQL 数据库
-    tmux
-    lunarvim
+    jq # JSON 处理工具
+    tmux # 终端复用工具
+    lunarvim # LVIM 编辑器
 
     #开发工具
     devbox
     nodejs
 
-    ffmpeg
+    ffmpeg # 多媒体处理工具
     portaudio
     android-studio
     # python312
