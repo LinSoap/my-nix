@@ -9,6 +9,7 @@
 {
   imports = [
     ./gnome/home.nix
+    ./wofi/home.nix
     ./fcitx5/home.nix
     ./cli/kitty/home.nix
     ./cli/fastfetch/home.nix
@@ -70,6 +71,7 @@
     koodo-reader # 电子书阅读器
     kooha # 屏幕录制工具
     google-chrome # Google Chrome 浏览器
+    localsend # LocalSend 局域网文件传输工具
 
     waydroid-helper # Waydroid 助手
     android-tools # Android 工具
@@ -104,6 +106,8 @@
     jq # JSON 处理工具
     tmux # 终端复用工具
     lunarvim # LVIM 编辑器
+    mpv # MPV 媒体播放器
+    libnotify # 消息通知库
 
     #开发工具
     devbox

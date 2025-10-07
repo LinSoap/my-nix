@@ -1,17 +1,6 @@
 { config, pkgs, ... }:
 
 {
-
-  # 设置环境变量
-  home.sessionVariables = {
-    GTK_IM_MODULE = "fcitx5";
-    QT_IM_MODULE = "fcitx5";
-    XMODIFIERS = "@im=fcitx5";
-    INPUT_METHOD = "fcitx5";
-    SDL_IM_MODULE = "fcitx5";
-    GLFW_IM_MODULE = "fcitx5";
-  };
-
   # 批量导入 rime 目录
   home.file.".local/share/fcitx5/rime" = {
     source = ./rime;
@@ -34,6 +23,22 @@
       Deploy=
       # 同步
       Synchronize=
+    '';
+    force = true;
+  };
+
+  # 配置 quickphrase.conf，禁用快捷输入功能
+  home.file.".config/fcitx5/conf/quickphrase.conf" = {
+    text = ''
+      # 选词修饰键
+      Choose Modifier=None
+      # 启用拼写检查
+      Spell=True
+      # 备选拼写检查语言
+      FallbackSpellLanguage=en
+
+      [TriggerKey]
+      # 禁用快捷输入快捷键 (原来是 Super+semicolon)
     '';
     force = true;
   };

@@ -2,6 +2,7 @@
   inputs,
   config,
   pkgs,
+  lib,
   ...
 }:
 {
@@ -217,10 +218,10 @@
   environment.sessionVariables = rec {
     ENABLE_DEPRECATED_SPECIAL_OUTBOUNDS = "true";
     ENABLE_DEPRECATED_TUN_ADDRESS_X = "true";
-    QT_QPA_PLATFORM = "wayland;xcb";
+    QT_QPA_PLATFORM = "wayland;xcb"; # 允许Qt回退到XCB
     QT_SCALE_FACTOR_ROUNDING_POLICY = "RoundPreferFloor";
     QT_AUTO_SCREEN_SCALE_FACTOR = "1";
-    ELECTRON_OZONE_PLATFORM_HINT = "auto";
+    ELECTRON_OZONE_PLATFORM_HINT = "auto"; # 让Electron应用自动选择
   };
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
