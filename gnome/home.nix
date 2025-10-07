@@ -25,6 +25,7 @@
     gnomeExtensions.pano
     gnomeExtensions.blur-my-shell
     gnomeExtensions.paperwm
+    gnomeExtensions.search-light
   ];
 
   dconf.settings = {
@@ -45,6 +46,7 @@
         gnomeExtensions.pano.extensionUuid
         gnomeExtensions.blur-my-shell.extensionUuid
         gnomeExtensions.paperwm.extensionUuid
+        gnomeExtensions.search-light.extensionUuid
       ];
     };
     # 自定义主题
@@ -556,6 +558,24 @@
       switch-sixth = [ "<Super>6" ];
       switch-third = [ "<Super>3" ];
       switch-up = [ ];
+    };
+
+    "org/gnome/shell/extensions/search-light" = {
+      animation-speed = 100.0;
+      blur-background = false;
+      blur-brightness = 0.6;
+      blur-sigma = 30.0;
+      border-radius = 1.813636;
+      border-thickness = 0;
+      entry-font-size = 0;
+      font-size = 0;
+      monitor-count = 2;
+      popup-at-cursor-monitor = true;
+      preferred-monitor = 0;
+      scale-height = 0.1;
+      scale-width = 0.1;
+      shortcut-search = [ "<Super>d" ];
+      show-panel-icon = false;
     };
   };
 }
