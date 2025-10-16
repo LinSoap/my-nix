@@ -122,6 +122,7 @@
     asdf-vm
     pnpm
     wrangler
+    cargo
     nodePackages_latest.vercel
 
   ];
