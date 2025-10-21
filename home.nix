@@ -72,6 +72,7 @@
     kooha # 屏幕录制工具
     google-chrome # Google Chrome 浏览器
     localsend # LocalSend 局域网文件传输工具
+    element-desktop # Element 聊天软件
 
     waydroid-helper # Waydroid 助手
     android-tools # Android 工具
@@ -124,7 +125,8 @@
     wrangler
     cargo
     nodePackages_latest.vercel
-
+    unstable.prisma
+    unstable.prisma-engines
   ];
 
   # git 相关配置
@@ -190,6 +192,14 @@
     initContent = ''
       export PATH="$PATH:$HOME/bin:$HOME/.local/bin:$HOME/go/bin"
       export SSL_CERT_FILE=${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt
+
+      # Prisma 环境变量
+      export PRISMA_FMT_BINARY="${unstable.prisma-engines}/bin/prisma-fmt"
+      export PRISMA_QUERY_ENGINE_BINARY="${unstable.prisma-engines}/bin/query-engine"
+      export PRISMA_QUERY_ENGINE_LIBRARY="${unstable.prisma-engines}/lib/libquery_engine.node"
+      export PRISMA_SCHEMA_ENGINE_BINARY="${unstable.prisma-engines}/bin/schema-engine"
+      export PRISMA_INTROSPECTION_ENGINE_BINARY="${unstable.prisma-engines}/bin/introspection-engine"
+
       eval "$(${pkgs.z-lua}/bin/z --init zsh)"
       # --- 常用的命令行快捷键配置 (Emacs 风格) ---
       # 光标移动

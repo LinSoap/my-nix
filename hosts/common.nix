@@ -103,9 +103,9 @@
   # 桌面环境配置
   services.xserver.enable = true;
   services.xserver.displayManager.gdm.enable = true;
+  services.xserver.displayManager.gdm.wayland = true;
   services.xserver.desktopManager.gnome.enable = true;
   environment.gnome.excludePackages = with pkgs.gnome; [ ];
-
   # 键盘配置
   services.xserver.xkb = {
     layout = "cn";
@@ -222,8 +222,8 @@
     QT_SCALE_FACTOR_ROUNDING_POLICY = "RoundPreferFloor";
     QT_AUTO_SCREEN_SCALE_FACTOR = "1";
     ELECTRON_OZONE_PLATFORM_HINT = "auto"; # 让Electron应用自动选择
+    NIXOS_OZONE_WL = "1";
   };
-  environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
   # 防火墙
   networking.firewall.enable = false;
