@@ -106,6 +106,8 @@
   services.xserver.displayManager.gdm.wayland = true;
   services.xserver.desktopManager.gnome.enable = true;
   environment.gnome.excludePackages = with pkgs.gnome; [ ];
+  programs.niri.enable = true;
+
   # 键盘配置
   services.xserver.xkb = {
     layout = "cn";

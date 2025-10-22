@@ -13,6 +13,7 @@
     ./fcitx5/home.nix
     ./cli/kitty/home.nix
     ./cli/fastfetch/home.nix
+    ./niri/home.nix
     inputs.zen-browser.homeModules.beta
   ];
 

@@ -1,0 +1,604 @@
+// 此配置使用 KDL 格式： https://kdl.dev
+// 在节点前加 "/-" 可以将该节点注释掉（使其失效）。
+// 详情请查看维基中的完整配置说明：
+// https://yalter.github.io/niri/Configuration:-Introduction
+
+// 输入设备配置。
+// 可用选项完整列表请见维基：
+// https://yalter.github.io/niri/Configuration:-Input
+input {
+    keyboard {
+        xkb {
+            // 你可以设置 rules、model、layout、variant 和 options。
+            // 更多信息请参见 xkeyboard-config(7)。
+
+            // 例如：
+            // layout "us,ru"
+            // options "grp:win_space_toggle,compose:ralt,ctrl:nocaps"
+
+            // 如果此配置段为空，niri 将从 org.freedesktop.locale1 获取 xkb 设置。
+            // 你可以使用 localectl set-x11-keymap 来控制这些设置。
+        }
+
+    // 启用启动时的 NumLock；如果省略此设置则禁用该功能。
+        numlock
+    }
+
+    // 接下来的部分包含 libinput 的设置。
+    // 省略某项设置会禁用该项或使用其默认值。
+    // 这里被注释掉的设置都是示例，而非默认值。
+    touchpad {
+    // off
+    tap
+    // dwt
+    // dwtp
+    // drag false
+    // drag-lock
+    natural-scroll
+    // accel-speed 0.2
+    // accel-profile "flat"
+    // scroll-method "two-finger"
+    // disabled-on-external-mouse
+    }
+
+    mouse {
+        // off
+        // natural-scroll
+        // accel-speed 0.2
+        // accel-profile "flat"
+        // scroll-method "no-scroll"
+    }
+
+    trackpoint {
+        // off
+        // natural-scroll
+        // accel-speed 0.2
+        // accel-profile "flat"
+        // scroll-method "on-button-down"
+        // scroll-button 273
+        // scroll-button-lock
+        // middle-emulation
+    }
+
+    // 取消注释此行可使鼠标在新获得焦点的窗口中心处跳转。
+    // warp-mouse-to-focus
+
+    // 将鼠标移动到窗口或输出上时，自动聚焦它们。
+    // 将 max-scroll-amount="0%" 可使其仅对已完全显示在屏幕上的窗口生效。
+    // focus-follows-mouse max-scroll-amount="0%"
+}
+
+// You can configure outputs by their name, which you can find
+// 你可以按输出名称配置显示设备（在 niri 运行时使用 `niri msg outputs` 可查看名称）。
+// 内置笔记本显示器通常名为 "eDP-1"。
+// 更多信息请见维基：
+// https://yalter.github.io/niri/Configuration:-Outputs
+// 记得通过移除节点前的 "/-" 来取消注释该节点！
+/-output "eDP-1" {
+    // 取消注释此行可禁用该输出。
+    // off
+
+    // 输出的分辨率以及（可选的）刷新率。
+    // 格式为 "<width>x<height>" 或 "<width>x<height>@<refresh rate>"。
+    // 若省略刷新率，niri 将为该分辨率选择最高刷新率。
+    // 若完全省略 mode 或其无效，niri 会自动选择合适的模式。
+    // 在 niri 实例中运行 `niri msg outputs` 可列出所有输出及其模式。
+    mode "1920x1080@120.030"
+
+    // 缩放可以为整数或小数，例如 1.5 表示 150% 缩放。
+    scale 2
+
+    // Transform 用于将输出逆时针旋转，有效值包括：
+    // normal, 90, 180, 270, flipped, flipped-90, flipped-180 和 flipped-270。
+    transform "normal"
+
+    // 输出在全局坐标空间中的位置。
+    // 这会影响诸如 "focus-monitor-left" 的方向性显示器操作，以及光标移动。
+    // 光标只能在直接相邻的输出之间移动。
+    // 在定位时需要考虑输出的缩放和旋转：输出尺寸以逻辑（缩放后）像素为单位。
+    // 例如，3840×2160 且 scale=2.0 的输出其逻辑尺寸为 1920×1080，
+    // 若要将另一个输出紧挨其右侧，需将 x 设置为 1920。
+    // 若未设置位置或导致重叠，输出会被自动放置。
+    position x=1280 y=0
+}
+
+// 影响窗口定位与大小的设置。
+// 更多信息请见维基：
+// https://yalter.github.io/niri/Configuration:-Layout
+layout {
+    // 以逻辑像素设置窗口周围的间隙（gaps）。
+    gaps 16
+
+    // 在切换焦点时何时对列进行居中，选项包括：
+    // - "never"（默认），对不在屏幕内的列聚焦时会保持其在屏幕的左或右边缘。
+    // - "always"，被聚焦的列将始终居中显示。
+    // - "on-overflow"，当与之前的列一起显示时若无法放下则对被聚焦列进行居中。
+    center-focused-column "never"
+
+    // 可自定义 "switch-preset-column-width"（Mod+R）在切换时使用的宽度集合。
+    preset-column-widths {
+    // proportion 将宽度设置为输出宽度的分数，间隙（gaps）也会计入计算。
+    // 例如：四个大小为 "proportion 0.25" 的窗口可以恰好排列在一个输出上。
+    // 默认的预设宽度为输出宽度的 1/3、1/2 和 2/3。
+        proportion 0.33333
+        proportion 0.5
+        proportion 0.66667
+
+    // fixed 则以逻辑像素精确设置宽度。
+    // fixed 1920
+    }
+
+    // 也可以自定义 "switch-preset-window-height"（Mod+Shift+R）切换的高度集合。
+    // preset-window-heights { }
+
+    // 可更改新窗口的默认宽度。
+    default-column-width { proportion 0.5; }
+    // 如果保留大括号为空，窗口将自行决定它们的初始宽度。
+    // default-column-width {}
+
+    // 默认情况下，焦点环和边框呈现在窗口后面的实心背景矩形中，因此它们会穿透半透明窗口可见。
+    // 这是因为使用客户端装饰（CSD）的窗口可能具有任意形状。
+    //
+    // 如果你不喜欢这种行为，可取消注释下方的 `prefer-no-csd`。
+    // 这样 niri 会在同意省略客户端装饰的窗口外部绘制焦点环和边框。
+    //
+    // 或者，你可以用名为 `draw-border-with-background` 的窗口规则来覆盖此行为。
+
+    // You can change how the focus ring looks.
+    focus-ring {
+    // 取消注释此行可禁用焦点环。
+    // off
+
+    // 焦点环从窗口向外延伸的逻辑像素数。
+        width 4
+
+    // 颜色可以用多种方式设置：
+    // - CSS 命名颜色："red"
+    // - RGB 十六进制："#rgb", "#rgba", "#rrggbb", "#rrggbbaa"
+    // - 类似 CSS 的表示法："rgb(255, 127, 0)", rgba(), hsl() 等。
+
+            // 活动显示器上环的颜色。
+        active-color "#7fc8ff"
+
+        // 非活动显示器上环的颜色。
+        //
+        // 焦点环只在活动窗口周围绘制，所以你只能在其他显示器上
+        // 看到它的非活动颜色。
+        inactive-color "#505050"
+
+    // 也可以使用渐变色。渐变会优先于纯色。
+    // 渐变的渲染方式与 CSS 的 linear-gradient(angle, from, to) 相同。
+    // 角度与 linear-gradient 中相同且为可选项，默认值为 180（从上到下）。
+    // 你可以使用任意在线的 CSS linear-gradient 工具来生成渐变色配置。
+    // 也支持更改色彩空间，更多信息请查阅维基。
+        //
+        // active-gradient from="#80c8ff" to="#c7ff7f" angle=45
+
+    // 你也可以让渐变相对于整个工作区视图着色，而不是仅相对于窗口本身。
+    // 为此，请设置 relative-to="workspace-view"。
+    //
+    // inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
+    }
+
+    // 你也可以添加边框。它类似于焦点环，但始终可见。
+    border {
+    // 这些设置与焦点环相同。
+    // 如果启用边框，通常会选择禁用焦点环。
+        off
+
+        width 4
+        active-color "#ffc87f"
+        inactive-color "#505050"
+
+    // 请求关注的窗口周围边框的颜色（urgent color）。
+        urgent-color "#9b0000"
+
+        // 渐变可以使用几种不同的插值色彩空间。
+        // 例如，这是一个通过 in="oklch longer hue" 实现的柔和彩虹渐变。
+        //
+        // active-gradient from="#e5989b" to="#ffb4a2" angle=45 relative-to="workspace-view" in="oklch longer hue"
+
+        // inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
+    }
+
+    // 你可以为窗口启用投影（阴影）。
+    shadow {
+    // 取消注释下一行以启用阴影。
+    // on
+
+    // 默认情况下，阴影只绘制在窗口周围，而不会绘制在窗口后面。
+    // 取消注释此设置可使阴影绘制在窗口后面。
+        //
+    // 注意：niri 无法获知 CSD（客户端装饰）窗口的圆角半径。
+    // 它必须假定窗口为方角，这会在 CSD 圆角内产生阴影伪影。此设置可修正这些伪影。
+        //
+    // 另外，你也可以设置 prefer-no-csd 和/或 geometry-corner-radius。
+    // 这样 niri 将知道角半径并能正确绘制阴影，而无需将阴影绘制在窗口后方。
+    // 如果窗口本身绘制了阴影，这些设置也会移除客户端的阴影。
+        //
+    // draw-behind-window true
+
+    // 你可以改变阴影的外观。下列值以逻辑像素为单位，并类似于 CSS 的 box-shadow 属性。
+
+    // softness 控制阴影的模糊半径。
+        softness 30
+
+    // spread 控制阴影的扩张程度。
+        spread 5
+
+    // offset 将阴影相对于窗口进行偏移。
+        offset x=0 y=5
+
+    // 你也可以更改阴影的颜色和不透明度。
+        color "#0007"
+    }
+
+    // Struts 会缩小窗口占据的区域，类似于 layer-shell 面板。
+    // 你可以把它们认为是一种外部间隙（outer gaps），以逻辑像素为单位设置。
+    // 左右 strut 会使旁边的下一个窗口始终可见。
+    // 顶部和底部 strut 则会在 layer-shell 面板和常规间隙之外再增加外部间隙。
+    struts {
+        // left 64
+        // right 64
+        // top 64
+        // bottom 64
+    }
+}
+
+// 在启动时添加类似下面的行以启动进程。
+// 注意：以会话方式运行 niri 支持 xdg-desktop-autostart，使用该方式可能更为方便。
+// 更多启动示例请参阅下方的 binds 节。
+
+// 下面这一行会启动 waybar，一个常用的 Wayland 状态栏程序。
+spawn-at-startup "waybar"
+
+
+// 若需运行 shell 命令（包含变量、管道等），请使用 spawn-sh-at-startup：
+// spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
+
+hotkey-overlay {
+    // 取消注释此行可在启动时禁用“重要热键”弹窗。
+    // skip-at-startup
+}
+
+// 取消注释此行可请求客户端尽可能省略其客户端装饰（CSD）。
+// 如果客户端明确要求使用 CSD，该请求将被尊重。
+// 此外，客户端会被告知它们处于平铺状态，从而移除部分客户端侧的圆角。
+// 该选项还会修复在部分半透明窗口背后绘制边框/焦点环的问题。
+// 启用或禁用后需重启相关应用以使更改生效。
+// prefer-no-csd
+
+// 你可以更改截图保存路径。
+// 路径开头的 ~ 会被展开为家目录。
+// 路径格式遵循 strftime(3)，用于生成截图的日期和时间。
+screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
+
+// 你也可以将其设置为 null 以禁用将截图保存到磁盘。
+// screenshot-path null
+
+// 动画设置。
+// 维基解释了如何配置各个动画：
+// https://yalter.github.io/niri/Configuration:-Animations
+animations {
+    // 取消注释以关闭所有动画。
+    // off
+
+    // 通过该因子降低所有动画速度；小于 1 的值会加速动画。
+    // slowdown 3.0
+}
+
+// 窗口规则允许你调整单个窗口的行为。
+// 更多信息请见维基：
+// https://yalter.github.io/niri/Configuration:-Window-Rules
+
+// 通过设置空的 default-column-width 来规避 WezTerm 的初始配置 bug。
+window-rule {
+    // 这个正则表达式故意尽可能具体，因为这是默认配置，我们不希望出现误报。
+    // 如果愿意，你也可以只使用 app-id="wezterm"。
+    match app-id=r#"^org\.wezfurlong\.wezterm$"#
+    default-column-width {}
+}
+
+// 默认将 Firefox 的画中画播放器设为浮动窗口。
+window-rule {
+    // 下列 app-id 正则表达式同时适用于：
+    // - 本地安装的 Firefox（app-id 为 "firefox"）
+    // - Flatpak 版本的 Firefox（app-id 为 "org.mozilla.firefox"）
+    match app-id=r#"firefox$"# title="^Picture-in-Picture$"
+    open-floating true
+}
+
+// 强制微信以浮动窗口显示
+window-rule {
+    match app-id=r#"wechat$"#
+    open-floating true
+}
+
+// 微信的各种可能窗口名
+window-rule {
+    match title="微信"
+    open-floating true
+}
+
+window-rule {
+    match title="WeChat"
+    open-floating true
+}
+
+// 示例：将两个密码管理器排除在屏幕捕获之外。
+// （该示例规则在前面用 "/-" 注释掉。）
+/-window-rule {
+    match app-id=r#"^org\.keepassxc\.KeePassXC$"#
+    match app-id=r#"^org\.gnome\.World\.Secrets$"#
+
+    block-out-from "screen-capture"
+
+    // 如果希望在第三方截图工具中仍然可见，可使用此项替代。
+    // block-out-from "screencast"
+}
+
+// 示例：为所有窗口启用圆角。
+// （该示例规则在前面用 "/-" 注释掉。）
+/-window-rule {
+    geometry-corner-radius 12
+    clip-to-geometry true
+}
+
+binds {
+    // 按键由若干修饰键（modifiers）用 + 分隔，最后跟随一个 XKB 键名构成。
+    // 要查找某个键对应的 XKB 名称，可以使用类似 wev 的工具。
+    //
+    // "Mod" 是一个特殊修饰键：在 TTY 环境下等同于 Super，作为 winit 窗口时等同于 Alt。
+    //
+    // 这里绑定的大多数动作也可以通过命令行编程方式调用，例如：
+    // `niri msg action do-something`。
+
+    // Mod-Shift-/（通常与 Mod-? 相同）显示重要热键列表。
+    Mod+Shift+Slash { show-hotkey-overlay; }
+
+    // 建议用于运行程序的绑定：终端、应用程序启动器、屏幕锁定器。
+    Super+T hotkey-overlay-title="Open a Terminal: kitty" { spawn "kitty"; }
+    Super+D hotkey-overlay-title="Run an Application: wofi" { spawn-sh "wofi -S drun"; }
+    Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
+
+    // 使用 spawn-sh 运行 shell 命令。如果需要管道、多个命令等，请使用此方法。
+    // 注意：整个命令作为单个参数传递，直接传递给 `sh -c`。
+    // 例如，这是一个切换屏幕阅读器 (orca) 的标准绑定。
+    Super+Alt+S allow-when-locked=true hotkey-overlay-title=null { spawn-sh "pkill orca || exec orca"; }
+
+    // PipeWire & WirePlumber 的音量键映射示例。
+    // allow-when-locked=true 属性使它们在会话锁定时也能工作。
+    // 使用 spawn-sh 允许将多个参数与命令一起传递。
+    XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+"; }
+    XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-"; }
+    XF86AudioMute        allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
+    XF86AudioMicMute     allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
+
+    // brightnessctl 的亮度键映射示例。
+    // 你也可以使用常规 spawn 并传递多个参数（以避免通过 "sh"），
+    // 但需要手动将每个参数放在单独的 "" 引号中。
+    XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "+10%"; }
+    XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "10%-"; }
+
+    // 打开/关闭 Overview：工作区和窗口的缩小视图。
+    // 你也可以将鼠标移动到左上角热角，或在触摸板上进行四指向上滑动。
+    Mod+O repeat=false { toggle-overview; }
+
+    Mod+Q repeat=false { close-window; }
+
+    Mod+Left  { focus-column-left; }    // 聚焦到左侧列
+    Mod+Down  { focus-window-down; }   // 聚焦到下方窗口
+    Mod+Up    { focus-window-up; }     // 聚焦到上方窗口
+    Mod+Right { focus-column-right; }  // 聚焦到右侧列
+    Mod+H     { focus-column-left; }   // 聚焦到左侧列（Vim 风格）
+    Mod+J     { focus-window-down; }   // 聚焦到下方窗口（Vim 风格）
+    Mod+K     { focus-window-up; }     // 聚焦到上方窗口（Vim 风格）
+    Mod+L     { focus-column-right; }  // 聚焦到右侧列（Vim 风格）
+
+    Mod+Ctrl+Left  { move-column-left; }    // 移动列到左侧
+    Mod+Ctrl+Down  { move-window-down; }   // 移动窗口到下方
+    Mod+Ctrl+Up    { move-window-up; }     // 移动窗口到上方
+    Mod+Ctrl+Right { move-column-right; }  // 移动列到右侧
+    Mod+Ctrl+H     { move-column-left; }   // 移动列到左侧（Vim 风格）
+    Mod+Ctrl+J     { move-window-down; }   // 移动窗口到下方（Vim 风格）
+    Mod+Ctrl+K     { move-window-up; }     // 移动窗口到上方（Vim 风格）
+    Mod+Ctrl+L     { move-column-right; }  // 移动列到右侧（Vim 风格）
+
+    // 当到达列中的第一个或最后一个窗口时，跨工作区移动的替代命令。
+    // Mod+J     { focus-window-or-workspace-down; }
+    // Mod+K     { focus-window-or-workspace-up; }
+    // Mod+Ctrl+J     { move-window-down-or-to-workspace-down; }
+    // Mod+Ctrl+K     { move-window-up-or-to-workspace-up; }
+
+    Mod+Home { focus-column-first; }     // 聚焦到第一列
+    Mod+End  { focus-column-last; }     // 聚焦到最后一列
+    Mod+Ctrl+Home { move-column-to-first; }  // 移动列到最前面
+    Mod+Ctrl+End  { move-column-to-last; }   // 移动列到最后面
+
+    Mod+Shift+Left  { focus-monitor-left; }   // 聚焦到左侧显示器
+    Mod+Shift+Down  { focus-monitor-down; }  // 聚焦到下方显示器
+    Mod+Shift+Up    { focus-monitor-up; }    // 聚焦到上方显示器
+    Mod+Shift+Right { focus-monitor-right; } // 聚焦到右侧显示器
+    Mod+Shift+H     { focus-monitor-left; }   // 聚焦到左侧显示器（Vim 风格）
+    Mod+Shift+J     { focus-monitor-down; }  // 聚焦到下方显示器（Vim 风格）
+    Mod+Shift+K     { focus-monitor-up; }    // 聚焦到上方显示器（Vim 风格）
+    Mod+Shift+L     { focus-monitor-right; } // 聚焦到右侧显示器（Vim 风格）
+
+    Mod+Shift+Ctrl+Left  { move-column-to-monitor-left; }   // 移动列到左侧显示器
+    Mod+Shift+Ctrl+Down  { move-column-to-monitor-down; }  // 移动列到下方显示器
+    Mod+Shift+Ctrl+Up    { move-column-to-monitor-up; }    // 移动列到上方显示器
+    Mod+Shift+Ctrl+Right { move-column-to-monitor-right; } // 移动列到右侧显示器
+    Mod+Shift+Ctrl+H     { move-column-to-monitor-left; }   // 移动列到左侧显示器（Vim 风格）
+    Mod+Shift+Ctrl+J     { move-column-to-monitor-down; }  // 移动列到下方显示器（Vim 风格）
+    Mod+Shift+Ctrl+K     { move-column-to-monitor-up; }    // 移动列到上方显示器（Vim 风格）
+    Mod+Shift+Ctrl+L     { move-column-to-monitor-right; } // 移动列到右侧显示器（Vim 风格）
+
+    // 或者，有命令仅移动单个窗口：
+    // Mod+Shift+Ctrl+Left  { move-window-to-monitor-left; }
+    // ...
+
+    // 你也可以将整个工作区移动到另一个显示器：
+    // Mod+Shift+Ctrl+Left  { move-workspace-to-monitor-left; }
+    // ...
+
+    Mod+Page_Down      { focus-workspace-down; }    // 聚焦到下方工作区
+    Mod+Page_Up        { focus-workspace-up; }      // 聚焦到上方工作区
+    Mod+U              { focus-workspace-down; }    // 聚焦到下方工作区（Vim 风格）
+    Mod+I              { focus-workspace-up; }      // 聚焦到上方工作区（Vim 风格）
+    Mod+Ctrl+Page_Down { move-column-to-workspace-down; }  // 移动列到下方工作区
+    Mod+Ctrl+Page_Up   { move-column-to-workspace-up; }    // 移动列到上方工作区
+    Mod+Ctrl+U         { move-column-to-workspace-down; }  // 移动列到下方工作区（Vim 风格）
+    Mod+Ctrl+I         { move-column-to-workspace-up; }    // 移动列到上方工作区（Vim 风格）
+
+    // 或者，有命令仅移动单个窗口：
+    // Mod+Ctrl+Page_Down { move-window-to-workspace-down; }
+    // ...
+
+    Mod+Shift+Page_Down { move-workspace-down; }  // 移动工作区到下方
+    Mod+Shift+Page_Up   { move-workspace-up; }    // 移动工作区到上方
+    Mod+Shift+U         { move-workspace-down; }  // 移动工作区到下方（Vim 风格）
+    Mod+Shift+I         { move-workspace-up; }    // 移动工作区到上方（Vim 风格）
+
+    // 你可以使用以下语法绑定鼠标滚轮滚动刻度。
+    // 这些绑定会根据 natural-scroll 设置改变方向。
+    //
+    // 为避免快速滚动工作区，你可以使用 cooldown-ms 属性。
+    // 该绑定将被限制为此值。你可以在任何绑定上设置冷却，但对滚轮最有用。
+    Mod+WheelScrollDown      cooldown-ms=150 { focus-workspace-down; }  // 滚轮向下切换工作区
+    Mod+WheelScrollUp        cooldown-ms=150 { focus-workspace-up; }    // 滚轮向上切换工作区
+    Mod+Ctrl+WheelScrollDown cooldown-ms=150 { move-column-to-workspace-down; }  // 滚轮向下移动列
+    Mod+Ctrl+WheelScrollUp   cooldown-ms=150 { move-column-to-workspace-up; }    // 滚轮向上移动列
+
+    Mod+WheelScrollRight      { focus-column-right; }  // 滚轮向右聚焦列
+    Mod+WheelScrollLeft       { focus-column-left; }   // 滚轮向左聚焦列
+    Mod+Ctrl+WheelScrollRight { move-column-right; }   // 滚轮向右移动列
+    Mod+Ctrl+WheelScrollLeft  { move-column-left; }    // 滚轮向左移动列
+
+    // 通常在应用程序中按住 Shift 向上或向下滚动会导致水平滚动；这些绑定复制了该行为。
+    Mod+Shift+WheelScrollDown      { focus-column-right; }  // Shift+滚轮向下聚焦右侧列
+    Mod+Shift+WheelScrollUp        { focus-column-left; }   // Shift+滚轮向上聚焦左侧列
+    Mod+Ctrl+Shift+WheelScrollDown { move-column-right; }   // Shift+滚轮向下移动列到右侧
+    Mod+Ctrl+Shift+WheelScrollUp   { move-column-left; }    // Shift+滚轮向上移动列到左侧
+
+    // 类似地，你可以绑定触摸板滚动"刻度"。
+    // 触摸板滚动是连续的，所以这些绑定被分割成
+    // 离散的间隔。
+    // 这些绑定也受触摸板的 natural-scroll 设置影响，所以这些
+    // 示例绑定是"反向"的，因为我们默认为触摸板启用了自然滚动。
+    // Mod+TouchpadScrollDown { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.02+"; }
+    // Mod+TouchpadScrollUp   { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.02-"; }
+
+    // 你可以通过索引引用工作区。但是，请记住
+    // niri 是一个动态工作区系统，所以这些命令有点像
+    // "尽力而为"。尝试引用大于当前工作区数量的工作区索引
+    // 将转而引用最底部（空）的工作区。
+    //
+    // 例如，有 2 个工作区 + 1 个空工作区时，索引 3、4、5 等等
+    // 都将引用第 3 个工作区。
+    Mod+1 { focus-workspace 1; }  // 聚焦到工作区 1
+    Mod+2 { focus-workspace 2; }  // 聚焦到工作区 2
+    Mod+3 { focus-workspace 3; }  // 聚焦到工作区 3
+    Mod+4 { focus-workspace 4; }  // 聚焦到工作区 4
+    Mod+5 { focus-workspace 5; }  // 聚焦到工作区 5
+    Mod+6 { focus-workspace 6; }  // 聚焦到工作区 6
+    Mod+7 { focus-workspace 7; }  // 聚焦到工作区 7
+    Mod+8 { focus-workspace 8; }  // 聚焦到工作区 8
+    Mod+9 { focus-workspace 9; }  // 聚焦到工作区 9
+    Mod+Ctrl+1 { move-column-to-workspace 1; }  // 移动列到工作区 1
+    Mod+Ctrl+2 { move-column-to-workspace 2; }  // 移动列到工作区 2
+    Mod+Ctrl+3 { move-column-to-workspace 3; }  // 移动列到工作区 3
+    Mod+Ctrl+4 { move-column-to-workspace 4; }  // 移动列到工作区 4
+    Mod+Ctrl+5 { move-column-to-workspace 5; }  // 移动列到工作区 5
+    Mod+Ctrl+6 { move-column-to-workspace 6; }  // 移动列到工作区 6
+    Mod+Ctrl+7 { move-column-to-workspace 7; }  // 移动列到工作区 7
+    Mod+Ctrl+8 { move-column-to-workspace 8; }  // 移动列到工作区 8
+    Mod+Ctrl+9 { move-column-to-workspace 9; }  // 移动列到工作区 9
+
+    // 或者，有命令仅移动单个窗口：
+    // Mod+Ctrl+1 { move-window-to-workspace 1; }
+
+    // 在当前工作区和之前的工作区之间切换焦点。
+    // Mod+Tab { focus-workspace-previous; }
+
+    // 以下绑定用于将聚焦窗口移入和移出列。
+    // 如果窗口是单独的，它们会将其合并到侧边的附近列中。
+    // 如果窗口已经在列中，它们会将其排出。
+    Mod+BracketLeft  { consume-or-expel-window-left; }  // 从左侧合并/排出窗口
+    Mod+BracketRight { consume-or-expel-window-right; } // 从右侧合并/排出窗口
+
+    // 从右侧合并一个窗口到聚焦列的底部。
+    Mod+Comma  { consume-window-into-column; } // 合并窗口到列
+    // 将聚焦列的底部窗口排出到右侧。
+    Mod+Period { expel-window-from-column; }   // 从列排出窗口
+
+    Mod+R { switch-preset-column-width; }      // 切换预设列宽
+    // 也可以反向循环遍历预设。
+    // Mod+R { switch-preset-column-width-back; }
+    Mod+Shift+R { switch-preset-window-height; } // 切换预设窗口高度
+    Mod+Ctrl+R { reset-window-height; }      // 重置窗口高度
+    Mod+F { maximize-column; }               // 最大化列
+    Mod+Shift+F { fullscreen-window; }       // 全屏窗口
+
+    // 将聚焦列扩展到未被其他完全可见列占用的空间。
+    // 使列"填充剩余空间"。
+    Mod+Ctrl+F { expand-column-to-available-width; } // 扩展列填充可用宽度
+
+    Mod+C { center-column; }                        // 居中列
+
+    // 在屏幕上居中所有完全可见的列。
+    Mod+Ctrl+C { center-visible-columns; }          // 居中所有可见列
+
+    // 精细的宽度调整。
+    // 此命令还可以：
+    // * 以像素设置宽度："1000"
+    // * 以像素调整宽度："-5" 或 "+5"
+    // * 设置宽度为屏幕宽度的百分比："25%"
+    // * 以屏幕宽度的百分比调整宽度："-10%" 或 "+10%"
+    // 像素大小使用逻辑像素或缩放像素。即在缩放 2.0 的输出上，
+    // set-column-width "100" 将使列占据 200 个物理屏幕像素。
+    Mod+Minus { set-column-width "-10%"; }    // 减少列宽 10%
+    Mod+Equal { set-column-width "+10%"; }    // 增加列宽 10%
+
+    // 在与其他窗口的列中进行精细的高度调整。
+    Mod+Shift+Minus { set-window-height "-10%"; } // 减少窗口高度 10%
+    Mod+Shift+Equal { set-window-height "+10%"; } // 增加窗口高度 10%
+
+    // 在浮动布局和平铺布局之间移动聚焦窗口。
+    Mod+V       { toggle-window-floating; }       // 切换窗口浮动状态
+    Mod+Shift+V { switch-focus-between-floating-and-tiling; } // 在浮动和平铺窗口间切换焦点
+
+    // 切换选项卡式列显示模式。
+    // 此列中的窗口将显示为垂直选项卡，
+    // 而不是堆叠在一起。
+    Mod+W { toggle-column-tabbed-display; }       // 切换列选项卡显示模式
+
+    // 切换布局的动作。
+    // 注意：如果取消注释这些，请确保上面的 xkb 选项中
+    // 没有配置匹配的布局切换热键。
+    // 在同一热键上同时配置两者会破坏切换，
+    // 因为按下热键时会切换两次（一次由 xkb，一次由 niri）。
+    // Mod+Space       { switch-layout "next"; }
+    // Mod+Shift+Space { switch-layout "prev"; }
+
+    Print { screenshot; }           // 截图整个屏幕
+    Ctrl+Print { screenshot-screen; } // 截图当前屏幕
+    Alt+Print { screenshot-window; }  // 截图当前窗口
+
+    // 诸如远程桌面客户端和软件 KVM 切换器等应用程序
+    // 可能会请求 niri 停止处理此处定义的键盘快捷键，
+    // 以便它们可以例如将按键原样转发到远程机器。
+    // 最好绑定一个逃生舱来切换抑制器，
+    // 这样有问题的应用程序就无法劫持你的会话。
+    //
+    // allow-inhibiting=false 属性也可以应用于其他绑定，
+    // 这确保 niri 总是处理它们，即使在抑制器处于活动状态时也是如此。
+    Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
+
+    // 退出操作将显示确认对话框以避免意外退出。
+    Mod+Shift+E { quit; }
+    Ctrl+Alt+Delete { quit; }
+
+    // 关闭显示器电源。要重新打开它们，
+    // 执行任何输入操作，如移动鼠标或按任何其他键。
+    Mod+Shift+P { power-off-monitors; }
+}
