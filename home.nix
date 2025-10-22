@@ -109,6 +109,7 @@
     lunarvim # LVIM 编辑器
     mpv # MPV 媒体播放器
     libnotify # 消息通知库
+    pandoc # 文档转换工具
 
     #开发工具
     devbox
