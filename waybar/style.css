@@ -1,0 +1,109 @@
+/* Base2Tone Suburb Dark 主题 - 为 waybar 适配 */
+
+* {
+  font-family: "Noto Sans", sans-serif;
+  font-size: 12px;
+}
+
+/* 主窗口样式 */
+window#waybar {
+  background-color: #27273a;
+  color: #f6f0ff;
+  border-top: 1px solid #3b4a6b;
+}
+
+/* 通用模块样式 */
+#clock,
+#cpu,
+#memory,
+#backlight,
+#battery,
+#language,
+#pulseaudio,
+#network,
+#custom-power {
+  padding: 0 12px;
+  margin: 0 4px;
+  color: #f6f0ff;
+  background-color: #353551;
+  border-radius: 6px;
+}
+
+/* 时钟模块 */
+#clock {
+  font-size: 14px;
+  font-weight: bold;
+  color: #97ee91;
+}
+
+/* CPU 使用率 */
+#cpu {
+  color: #f8c275;
+}
+
+/* 内存使用率 */
+#memory {
+  color: #74d6e9;
+}
+
+/* 背光亮度 */
+#backlight {
+  color: #f8c275;
+}
+
+/* 电池 */
+#battery {
+  color: #97f36d;
+}
+
+#battery.warning {
+  color: #f8c275;
+}
+
+#battery.critical {
+  color: #e34f8c;
+}
+
+/* 网络状态 */
+#network {
+  color: #24e8d8;
+}
+
+#network.disconnected {
+  color: #e34f8c;
+}
+
+/* 输入法 */
+#language {
+  color: #c7adfb;
+}
+
+/* 音量控制 */
+#pulseaudio {
+  color: #affa90;
+}
+
+#pulseaudio.muted {
+  color: #919cb9;
+}
+
+/* 电源菜单 */
+#custom-power {
+  color: #e752a1;
+  background-color: #3b4a6b;
+  border: 1px solid #7586f5;
+}
+
+/* 悬停效果 */
+#clock:hover,
+#cpu:hover,
+#memory:hover,
+#backlight:hover,
+#battery:hover,
+#language:hover,
+#pulseaudio:hover,
+#network:hover {
+  background-color: #3b4a6b;
+  color: #fbf9fa;
+  border-bottom: 2px solid #7586f5;
+}

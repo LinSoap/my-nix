@@ -1,0 +1,120 @@
+// -*- mode: jsonc -*-
+{
+    "layer": "top", // Waybar 在顶层显示
+    "position": "top", // Waybar 位置 (top|bottom|left|right)
+    "height": 12, // Waybar 高度（设置为自动高度时移除此项）
+    // "width": 1280, // Waybar 宽度
+    "spacing": 12, // 模块之间的间距 
+    // 选择模块的排列顺序
+    "modules-left": [
+        "clock" // 时钟
+        // "custom/media" // 自定义媒体播放器模块
+    ],
+    "modules-center": [],
+    "modules-right": [
+        "pulseaudio", // PulseAudio 音量控制
+        "cpu", // CPU 使用率
+        "memory", // 内存使用率
+        "backlight", // 屏幕亮度
+        "language", // 输入法
+        "network", // 网络状态
+        "battery", // 电池状态
+        "custom/power" // 自定义电源菜单
+    ],
+    "clock": { // 时钟模块
+        // "timezone": "America/New_York", // 时区设置
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>", // 提示格式
+        "format-alt": "{:%Y-%m-%d}" // 替换格式（点击切换）
+    },
+    "cpu": { // CPU 使用率模块
+        "format": "CPU:{usage}% ", // 显示格式
+        "tooltip": false // 不显示提示
+    },
+    "memory": { // 内存使用率模块
+        "format": "Memory:{}% " // 显示格式
+    },
+    "backlight": { // 屏幕亮度模块
+        // "device": "acpi_video1", // 背光设备
+        "format": "{percent}% {icon}", // 亮度格式
+        "format-icons": [ // 亮度图标（从低到高）
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+        ]
+    },
+    "battery": { // 电池状态模块
+        "states": {
+            // "good": 95,         // 良好状态阈值
+            "warning": 30, // 警告状态阈值
+            "critical": 15 // 临界状态阈值
+        },
+        "format": "{capacity}% {icon}", // 基本显示格式
+        "format-full": "{capacity}% {icon}", // 满电显示格式
+        "format-charging": "{capacity}% ", // 充电显示格式
+        "format-plugged": "{capacity}% ", // 插电显示格式
+        "format-alt": "{time} {icon}", // 替换格式（点击切换）
+        // "format-good": "",      // 良好状态格式（空值隐藏）
+        // "format-full": "",      // 满电状态格式（空值隐藏）
+        "format-icons": [ // 电池图标（从空到满）
+            "",
+            "",
+            "",
+            "",
+            ""
+        ]
+    },
+    "power-profiles-daemon": { // 电源配置文件守护进程
+        "format": "{icon}", // 显示格式
+        "tooltip-format": "Power profile: {profile}\nDriver: {driver}", // 提示格式
+        "tooltip": true, // 启用提示
+        "format-icons": { // 配置文件图标
+            "default": "", // 默认
+            "performance": "", // 性能模式
+            "balanced": "", // 平衡模式
+            "power-saver": "" // 省电模式
+        }
+    },
+    "network": { // 网络连接模块
+        // "interface": "wlp2*",    // 强制使用指定接口（可选）
+        "format-wifi": "WIFI", // WiFi 格式
+        "format-ethernet": "WAN", // 有线网络格式
+        "tooltip-format": "{ifname} via {gwaddr} IP:{ipaddr}", // 提示格式
+        "format-linked": "{ifname} (No IP) ", // 连接无IP格式
+        "format-disconnected": "!Network", // 断开连接格式
+        "format-alt": "{ifname}: {ipaddr}/{cidr}" // 替换格式
+    },
+    "pulseaudio": { // PulseAudio 音量控制模块
+        // "scroll-step": 1,        // 滚轮调节步进（%），可以是浮点数
+        "format": "{volume}% {icon} {format_source}", // 音量显示格式
+        "format-bluetooth": "{volume}% {icon} {format_source}", // 蓝牙设备格式
+        "format-bluetooth-muted": " {icon} {format_source}", // 蓝牙静音格式
+        "format-muted": " {format_source}", // 静音格式
+        "format-source": "", // 麦克风输入格式
+        "format-source-muted": "", // 麦克风静音格式
+        "format-icons": { // 音量图标
+            "headphone": "", // 耳机
+            "hands-free": "", // 免提
+            "headset": "", // 耳机麦克风
+            "phone": "", // 电话
+            "portable": "", // 便携设备
+            "car": "", // 车载
+            "default": [ // 默认音量图标（从低到高）
+                "",
+                "",
+                ""
+            ]
+        },
+        "on-click": "pavucontrol" // 点击启动音量控制
+    },
+    "custom/power": { // 自定义电源菜单模块
+        "format": "⏻ ", // 电源按钮图标
+        "tooltip": false, // 禁用提示
+        "on-click": "~/.config/waybar/power_menu.sh" // 点击执行电源菜单脚本
+    }
+}

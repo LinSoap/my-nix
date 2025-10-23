@@ -70,9 +70,6 @@ input {
 
 // 你可以按输出名称配置显示设备（在 niri 运行时使用 `niri msg outputs` 可查看名称）。
 // 内置笔记本显示器通常名为 "eDP-1"。
-// 更多信息请见维基：
-// https://yalter.github.io/niri/Configuration:-Outputs
-// 记得通过移除节点前的 "/-" 来取消注释该节点！
 output "Beihai Century Joint Innovation Technology Co.,Ltd P24A2G 0000000000000" {
     // 取消注释此行可禁用该输出。
     // off
@@ -82,7 +79,7 @@ output "Beihai Century Joint Innovation Technology Co.,Ltd P24A2G 0000000000000"
     // 若省略刷新率，niri 将为该分辨率选择最高刷新率。
     // 若完全省略 mode 或其无效，niri 会自动选择合适的模式。
     // 在 niri 实例中运行 `niri msg outputs` 可列出所有输出及其模式。
-    mode "1920x1080@165"
+    mode "1920x1080"
 
     // 缩放可以为整数或小数，例如 1.5 表示 150% 缩放。
     scale 1
@@ -102,7 +99,7 @@ output "Beihai Century Joint Innovation Technology Co.,Ltd P24A2G 0000000000000"
 }
 
 output "Beihai Century Joint Innovation Technology Co.,Ltd P25H2G 0000000000000" {
-    mode "1920x1080@165"
+    mode "1920x1080"
     scale 1
     transform "normal"
     position x=0 y=0
@@ -337,9 +334,11 @@ binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
     // 建议用于运行程序的绑定：终端、应用程序启动器、屏幕锁定器。
+    Mod+E { spawn "nautilus" "--new-window"; }
     Ctrl+Alt+T hotkey-overlay-title="Open a Terminal: kitty" { spawn "kitty"; }
     Super+D hotkey-overlay-title="Run an Application: wofi" { spawn-sh "wofi -S drun"; }
     Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
+
 
     // 使用 spawn-sh 运行 shell 命令。如果需要管道、多个命令等，请使用此方法。
     // 注意：整个命令作为单个参数传递，直接传递给 `sh -c`。

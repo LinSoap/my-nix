@@ -10,6 +10,7 @@
   imports = [
     ./gnome/home.nix
     ./wofi/home.nix
+    ./waybar/home.nix
     ./fcitx5/home.nix
     ./cli/kitty/home.nix
     ./cli/fastfetch/home.nix
@@ -77,6 +78,8 @@
 
     waydroid-helper # Waydroid 助手
     android-tools # Android 工具
+
+    pavucontrol # PulseAudio 音量控制器
 
     afterglow-cursors-recolored # 鼠标指针主题
     nerd-fonts.fira-code # Fira Code 字体
