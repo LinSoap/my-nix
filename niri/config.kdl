@@ -68,13 +68,12 @@ input {
     // focus-follows-mouse max-scroll-amount="0%"
 }
 
-// You can configure outputs by their name, which you can find
 // 你可以按输出名称配置显示设备（在 niri 运行时使用 `niri msg outputs` 可查看名称）。
 // 内置笔记本显示器通常名为 "eDP-1"。
 // 更多信息请见维基：
 // https://yalter.github.io/niri/Configuration:-Outputs
 // 记得通过移除节点前的 "/-" 来取消注释该节点！
-/-output "eDP-1" {
+output "Beihai Century Joint Innovation Technology Co.,Ltd P24A2G 0000000000000" {
     // 取消注释此行可禁用该输出。
     // off
 
@@ -83,10 +82,10 @@ input {
     // 若省略刷新率，niri 将为该分辨率选择最高刷新率。
     // 若完全省略 mode 或其无效，niri 会自动选择合适的模式。
     // 在 niri 实例中运行 `niri msg outputs` 可列出所有输出及其模式。
-    mode "1920x1080@120.030"
+    mode "1920x1080@165"
 
     // 缩放可以为整数或小数，例如 1.5 表示 150% 缩放。
-    scale 2
+    scale 1
 
     // Transform 用于将输出逆时针旋转，有效值包括：
     // normal, 90, 180, 270, flipped, flipped-90, flipped-180 和 flipped-270。
@@ -99,7 +98,14 @@ input {
     // 例如，3840×2160 且 scale=2.0 的输出其逻辑尺寸为 1920×1080，
     // 若要将另一个输出紧挨其右侧，需将 x 设置为 1920。
     // 若未设置位置或导致重叠，输出会被自动放置。
-    position x=1280 y=0
+    position x=1920 y=0
+}
+
+output "Beihai Century Joint Innovation Technology Co.,Ltd P25H2G 0000000000000" {
+    mode "1920x1080@165"
+    scale 1
+    transform "normal"
+    position x=0 y=0
 }
 
 // 影响窗口定位与大小的设置。
@@ -107,7 +113,7 @@ input {
 // https://yalter.github.io/niri/Configuration:-Layout
 layout {
     // 以逻辑像素设置窗口周围的间隙（gaps）。
-    gaps 16
+    gaps 8
 
     // 在切换焦点时何时对列进行居中，选项包括：
     // - "never"（默认），对不在屏幕内的列聚焦时会保持其在屏幕的左或右边缘。
@@ -150,7 +156,7 @@ layout {
     // off
 
     // 焦点环从窗口向外延伸的逻辑像素数。
-        width 4
+        width 2
 
     // 颜色可以用多种方式设置：
     // - CSS 命名颜色："red"
@@ -158,13 +164,13 @@ layout {
     // - 类似 CSS 的表示法："rgb(255, 127, 0)", rgba(), hsl() 等。
 
             // 活动显示器上环的颜色。
-        active-color "#7fc8ff"
+        active-color "#000000"
 
         // 非活动显示器上环的颜色。
         //
         // 焦点环只在活动窗口周围绘制，所以你只能在其他显示器上
         // 看到它的非活动颜色。
-        inactive-color "#505050"
+        inactive-color "#e3e3e3"
 
     // 也可以使用渐变色。渐变会优先于纯色。
     // 渐变的渲染方式与 CSS 的 linear-gradient(angle, from, to) 相同。
@@ -258,7 +264,7 @@ spawn-at-startup "waybar"
 
 hotkey-overlay {
     // 取消注释此行可在启动时禁用“重要热键”弹窗。
-    // skip-at-startup
+    skip-at-startup
 }
 
 // 取消注释此行可请求客户端尽可能省略其客户端装饰（CSD）。
@@ -266,7 +272,7 @@ hotkey-overlay {
 // 此外，客户端会被告知它们处于平铺状态，从而移除部分客户端侧的圆角。
 // 该选项还会修复在部分半透明窗口背后绘制边框/焦点环的问题。
 // 启用或禁用后需重启相关应用以使更改生效。
-// prefer-no-csd
+prefer-no-csd
 
 // 你可以更改截图保存路径。
 // 路径开头的 ~ 会被展开为家目录。
@@ -299,32 +305,6 @@ window-rule {
     default-column-width {}
 }
 
-// 默认将 Firefox 的画中画播放器设为浮动窗口。
-window-rule {
-    // 下列 app-id 正则表达式同时适用于：
-    // - 本地安装的 Firefox（app-id 为 "firefox"）
-    // - Flatpak 版本的 Firefox（app-id 为 "org.mozilla.firefox"）
-    match app-id=r#"firefox$"# title="^Picture-in-Picture$"
-    open-floating true
-}
-
-// 强制微信以浮动窗口显示
-window-rule {
-    match app-id=r#"wechat$"#
-    open-floating true
-}
-
-// 微信的各种可能窗口名
-window-rule {
-    match title="微信"
-    open-floating true
-}
-
-window-rule {
-    match title="WeChat"
-    open-floating true
-}
-
 // 示例：将两个密码管理器排除在屏幕捕获之外。
 // （该示例规则在前面用 "/-" 注释掉。）
 /-window-rule {
@@ -339,8 +319,8 @@ window-rule {
 
 // 示例：为所有窗口启用圆角。
 // （该示例规则在前面用 "/-" 注释掉。）
-/-window-rule {
-    geometry-corner-radius 12
+window-rule {
+    geometry-corner-radius 4
     clip-to-geometry true
 }
 
@@ -357,14 +337,14 @@ binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
     // 建议用于运行程序的绑定：终端、应用程序启动器、屏幕锁定器。
-    Super+T hotkey-overlay-title="Open a Terminal: kitty" { spawn "kitty"; }
+    Ctrl+Alt+T hotkey-overlay-title="Open a Terminal: kitty" { spawn "kitty"; }
     Super+D hotkey-overlay-title="Run an Application: wofi" { spawn-sh "wofi -S drun"; }
     Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
 
     // 使用 spawn-sh 运行 shell 命令。如果需要管道、多个命令等，请使用此方法。
     // 注意：整个命令作为单个参数传递，直接传递给 `sh -c`。
     // 例如，这是一个切换屏幕阅读器 (orca) 的标准绑定。
-    Super+Alt+S allow-when-locked=true hotkey-overlay-title=null { spawn-sh "pkill orca || exec orca"; }
+    // Super+Alt+S allow-when-locked=true hotkey-overlay-title=null { spawn-sh "pkill orca || exec orca"; }
 
     // PipeWire & WirePlumber 的音量键映射示例。
     // allow-when-locked=true 属性使它们在会话锁定时也能工作。
@@ -386,19 +366,11 @@ binds {
 
     Mod+Q repeat=false { close-window; }
 
-    Mod+Left  { focus-column-left; }    // 聚焦到左侧列
-    Mod+Down  { focus-window-down; }   // 聚焦到下方窗口
-    Mod+Up    { focus-window-up; }     // 聚焦到上方窗口
-    Mod+Right { focus-column-right; }  // 聚焦到右侧列
     Mod+H     { focus-column-left; }   // 聚焦到左侧列（Vim 风格）
     Mod+J     { focus-window-down; }   // 聚焦到下方窗口（Vim 风格）
     Mod+K     { focus-window-up; }     // 聚焦到上方窗口（Vim 风格）
     Mod+L     { focus-column-right; }  // 聚焦到右侧列（Vim 风格）
 
-    Mod+Ctrl+Left  { move-column-left; }    // 移动列到左侧
-    Mod+Ctrl+Down  { move-window-down; }   // 移动窗口到下方
-    Mod+Ctrl+Up    { move-window-up; }     // 移动窗口到上方
-    Mod+Ctrl+Right { move-column-right; }  // 移动列到右侧
     Mod+Ctrl+H     { move-column-left; }   // 移动列到左侧（Vim 风格）
     Mod+Ctrl+J     { move-window-down; }   // 移动窗口到下方（Vim 风格）
     Mod+Ctrl+K     { move-window-up; }     // 移动窗口到上方（Vim 风格）
@@ -410,24 +382,11 @@ binds {
     // Mod+Ctrl+J     { move-window-down-or-to-workspace-down; }
     // Mod+Ctrl+K     { move-window-up-or-to-workspace-up; }
 
-    Mod+Home { focus-column-first; }     // 聚焦到第一列
-    Mod+End  { focus-column-last; }     // 聚焦到最后一列
-    Mod+Ctrl+Home { move-column-to-first; }  // 移动列到最前面
-    Mod+Ctrl+End  { move-column-to-last; }   // 移动列到最后面
-
-    Mod+Shift+Left  { focus-monitor-left; }   // 聚焦到左侧显示器
-    Mod+Shift+Down  { focus-monitor-down; }  // 聚焦到下方显示器
-    Mod+Shift+Up    { focus-monitor-up; }    // 聚焦到上方显示器
-    Mod+Shift+Right { focus-monitor-right; } // 聚焦到右侧显示器
     Mod+Shift+H     { focus-monitor-left; }   // 聚焦到左侧显示器（Vim 风格）
     Mod+Shift+J     { focus-monitor-down; }  // 聚焦到下方显示器（Vim 风格）
     Mod+Shift+K     { focus-monitor-up; }    // 聚焦到上方显示器（Vim 风格）
     Mod+Shift+L     { focus-monitor-right; } // 聚焦到右侧显示器（Vim 风格）
 
-    Mod+Shift+Ctrl+Left  { move-column-to-monitor-left; }   // 移动列到左侧显示器
-    Mod+Shift+Ctrl+Down  { move-column-to-monitor-down; }  // 移动列到下方显示器
-    Mod+Shift+Ctrl+Up    { move-column-to-monitor-up; }    // 移动列到上方显示器
-    Mod+Shift+Ctrl+Right { move-column-to-monitor-right; } // 移动列到右侧显示器
     Mod+Shift+Ctrl+H     { move-column-to-monitor-left; }   // 移动列到左侧显示器（Vim 风格）
     Mod+Shift+Ctrl+J     { move-column-to-monitor-down; }  // 移动列到下方显示器（Vim 风格）
     Mod+Shift+Ctrl+K     { move-column-to-monitor-up; }    // 移动列到上方显示器（Vim 风格）
@@ -441,12 +400,8 @@ binds {
     // Mod+Shift+Ctrl+Left  { move-workspace-to-monitor-left; }
     // ...
 
-    Mod+Page_Down      { focus-workspace-down; }    // 聚焦到下方工作区
-    Mod+Page_Up        { focus-workspace-up; }      // 聚焦到上方工作区
     Mod+U              { focus-workspace-down; }    // 聚焦到下方工作区（Vim 风格）
     Mod+I              { focus-workspace-up; }      // 聚焦到上方工作区（Vim 风格）
-    Mod+Ctrl+Page_Down { move-column-to-workspace-down; }  // 移动列到下方工作区
-    Mod+Ctrl+Page_Up   { move-column-to-workspace-up; }    // 移动列到上方工作区
     Mod+Ctrl+U         { move-column-to-workspace-down; }  // 移动列到下方工作区（Vim 风格）
     Mod+Ctrl+I         { move-column-to-workspace-up; }    // 移动列到上方工作区（Vim 风格）
 
@@ -454,8 +409,6 @@ binds {
     // Mod+Ctrl+Page_Down { move-window-to-workspace-down; }
     // ...
 
-    Mod+Shift+Page_Down { move-workspace-down; }  // 移动工作区到下方
-    Mod+Shift+Page_Up   { move-workspace-up; }    // 移动工作区到上方
     Mod+Shift+U         { move-workspace-down; }  // 移动工作区到下方（Vim 风格）
     Mod+Shift+I         { move-workspace-up; }    // 移动工作区到上方（Vim 风格）
 
@@ -471,14 +424,14 @@ binds {
 
     Mod+WheelScrollRight      { focus-column-right; }  // 滚轮向右聚焦列
     Mod+WheelScrollLeft       { focus-column-left; }   // 滚轮向左聚焦列
-    Mod+Ctrl+WheelScrollRight { move-column-right; }   // 滚轮向右移动列
-    Mod+Ctrl+WheelScrollLeft  { move-column-left; }    // 滚轮向左移动列
+    //Mod+Ctrl+WheelScrollRight { move-column-right; }   // 滚轮向右移动列
+    //Mod+Ctrl+WheelScrollLeft  { move-column-left; }    // 滚轮向左移动列
 
     // 通常在应用程序中按住 Shift 向上或向下滚动会导致水平滚动；这些绑定复制了该行为。
     Mod+Shift+WheelScrollDown      { focus-column-right; }  // Shift+滚轮向下聚焦右侧列
     Mod+Shift+WheelScrollUp        { focus-column-left; }   // Shift+滚轮向上聚焦左侧列
-    Mod+Ctrl+Shift+WheelScrollDown { move-column-right; }   // Shift+滚轮向下移动列到右侧
-    Mod+Ctrl+Shift+WheelScrollUp   { move-column-left; }    // Shift+滚轮向上移动列到左侧
+    //Mod+Ctrl+Shift+WheelScrollDown { move-column-right; }   // Shift+滚轮向下移动列到右侧
+    //Mod+Ctrl+Shift+WheelScrollUp   { move-column-left; }    // Shift+滚轮向上移动列到左侧
 
     // 类似地，你可以绑定触摸板滚动"刻度"。
     // 触摸板滚动是连续的，所以这些绑定被分割成
@@ -523,19 +476,19 @@ binds {
     // 以下绑定用于将聚焦窗口移入和移出列。
     // 如果窗口是单独的，它们会将其合并到侧边的附近列中。
     // 如果窗口已经在列中，它们会将其排出。
-    Mod+BracketLeft  { consume-or-expel-window-left; }  // 从左侧合并/排出窗口
-    Mod+BracketRight { consume-or-expel-window-right; } // 从右侧合并/排出窗口
+    // Mod+BracketLeft  { consume-or-expel-window-left; }  // 从左侧合并/排出窗口
+    // Mod+BracketRight { consume-or-expel-window-right; } // 从右侧合并/排出窗口
 
     // 从右侧合并一个窗口到聚焦列的底部。
-    Mod+Comma  { consume-window-into-column; } // 合并窗口到列
+    // Mod+Comma  { consume-window-into-column; } // 合并窗口到列
     // 将聚焦列的底部窗口排出到右侧。
-    Mod+Period { expel-window-from-column; }   // 从列排出窗口
+    // Mod+Period { expel-window-from-column; }   // 从列排出窗口
 
     Mod+R { switch-preset-column-width; }      // 切换预设列宽
     // 也可以反向循环遍历预设。
     // Mod+R { switch-preset-column-width-back; }
-    Mod+Shift+R { switch-preset-window-height; } // 切换预设窗口高度
-    Mod+Ctrl+R { reset-window-height; }      // 重置窗口高度
+    // Mod+Shift+R { switch-preset-window-height; } // 切换预设窗口高度
+    // Mod+Ctrl+R { reset-window-height; }      // 重置窗口高度
     Mod+F { maximize-column; }               // 最大化列
     Mod+Shift+F { fullscreen-window; }       // 全屏窗口
 
@@ -580,9 +533,9 @@ binds {
     // Mod+Space       { switch-layout "next"; }
     // Mod+Shift+Space { switch-layout "prev"; }
 
-    Print { screenshot; }           // 截图整个屏幕
-    Ctrl+Print { screenshot-screen; } // 截图当前屏幕
-    Alt+Print { screenshot-window; }  // 截图当前窗口
+    // Print { screenshot; }           // 截图整个屏幕
+    Mod+Delete { screenshot-screen; } // 截图当前屏幕
+    Alt+Mod+Delete { screenshot-window; }  // 截图当前窗口
 
     // 诸如远程桌面客户端和软件 KVM 切换器等应用程序
     // 可能会请求 niri 停止处理此处定义的键盘快捷键，
