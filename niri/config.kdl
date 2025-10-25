@@ -253,9 +253,8 @@ layout {
 // 注意：以会话方式运行 niri 支持 xdg-desktop-autostart，使用该方式可能更为方便。
 // 更多启动示例请参阅下方的 binds 节。
 // 下面这一行会启动 waybar，一个常用的 Wayland 状态栏程序。
-spawn-at-startup "waybar"
-// 设置壁纸
 spawn-at-startup "swaybg" "-i" "/home/linsoap/my-nix/assets/wallpaper.jpg" "-m" "fill"
+spawn-at-startup "qs" "-c" "noctalia-shell"
 
 
 // 若需运行 shell 命令（包含变量、管道等），请使用 spawn-sh-at-startup：

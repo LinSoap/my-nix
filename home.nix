@@ -9,8 +9,9 @@
 {
   imports = [
     ./gnome/home.nix
+    ./wm/noctalia/home.nix
     ./wofi/home.nix
-    ./waybar/home.nix
+    # ./waybar/home.nix
     ./wlogout/home.nix
     ./fcitx5/home.nix
     ./cli/kitty/home.nix

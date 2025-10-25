@@ -13,6 +13,15 @@
       # IMPORTANT: we're using "libgbm" and is only available in unstable so ensure
       # to have it up-to-date or simply don't specify the nixpkgs input
     };
+    quickshell = {
+      url = "github:outfoxxed/quickshell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    noctalia = {
+      url = "github:noctalia-dev/noctalia-shell";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.quickshell.follows = "quickshell"; # Use same quickshell version
+    };
   };
 
   outputs =
@@ -39,6 +48,7 @@
           };
           modules = [
             ./hosts/desktop/configuration.nix
+            ./wm/noctalia/noctalia.nix
 
             home-manager.nixosModules.home-manager
             {
@@ -63,6 +73,7 @@
           };
           modules = [
             ./hosts/laptop/configuration.nix
+            ./wm/noctalia/noctalia.nix
 
             home-manager.nixosModules.home-manager
             {
