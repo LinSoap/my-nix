@@ -23,7 +23,7 @@
           left = [
             {
               id = "Workspace";
-              characterCount = 2;
+              characterCount = 4;
             }
 
             {
@@ -36,6 +36,8 @@
           center = [
             {
               id = "Clock";
+              formatHorizontal = "MM/dd HH:mm ddd";
+              formatVertical = "MM/HH mm - dd ";
             }
           ];
           right = [
@@ -47,6 +49,8 @@
             }
             {
               id = "SystemMonitor";
+              showCpuTemp = false;
+              showNetworkStats = true;
             }
             {
               id = "NotificationHistory";
@@ -62,6 +66,7 @@
             }
             {
               id = "ControlCenter";
+              useDistroLogo = true;
             }
           ];
         };

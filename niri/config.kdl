@@ -369,8 +369,9 @@ binds {
     //
     // 为避免快速滚动工作区，你可以使用 cooldown-ms 属性。
     // 该绑定将被限制为此值。你可以在任何绑定上设置冷却，但对滚轮最有用。
-    Mod+WheelScrollDown      cooldown-ms=150 { focus-workspace-down; }  // 滚轮向下切换工作区
-    Mod+WheelScrollUp        cooldown-ms=150 { focus-workspace-up; }    // 滚轮向上切换工作区
+    Mod+Shift+WheelScrollDown      cooldown-ms=150 { focus-workspace-down; }  // 滚轮向下切换工作区
+    Mod+Shift+WheelScrollUp        cooldown-ms=150 { focus-workspace-up; }    // 滚轮向上切换工作区
+
     Mod+Ctrl+WheelScrollDown cooldown-ms=150 { move-column-to-workspace-down; }  // 滚轮向下移动列
     Mod+Ctrl+WheelScrollUp   cooldown-ms=150 { move-column-to-workspace-up; }    // 滚轮向上移动列
 
@@ -380,8 +381,9 @@ binds {
     //Mod+Ctrl+WheelScrollLeft  { move-column-left; }    // 滚轮向左移动列
 
     // 通常在应用程序中按住 Shift 向上或向下滚动会导致水平滚动；这些绑定复制了该行为。
-    Mod+Shift+WheelScrollDown      { focus-column-right; }  // Shift+滚轮向下聚焦右侧列
-    Mod+Shift+WheelScrollUp        { focus-column-left; }   // Shift+滚轮向上聚焦左侧列
+    Mod+WheelScrollDown      { focus-column-right; }  // Shift+滚轮向下聚焦右侧列
+    Mod+WheelScrollUp        { focus-column-left; }   // Shift+滚轮向上聚焦左侧列
+
     //Mod+Ctrl+Shift+WheelScrollDown { move-column-right; }   // Shift+滚轮向下移动列到右侧
     //Mod+Ctrl+Shift+WheelScrollUp   { move-column-left; }    // Shift+滚轮向上移动列到左侧
 
