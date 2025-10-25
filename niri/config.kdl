@@ -61,7 +61,7 @@ input {
     }
 
     // 取消注释此行可使鼠标在新获得焦点的窗口中心处跳转。
-    // warp-mouse-to-focus
+    warp-mouse-to-focus
 
     // 将鼠标移动到窗口或输出上时，自动聚焦它们。
     // 将 max-scroll-amount="0%" 可使其仅对已完全显示在屏幕上的窗口生效。
@@ -135,9 +135,7 @@ layout {
     // preset-window-heights { }
 
     // 可更改新窗口的默认宽度。
-    default-column-width { proportion 0.5; }
-    // 如果保留大括号为空，窗口将自行决定它们的初始宽度。
-    // default-column-width {}
+    default-column-width { }
 
     // 默认情况下，焦点环和边框呈现在窗口后面的实心背景矩形中，因此它们会穿透半透明窗口可见。
     // 这是因为使用客户端装饰（CSD）的窗口可能具有任意形状。
@@ -205,44 +203,14 @@ layout {
     }
 
     // 你可以为窗口启用投影（阴影）。
-    shadow {
-    // 取消注释下一行以启用阴影。
-    // on
-
-    // 默认情况下，阴影只绘制在窗口周围，而不会绘制在窗口后面。
-    // 取消注释此设置可使阴影绘制在窗口后面。
-        //
-    // 注意：niri 无法获知 CSD（客户端装饰）窗口的圆角半径。
-    // 它必须假定窗口为方角，这会在 CSD 圆角内产生阴影伪影。此设置可修正这些伪影。
-        //
-    // 另外，你也可以设置 prefer-no-csd 和/或 geometry-corner-radius。
-    // 这样 niri 将知道角半径并能正确绘制阴影，而无需将阴影绘制在窗口后方。
-    // 如果窗口本身绘制了阴影，这些设置也会移除客户端的阴影。
-        //
-    // draw-behind-window true
-
-    // 你可以改变阴影的外观。下列值以逻辑像素为单位，并类似于 CSS 的 box-shadow 属性。
-
-    // softness 控制阴影的模糊半径。
-        softness 30
-
-    // spread 控制阴影的扩张程度。
-        spread 5
-
-    // offset 将阴影相对于窗口进行偏移。
-        offset x=0 y=5
-
-    // 你也可以更改阴影的颜色和不透明度。
-        color "#0007"
-    }
 
     // Struts 会缩小窗口占据的区域，类似于 layer-shell 面板。
     // 你可以把它们认为是一种外部间隙（outer gaps），以逻辑像素为单位设置。
     // 左右 strut 会使旁边的下一个窗口始终可见。
     // 顶部和底部 strut 则会在 layer-shell 面板和常规间隙之外再增加外部间隙。
     struts {
-        // left 64
-        // right 64
+        left 16
+        right 16
         // top 64
         // bottom 64
     }
@@ -255,13 +223,10 @@ layout {
 // 下面这一行会启动 waybar，一个常用的 Wayland 状态栏程序。
 spawn-at-startup "swaybg" "-i" "/home/linsoap/my-nix/assets/wallpaper.jpg" "-m" "fill"
 spawn-at-startup "qs" "-c" "noctalia-shell"
+spawn-at-startup "xwayland-satellite"
 
-
-// 若需运行 shell 命令（包含变量、管道等），请使用 spawn-sh-at-startup：
-// spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
 
 hotkey-overlay {
-    // 取消注释此行可在启动时禁用“重要热键”弹窗。
     skip-at-startup
 }
 
@@ -327,9 +292,7 @@ binds {
     // 要查找某个键对应的 XKB 名称，可以使用类似 wev 的工具。
     //
     // "Mod" 是一个特殊修饰键：在 TTY 环境下等同于 Super，作为 winit 窗口时等同于 Alt。
-    //
-    // 这里绑定的大多数动作也可以通过命令行编程方式调用，例如：
-    // `niri msg action do-something`。
+ 
 
     // Mod-Shift-/（通常与 Mod-? 相同）显示重要热键列表。
     Mod+Shift+Slash { show-hotkey-overlay; }
@@ -341,22 +304,11 @@ binds {
     Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
 
 
-    // 使用 spawn-sh 运行 shell 命令。如果需要管道、多个命令等，请使用此方法。
-    // 注意：整个命令作为单个参数传递，直接传递给 `sh -c`。
-    // 例如，这是一个切换屏幕阅读器 (orca) 的标准绑定。
-    // Super+Alt+S allow-when-locked=true hotkey-overlay-title=null { spawn-sh "pkill orca || exec orca"; }
-
-    // PipeWire & WirePlumber 的音量键映射示例。
-    // allow-when-locked=true 属性使它们在会话锁定时也能工作。
-    // 使用 spawn-sh 允许将多个参数与命令一起传递。
     XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+"; }
     XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-"; }
     XF86AudioMute        allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
     XF86AudioMicMute     allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
 
-    // brightnessctl 的亮度键映射示例。
-    // 你也可以使用常规 spawn 并传递多个参数（以避免通过 "sh"），
-    // 但需要手动将每个参数放在单独的 "" 引号中。
     XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "+10%"; }
     XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "10%-"; }
 
@@ -501,18 +453,9 @@ binds {
     // 在屏幕上居中所有完全可见的列。
     Mod+Ctrl+C { center-visible-columns; }          // 居中所有可见列
 
-    // 精细的宽度调整。
-    // 此命令还可以：
-    // * 以像素设置宽度："1000"
-    // * 以像素调整宽度："-5" 或 "+5"
-    // * 设置宽度为屏幕宽度的百分比："25%"
-    // * 以屏幕宽度的百分比调整宽度："-10%" 或 "+10%"
-    // 像素大小使用逻辑像素或缩放像素。即在缩放 2.0 的输出上，
-    // set-column-width "100" 将使列占据 200 个物理屏幕像素。
+
     Mod+Minus { set-column-width "-10%"; }    // 减少列宽 10%
     Mod+Equal { set-column-width "+10%"; }    // 增加列宽 10%
-
-    // 在与其他窗口的列中进行精细的高度调整。
     Mod+Shift+Minus { set-window-height "-10%"; } // 减少窗口高度 10%
     Mod+Shift+Equal { set-window-height "+10%"; } // 增加窗口高度 10%
 

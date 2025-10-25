@@ -12,12 +12,12 @@
       setupCompleted = false;
       bar = {
         position = "top";
-        backgroundOpacity = 1;
+        backgroundOpacity = 0.85;
         monitors = [ ];
         density = "default";
         showCapsule = true;
-        floating = false;
-        marginVertical = 0.25;
+        floating = true;
+        marginVertical = 0.1;
         marginHorizontal = 0.25;
         widgets = {
           left = [
@@ -67,7 +67,7 @@
         };
       };
       general = {
-        avatarImage = "";
+        avatarImage = "~/my-nix/assets/avatar.png";
         dimDesktop = true;
         showScreenCorners = false;
         forceBlackScreenCorners = false;

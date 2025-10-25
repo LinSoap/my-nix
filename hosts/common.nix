@@ -128,6 +128,7 @@
   };
 
   services.gnome.gnome-keyring.enable = true;
+
   programs.xwayland.enable = true;
   # XDG Desktop Portal 配置
   xdg.portal = {
@@ -137,12 +138,13 @@
       xdg-desktop-portal-gnome
       xdg-desktop-portal-gtk
     ];
-    config = {
-      common = {
-        default = [
-          "gtk"
-        ];
-      };
+    config.niri = {
+      # 尝试将屏幕共享和截屏分配给 GNOME 后端
+      "org.freedesktop.impl.portal.ScreenCast" = [ "gnome" ];
+      "org.freedesktop.impl.portal.Screenshot" = [ "gnome" ];
+      default = [
+        "gnome"
+      ];
     };
   };
 
@@ -232,6 +234,7 @@
     firefoxpwa
     wineWowPackages.waylandFull
     winetricks
+    xwayland-satellite
 
     xdg-desktop-portal-gnome
     xdg-desktop-portal-gtk
@@ -244,6 +247,8 @@
     QT_QPA_PLATFORM = "wayland;xcb"; # 允许Qt回退到XCB
     QT_SCALE_FACTOR_ROUNDING_POLICY = "RoundPreferFloor";
     QT_AUTO_SCREEN_SCALE_FACTOR = "1";
+    GDK_BACKEND = "wayland";
+    _JAVA_AWT_WM_NONREPARENTING = "1";
     NIXOS_OZONE_WL = "1";
   };
 
