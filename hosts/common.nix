@@ -127,6 +127,25 @@
     pulse.enable = true;
   };
 
+  services.gnome.gnome-keyring.enable = true;
+  programs.xwayland.enable = true;
+  # XDG Desktop Portal 配置
+  xdg.portal = {
+    enable = true;
+    xdgOpenUsePortal = true;
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-gnome
+      xdg-desktop-portal-gtk
+    ];
+    config = {
+      common = {
+        default = [
+          "gtk"
+        ];
+      };
+    };
+  };
+
   #ssh 服务配置
   services.openssh = {
     enable = true;
@@ -213,7 +232,9 @@
     firefoxpwa
     wineWowPackages.waylandFull
     winetricks
+
     xdg-desktop-portal-gnome
+    xdg-desktop-portal-gtk
   ];
 
   # 环境变量
@@ -223,12 +244,15 @@
     QT_QPA_PLATFORM = "wayland;xcb"; # 允许Qt回退到XCB
     QT_SCALE_FACTOR_ROUNDING_POLICY = "RoundPreferFloor";
     QT_AUTO_SCREEN_SCALE_FACTOR = "1";
-    ELECTRON_OZONE_PLATFORM_HINT = "auto"; # 让Electron应用自动选择
     NIXOS_OZONE_WL = "1";
   };
 
   # 防火墙
   networking.firewall.enable = false;
+
+  # 蓝牙支持
+  hardware.bluetooth.enable = true;
+  services.blueman.enable = true;
 
   # 系统版本
   system.stateVersion = "25.05";

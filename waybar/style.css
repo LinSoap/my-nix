@@ -1,109 +1,95 @@
-/* Base2Tone Suburb Dark 主题 - 为 waybar 适配 */
-
 * {
-  font-family: "Noto Sans", sans-serif;
-  font-size: 12px;
+    border: none;
+    font-family: Font Awesome, Roboto, Arial, sans-serif;
+    font-size: 12px;
+    color: #ffffff;
+    border-radius: 20px;
 }
 
-/* 主窗口样式 */
+window {
+	/*font-weight: bold;*/
+}
 window#waybar {
-  background-color: #27273a;
-  color: #f6f0ff;
-  border-top: 1px solid #3b4a6b;
+    background: rgba(0, 0, 0, 0);
+}
+/*-----module groups----*/
+.modules-right {
+	background-color: rgba(64,64,64,0.9);
+  margin: 2px 10px 0 0;
+}
+.modules-center {
+	background-color: rgba(64,64,64,0.9);
+  margin: 2px 0 0 0;
+}
+.modules-left {
+  margin: 2px 0 0 5px;
+
+	background-color: rgba(64,64,64,0.9);
+}
+/*-----modules indv----*/
+#workspaces button {
+    padding: 1px 3px;
+    background-color: transparent;
+}
+#workspaces button:hover {
+    box-shadow: inherit;
+	background-color: rgba(192,192,192,1);
 }
 
-/* 通用模块样式 */
+#workspaces button.focused {
+	background-color: rgba(255,255,255,1);
+}
+
 #clock,
+#battery,
 #cpu,
 #memory,
-#backlight,
-#battery,
-#language,
-#pulseaudio,
+#temperature,
 #network,
+#pulseaudio,
+#custom-media,
+#tray,
+#mode,
+#custom-power,
+#custom-menu,
+#idle_inhibitor {
+    padding: 0 8px;
+}
+#mode {
+    color: #000000;
+    font-weight: bold;
+}
 #custom-power {
-  padding: 0 12px;
-  margin: 0 4px;
-  color: #f6f0ff;
-  background-color: #353551;
-  border-radius: 6px;
+    background-color: rgba(128,128,128,0.6);
+    border-radius: 100px;
+    margin: 5px 5px;
+    padding: 1px 1px 1px 6px;
 }
-
-/* 时钟模块 */
-#clock {
-  font-size: 14px;
-  font-weight: bold;
-  color: #97ee91;
+/*-----Indicators----*/
+#idle_inhibitor.activated {
+    color: #ffffff;
 }
-
-/* CPU 使用率 */
-#cpu {
-  color: #f8c275;
-}
-
-/* 内存使用率 */
-#memory {
-  color: #74d6e9;
-}
-
-/* 背光亮度 */
-#backlight {
-  color: #f8c275;
-}
-
-/* 电池 */
-#battery {
-  color: #97f36d;
-}
-
-#battery.warning {
-  color: #f8c275;
-}
-
-#battery.critical {
-  color: #e34f8c;
-}
-
-/* 网络状态 */
-#network {
-  color: #24e8d8;
-}
-
-#network.disconnected {
-  color: #e34f8c;
-}
-
-/* 输入法 */
-#language {
-  color: #c7adfb;
-}
-
-/* 音量控制 */
-#pulseaudio {
-  color: #affa90;
-}
-
 #pulseaudio.muted {
-  color: #919cb9;
+    color: #404040;
 }
-
-/* 电源菜单 */
-#custom-power {
-  color: #e752a1;
-  background-color: #3b4a6b;
-  border: 1px solid #7586f5;
+#battery.charging {
+    color: #ffffff;
 }
-
-/* 悬停效果 */
-#clock:hover,
-#cpu:hover,
-#memory:hover,
-#backlight:hover,
-#battery:hover,
-#language:hover,
-#pulseaudio:hover,
-#network:hover {
-  background-color: #3b4a6b;
-  color: #fbf9fa;
-  border-bottom: 2px solid #7586f5;
+#battery.warning:not(.charging) {
+	color: #c0c0c0;
 }
+#battery.critical:not(.charging) {
+    color: #000000;
+}
+#temperature.critical {
+    color: #000000;
+}
+/*-----Colors----*/
+/*
+ *#404040 --> Dark Gray
+ *#808080 --> Medium Gray
+ *#c0c0c0 --> Light Gray
+ *#ffffff --> White
+ *#000000 --> Black
+ *
+ */

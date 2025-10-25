@@ -52,9 +52,4 @@
 
   # 亮度控制
   programs.light.enable = true;
-
-  # 笔记本可能需要的其他配置
-  # 例如：无线网络优化、蓝牙等
-  hardware.bluetooth.enable = true;
-  services.blueman.enable = true;
 }

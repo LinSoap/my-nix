@@ -16,7 +16,7 @@
         "cpu", // CPU 使用率
         "memory", // 内存使用率
         "backlight", // 屏幕亮度
-        "language", // 输入法
+        "bluetooth", // 蓝牙状态
         "network", // 网络状态
         "battery", // 电池状态
         "custom/power" // 自定义电源菜单
@@ -32,21 +32,6 @@
     },
     "memory": { // 内存使用率模块
         "format": "Memory:{}% " // 显示格式
-    },
-    "backlight": { // 屏幕亮度模块
-        // "device": "acpi_video1", // 背光设备
-        "format": "{percent}% {icon}", // 亮度格式
-        "format-icons": [ // 亮度图标（从低到高）
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            ""
-        ]
     },
     "battery": { // 电池状态模块
         "states": {
@@ -115,6 +100,6 @@
     "custom/power": { // 自定义电源菜单模块
         "format": "⏻ ", // 电源按钮图标
         "tooltip": false, // 禁用提示
-        "on-click": "~/.config/waybar/power_menu.sh" // 点击执行电源菜单脚本
+        "on-click": "wlogout" // 点击执行电源菜单脚本
     }
 }
