@@ -8,6 +8,12 @@
     force = true; # 强制覆盖现有文件
   };
 
+  home.file.".local/share/fcitx5/themes" = {
+    source = ./themes;
+    recursive = true;
+    force = true;
+  };
+
   # 配置 rime.conf
   home.file.".config/fcitx5/conf/rime.conf" = {
     text = ''
