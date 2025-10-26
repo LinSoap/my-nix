@@ -9,7 +9,6 @@
 // 更多启动示例请参阅下方的 binds 节。
 // 下面这一行会启动 waybar，一个常用的 Wayland 状态栏程序。
 spawn-at-startup "swaybg" "-i" "/home/linsoap/my-nix/assets/wallpaper.jpg" "-m" "fill"
-spawn-at-startup "qs" "-c" "noctalia-shell"
 spawn-at-startup "xwayland-satellite"
 
 

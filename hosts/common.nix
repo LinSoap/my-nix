@@ -143,7 +143,7 @@
       "org.freedesktop.impl.portal.ScreenCast" = [ "gnome" ];
       "org.freedesktop.impl.portal.Screenshot" = [ "gnome" ];
       default = [
-        "gnome"
+        "gtk"
       ];
     };
   };
@@ -245,11 +245,12 @@
     ENABLE_DEPRECATED_SPECIAL_OUTBOUNDS = "true";
     ENABLE_DEPRECATED_TUN_ADDRESS_X = "true";
     QT_QPA_PLATFORM = "wayland;xcb"; # 允许Qt回退到XCB
+    QT_QPA_PLATFORMTHEME = "gtk3";
     QT_SCALE_FACTOR_ROUNDING_POLICY = "RoundPreferFloor";
     QT_AUTO_SCREEN_SCALE_FACTOR = "1";
-    GDK_BACKEND = "wayland";
-    _JAVA_AWT_WM_NONREPARENTING = "1";
     NIXOS_OZONE_WL = "1";
+    GDK_BACKEND = "wayland";
+    # QS_ICON_THEME = "Adwaita,Papirus";
   };
 
   # 强制覆盖输入法相关的环境变量

@@ -5,30 +5,35 @@
     inputs.noctalia.homeModules.default
   ];
 
+  gtk = {
+    enable = true;
+    theme = {
+      name = "TokyoNight-Dark";
+      package = pkgs.tokyo-night-gtk;
+    };
+    iconTheme = {
+      name = "Papirus";
+      package = pkgs.papirus-icon-theme;
+    };
+  };
+
+  # qt = {
+  #   enable = true;
+  #   platformTheme.name = "qtct";
+  # };
+
   home.packages = with pkgs; [
     #桌面环境相关
+    tokyo-night-gtk
     pavucontrol # PulseAudio 音量控制器
     swaybg # Sway 壁纸管理器
-    hicolor-icon-theme # 高分辨率图标主题
     adwaita-icon-theme # Adwaita 图标主题
     papirus-icon-theme # Papirus 图标主题
     bibata-cursors # Bibata 鼠标指针主题
     brightnessctl # 屏幕亮度调节工具
+
     libappindicator-gtk3
   ];
-
-  gtk = with pkgs; {
-    enable = true;
-    iconTheme = {
-      name = "Adwaita"; # 图标主题的名称，通常与包名对应
-      package = pkgs.adwaita-icon-theme;
-    };
-  };
-
-  qt = {
-    enable = true;
-    platformTheme = "qtct";
-  };
 
   programs.noctalia-shell = {
     enable = true;
@@ -109,7 +114,7 @@
         animationDisabled = false;
         compactLockScreen = false;
         lockOnSuspend = true;
-        language = "en";
+        language = "zh-CN";
       };
       location = {
         name = "Huzhou";
