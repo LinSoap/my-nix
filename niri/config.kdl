@@ -3,24 +3,14 @@
 // 详情请查看维基中的完整配置说明：
 // https://yalter.github.io/niri/Configuration:-Introduction
 
-// 输入设备配置。
-// 可用选项完整列表请见维基：
-// https://yalter.github.io/niri/Configuration:-Input
+cursor {
+    xcursor-theme "Bibata-Modern-Classic"
+    xcursor-size 20
+}
+
 input {
     keyboard {
-        xkb {
-            // 你可以设置 rules、model、layout、variant 和 options。
-            // 更多信息请参见 xkeyboard-config(7)。
-
-            // 例如：
-            // layout "us,ru"
-            // options "grp:win_space_toggle,compose:ralt,ctrl:nocaps"
-
-            // 如果此配置段为空，niri 将从 org.freedesktop.locale1 获取 xkb 设置。
-            // 你可以使用 localectl set-x11-keymap 来控制这些设置。
-        }
-
-    // 启用启动时的 NumLock；如果省略此设置则禁用该功能。
+        xkb {}
         numlock
     }
 

@@ -241,7 +241,7 @@
   ];
 
   # 环境变量
-  environment.sessionVariables = rec {
+  environment.sessionVariables = {
     ENABLE_DEPRECATED_SPECIAL_OUTBOUNDS = "true";
     ENABLE_DEPRECATED_TUN_ADDRESS_X = "true";
     QT_QPA_PLATFORM = "wayland;xcb"; # 允许Qt回退到XCB
@@ -250,6 +250,11 @@
     GDK_BACKEND = "wayland";
     _JAVA_AWT_WM_NONREPARENTING = "1";
     NIXOS_OZONE_WL = "1";
+  };
+
+  # 强制覆盖输入法相关的环境变量
+  environment.variables = {
+    GTK_IM_MODULE = lib.mkForce "";
   };
 
   # 防火墙

@@ -84,6 +84,9 @@
     #桌面环境相关
     pavucontrol # PulseAudio 音量控制器
     swaybg # Sway 壁纸管理器
+    hicolor-icon-theme # 高分辨率图标主题
+    adwaita-icon-theme # Adwaita 图标主题
+    bibata-cursors # Bibata 鼠标指针主题
 
     afterglow-cursors-recolored # 鼠标指针主题
     nerd-fonts.fira-code # Fira Code 字体
