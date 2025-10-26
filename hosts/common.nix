@@ -234,10 +234,10 @@
     firefoxpwa
     wineWowPackages.waylandFull
     winetricks
-    xwayland-satellite
-
-    xdg-desktop-portal-gnome
-    xdg-desktop-portal-gtk
+    xwayland-satellite # XWayland 卫星程序
+    xdg-desktop-portal-gnome # XDG 桌面门户 GNOME 后端
+    xdg-desktop-portal-gtk # XDG 桌面门户
+    libsecret # 用于密码管理
   ];
 
   # 环境变量

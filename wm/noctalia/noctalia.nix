@@ -5,9 +5,11 @@
   ];
   # install package
   environment.systemPackages = with pkgs; [
-    inputs.noctalia.packages.${system}.default
-    # ... maybe other stuff
+    inputs.noctalia.packages.${pkgs.system}.default
   ];
 
-  services.noctalia-shell.enable = true;
+  # Enable noctalia-shell service
+  services.noctalia-shell = {
+    enable = true;
+  };
 }

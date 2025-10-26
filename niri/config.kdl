@@ -3,6 +3,17 @@
 // 详情请查看维基中的完整配置说明：
 // https://yalter.github.io/niri/Configuration:-Introduction
 
+
+// ================开机启动配置==============
+// 注意：以会话方式运行 niri 支持 xdg-desktop-autostart，使用该方式可能更为方便。
+// 更多启动示例请参阅下方的 binds 节。
+// 下面这一行会启动 waybar，一个常用的 Wayland 状态栏程序。
+spawn-at-startup "swaybg" "-i" "/home/linsoap/my-nix/assets/wallpaper.jpg" "-m" "fill"
+spawn-at-startup "qs" "-c" "noctalia-shell"
+spawn-at-startup "xwayland-satellite"
+
+
+
 cursor {
     xcursor-theme "Bibata-Modern-Classic"
     xcursor-size 20
@@ -59,38 +70,26 @@ input {
 }
 
 // 你可以按输出名称配置显示设备（在 niri 运行时使用 `niri msg outputs` 可查看名称）。
-// 内置笔记本显示器通常名为 "eDP-1"。
 output "Beihai Century Joint Innovation Technology Co.,Ltd P24A2G 0000000000000" {
-    // 取消注释此行可禁用该输出。
     // off
 
-    // 输出的分辨率以及（可选的）刷新率。
-    // 格式为 "<width>x<height>" 或 "<width>x<height>@<refresh rate>"。
-    // 若省略刷新率，niri 将为该分辨率选择最高刷新率。
-    // 若完全省略 mode 或其无效，niri 会自动选择合适的模式。
-    // 在 niri 实例中运行 `niri msg outputs` 可列出所有输出及其模式。
     mode "1920x1080"
-
-    // 缩放可以为整数或小数，例如 1.5 表示 150% 缩放。
     scale 1
-
-    // Transform 用于将输出逆时针旋转，有效值包括：
-    // normal, 90, 180, 270, flipped, flipped-90, flipped-180 和 flipped-270。
     transform "normal"
-
-    // 输出在全局坐标空间中的位置。
-    // 这会影响诸如 "focus-monitor-left" 的方向性显示器操作，以及光标移动。
-    // 光标只能在直接相邻的输出之间移动。
-    // 在定位时需要考虑输出的缩放和旋转：输出尺寸以逻辑（缩放后）像素为单位。
-    // 例如，3840×2160 且 scale=2.0 的输出其逻辑尺寸为 1920×1080，
-    // 若要将另一个输出紧挨其右侧，需将 x 设置为 1920。
-    // 若未设置位置或导致重叠，输出会被自动放置。
     position x=1920 y=0
 }
 
 output "Beihai Century Joint Innovation Technology Co.,Ltd P25H2G 0000000000000" {
     mode "1920x1080"
     scale 1
+    transform "normal"
+    position x=0 y=0
+}
+
+// 笔记本显示器
+output "Samsung Display Corp. ATNA40HQ01-0  Unknown" {
+    mode "2880x1800@120.000"
+    scale 1.75
     transform "normal"
     position x=0 y=0
 }
@@ -102,17 +101,10 @@ layout {
     // 以逻辑像素设置窗口周围的间隙（gaps）。
     gaps 8
 
-    // 在切换焦点时何时对列进行居中，选项包括：
-    // - "never"（默认），对不在屏幕内的列聚焦时会保持其在屏幕的左或右边缘。
-    // - "always"，被聚焦的列将始终居中显示。
-    // - "on-overflow"，当与之前的列一起显示时若无法放下则对被聚焦列进行居中。
     center-focused-column "never"
 
     // 可自定义 "switch-preset-column-width"（Mod+R）在切换时使用的宽度集合。
     preset-column-widths {
-    // proportion 将宽度设置为输出宽度的分数，间隙（gaps）也会计入计算。
-    // 例如：四个大小为 "proportion 0.25" 的窗口可以恰好排列在一个输出上。
-    // 默认的预设宽度为输出宽度的 1/3、1/2 和 2/3。
         proportion 0.33333
         proportion 0.5
         proportion 0.66667
@@ -121,54 +113,18 @@ layout {
     // fixed 1920
     }
 
-    // 也可以自定义 "switch-preset-window-height"（Mod+Shift+R）切换的高度集合。
     // preset-window-heights { }
 
     // 可更改新窗口的默认宽度。
     default-column-width { }
-
-    // 默认情况下，焦点环和边框呈现在窗口后面的实心背景矩形中，因此它们会穿透半透明窗口可见。
-    // 这是因为使用客户端装饰（CSD）的窗口可能具有任意形状。
-    //
-    // 如果你不喜欢这种行为，可取消注释下方的 `prefer-no-csd`。
-    // 这样 niri 会在同意省略客户端装饰的窗口外部绘制焦点环和边框。
-    //
-    // 或者，你可以用名为 `draw-border-with-background` 的窗口规则来覆盖此行为。
-
-    // You can change how the focus ring looks.
     focus-ring {
     // 取消注释此行可禁用焦点环。
     // off
 
     // 焦点环从窗口向外延伸的逻辑像素数。
         width 2
-
-    // 颜色可以用多种方式设置：
-    // - CSS 命名颜色："red"
-    // - RGB 十六进制："#rgb", "#rgba", "#rrggbb", "#rrggbbaa"
-    // - 类似 CSS 的表示法："rgb(255, 127, 0)", rgba(), hsl() 等。
-
-            // 活动显示器上环的颜色。
         active-color "#000000"
-
-        // 非活动显示器上环的颜色。
-        //
-        // 焦点环只在活动窗口周围绘制，所以你只能在其他显示器上
-        // 看到它的非活动颜色。
         inactive-color "#e3e3e3"
-
-    // 也可以使用渐变色。渐变会优先于纯色。
-    // 渐变的渲染方式与 CSS 的 linear-gradient(angle, from, to) 相同。
-    // 角度与 linear-gradient 中相同且为可选项，默认值为 180（从上到下）。
-    // 你可以使用任意在线的 CSS linear-gradient 工具来生成渐变色配置。
-    // 也支持更改色彩空间，更多信息请查阅维基。
-        //
-        // active-gradient from="#80c8ff" to="#c7ff7f" angle=45
-
-    // 你也可以让渐变相对于整个工作区视图着色，而不是仅相对于窗口本身。
-    // 为此，请设置 relative-to="workspace-view"。
-    //
-    // inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
     }
 
     // 你也可以添加边框。它类似于焦点环，但始终可见。
@@ -181,23 +137,10 @@ layout {
         active-color "#ffc87f"
         inactive-color "#505050"
 
-    // 请求关注的窗口周围边框的颜色（urgent color）。
+        // 请求关注的窗口周围边框的颜色（urgent color）。
         urgent-color "#9b0000"
-
-        // 渐变可以使用几种不同的插值色彩空间。
-        // 例如，这是一个通过 in="oklch longer hue" 实现的柔和彩虹渐变。
-        //
-        // active-gradient from="#e5989b" to="#ffb4a2" angle=45 relative-to="workspace-view" in="oklch longer hue"
-
-        // inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
     }
 
-    // 你可以为窗口启用投影（阴影）。
-
-    // Struts 会缩小窗口占据的区域，类似于 layer-shell 面板。
-    // 你可以把它们认为是一种外部间隙（outer gaps），以逻辑像素为单位设置。
-    // 左右 strut 会使旁边的下一个窗口始终可见。
-    // 顶部和底部 strut 则会在 layer-shell 面板和常规间隙之外再增加外部间隙。
     struts {
         left 16
         right 16
@@ -207,33 +150,15 @@ layout {
 }
 
 
-// ================开机启动配置==============
-// 注意：以会话方式运行 niri 支持 xdg-desktop-autostart，使用该方式可能更为方便。
-// 更多启动示例请参阅下方的 binds 节。
-// 下面这一行会启动 waybar，一个常用的 Wayland 状态栏程序。
-spawn-at-startup "swaybg" "-i" "/home/linsoap/my-nix/assets/wallpaper.jpg" "-m" "fill"
-spawn-at-startup "qs" "-c" "noctalia-shell"
-spawn-at-startup "xwayland-satellite"
-
 
 hotkey-overlay {
     skip-at-startup
 }
 
-// 取消注释此行可请求客户端尽可能省略其客户端装饰（CSD）。
-// 如果客户端明确要求使用 CSD，该请求将被尊重。
-// 此外，客户端会被告知它们处于平铺状态，从而移除部分客户端侧的圆角。
-// 该选项还会修复在部分半透明窗口背后绘制边框/焦点环的问题。
-// 启用或禁用后需重启相关应用以使更改生效。
+
 prefer-no-csd
 
-// 你可以更改截图保存路径。
-// 路径开头的 ~ 会被展开为家目录。
-// 路径格式遵循 strftime(3)，用于生成截图的日期和时间。
 screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
-
-// 你也可以将其设置为 null 以禁用将截图保存到磁盘。
-// screenshot-path null
 
 // 动画设置。
 // 维基解释了如何配置各个动画：
