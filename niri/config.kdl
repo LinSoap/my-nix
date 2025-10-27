@@ -85,12 +85,19 @@ output "Beihai Century Joint Innovation Technology Co.,Ltd P25H2G 0000000000000"
     position x=0 y=0
 }
 
-// 笔记本显示器
+// 配置 HDMI-A-1 显示器在 eDP-1 的上方并居中对齐
 output "Samsung Display Corp. ATNA40HQ01-0  Unknown" {
     mode "2880x1800@120.000"
     scale 1.75
     transform "normal"
     position x=0 y=0
+}
+
+output "Technical Concepts Ltd R27Q61 S0258500002" {
+    mode "2560x1440@143.999"
+    scale 1
+    transform "normal"
+    position x=-458 y=-1440
 }
 
 // 影响窗口定位与大小的设置。
