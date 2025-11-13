@@ -77,6 +77,8 @@
     google-chrome # Google Chrome 浏览器
     localsend # LocalSend 局域网文件传输工具
     element-desktop # Element 聊天软件
+    grim # 截图工具
+    slurp # 截图选区工具
 
     waydroid-helper # Waydroid 助手
     android-tools # Android 工具

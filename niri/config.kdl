@@ -402,6 +402,7 @@ binds {
     // Print { screenshot; }           // 截图整个屏幕
     Mod+Delete { screenshot-screen; } // 截图当前屏幕
     Alt+Mod+Delete { screenshot-window; }  // 截图当前窗口
+    Alt+F12 { spawn-sh "FILE_NAME=\"$HOME/Pictures/Screenshots/$(date +%Y%m%d_%H%M%S)_selection.png\" && slurp | grim -g - - | tee \"$FILE_NAME\" | wl-copy --type image/png"; } // 区域截图并复制到剪贴板
 
     // 诸如远程桌面客户端和软件 KVM 切换器等应用程序
     // 可能会请求 niri 停止处理此处定义的键盘快捷键，
