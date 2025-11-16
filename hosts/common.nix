@@ -159,6 +159,8 @@
     openFirewall = true;
   };
 
+  services.tailscale.enable = true;
+
   # 用户配置
   users.users.linsoap = {
     isNormalUser = true;
@@ -238,6 +240,7 @@
     xdg-desktop-portal-gnome # XDG 桌面门户 GNOME 后端
     xdg-desktop-portal-gtk # XDG 桌面门户
     libsecret # 用于密码管理
+    tailscale # Tailscale VPN 客户端
   ];
 
   # 环境变量

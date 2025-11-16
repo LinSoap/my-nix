@@ -174,14 +174,6 @@
 
   programs.zen-browser.enable = true;
 
-  services.flameshot = {
-    enable = true;
-    # 确保启用 Wayland 支持
-    package = pkgs.flameshot.override {
-      enableWlrSupport = true;
-    };
-  };
-
   programs.zsh = {
     enable = true;
     enableCompletion = true;
