@@ -17,6 +17,7 @@
     ./cli/kitty/home.nix
     ./cli/fastfetch/home.nix
     ./niri/home.nix
+    ./node-global/home.nix # 使用 node2nix 管理的全局 Node.js 包
     inputs.zen-browser.homeModules.beta
   ];
 
@@ -116,19 +117,21 @@
     mpv # MPV 媒体播放器
     libnotify # 消息通知库
     pandoc # 文档转换工具
+    bubblewrap # 沙箱工具
+    ripgrep # 快速搜索工具
+    socat # 多功能网络工具
 
     #开发工具
     devbox
     nodejs
+    node2nix # node2nix 工具
+    nodePackages_latest.pnpm # 更新到最新版本的 pnpm
 
     ffmpeg # 多媒体处理工具
     portaudio
     android-studio
-    # python312
-    # python312Packages.pip
     uv
     asdf-vm
-    pnpm
     wrangler
     cargo
     nodePackages_latest.vercel

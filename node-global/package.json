@@ -1,0 +1,8 @@
+{
+    "name": "global-node-packages",
+    "version": "1.0.0",
+    "description": "Global Node.js packages managed by Nix",
+    "dependencies": {
+        "@anthropic-ai/sandbox-runtime": "latest"
+    }
+}
