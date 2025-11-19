@@ -4,6 +4,7 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    nixpkgs-master.url = "github:NixOS/nixpkgs/master";
     home-manager = {
       url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -28,12 +29,17 @@
     {
       nixpkgs,
       nixpkgs-unstable,
+      nixpkgs-master,
       home-manager,
       ...
     }@inputs:
     let
       system = "x86_64-linux"; # 或 "aarch64-linux"，根据你的实际架构
       unstable = import nixpkgs-unstable {
+        inherit system;
+        config.allowUnfree = true;
+      };
+      master = import nixpkgs-master {
         inherit system;
         config.allowUnfree = true;
       };
@@ -45,6 +51,7 @@
           specialArgs = {
             inherit inputs;
             unstable = unstable;
+            master = master;
           };
           modules = [
             ./hosts/desktop/configuration.nix
@@ -60,6 +67,7 @@
               home-manager.extraSpecialArgs = {
                 inherit inputs;
                 unstable = unstable;
+                master = master;
               };
             }
           ];
@@ -70,6 +78,7 @@
           specialArgs = {
             inherit inputs;
             unstable = unstable;
+            master = master;
           };
           modules = [
             ./hosts/laptop/configuration.nix
@@ -86,6 +95,7 @@
               home-manager.extraSpecialArgs = {
                 inherit inputs;
                 unstable = unstable;
+                master = master;
               };
             }
           ];

@@ -3,6 +3,7 @@
   pkgs,
   inputs,
   unstable,
+  master,
   ...
 }:
 
@@ -55,6 +56,7 @@
     obsidian # 笔记软件
     unstable.wechat # 微信客户端
     unstable.vscode # Visual Studio Code 编辑器
+    master.antigravity # ai editor
     gui-for-singbox # Sing-box 的图形界面
     krita # 数字绘画软件
     krita-plugin-gmic # GMIC 插件
@@ -66,7 +68,6 @@
     discord # Discord 聊天软件
     vlc # VLC 媒体播放器
     animeko # 动漫播放器
-    unstable.gemini-cli # Gemini CLI
     kitty # Kitty 终端
     proton-pass # Proton Pass
     insomnia # Insomnia API 客户端
@@ -123,7 +124,7 @@
 
     #开发工具
     devbox
-    nodejs
+    nodejs_22
     node2nix # node2nix 工具
     nodePackages_latest.pnpm # 更新到最新版本的 pnpm
 
@@ -137,6 +138,7 @@
     nodePackages_latest.vercel
     unstable.prisma
     unstable.prisma-engines
+    # master.hello # 示例：使用 master 分支的包
   ];
 
   # git 相关配置
@@ -194,6 +196,11 @@
     initContent = ''
       export PATH="$PATH:$HOME/bin:$HOME/.local/bin:$HOME/go/bin"
       export SSL_CERT_FILE=${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt
+
+      # Fix for gnome-keyring
+      if [ -z "$SSH_AUTH_SOCK" ]; then
+        export SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/keyring/ssh
+      fi
 
       # Prisma 环境变量
       export PRISMA_FMT_BINARY="${unstable.prisma-engines}/bin/prisma-fmt"
