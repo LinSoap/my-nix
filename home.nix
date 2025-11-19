@@ -72,11 +72,10 @@
     proton-pass # Proton Pass
     insomnia # Insomnia API 客户端
     appimage-run # AppImage 运行工具
-    unstable.codex # AI 代码助手
     unstable.claude-code # AI 代码助手
     koodo-reader # 电子书阅读器
-    kooha # 屏幕录制工具
-    google-chrome # Google Chrome 浏览器
+    chromium # Chromium 浏览器
+    # google-chrome # Google Chrome 浏览器
     localsend # LocalSend 局域网文件传输工具
     element-desktop # Element 聊天软件
     grim # 截图工具

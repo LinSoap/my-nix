@@ -5,11 +5,16 @@
   ];
   # install package
   environment.systemPackages = with pkgs; [
-    inputs.noctalia.packages.${pkgs.system}.default
+    (pkgs.callPackage "${inputs.noctalia}/nix/package.nix" {
+      quickshell = inputs.quickshell.packages.${pkgs.system}.default;
+    })
   ];
 
   # Enable noctalia-shell service
   services.noctalia-shell = {
     enable = true;
+    package = pkgs.callPackage "${inputs.noctalia}/nix/package.nix" {
+      quickshell = inputs.quickshell.packages.${pkgs.system}.default;
+    };
   };
 }

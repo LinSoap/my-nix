@@ -57,6 +57,12 @@
             ./hosts/desktop/configuration.nix
             ./wm/noctalia/noctalia.nix
 
+            {
+              nixpkgs.overlays = [
+                inputs.quickshell.overlays.default
+              ];
+            }
+
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
@@ -83,6 +89,12 @@
           modules = [
             ./hosts/laptop/configuration.nix
             ./wm/noctalia/noctalia.nix
+
+            {
+              nixpkgs.overlays = [
+                inputs.quickshell.overlays.default
+              ];
+            }
 
             home-manager.nixosModules.home-manager
             {

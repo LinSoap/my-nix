@@ -37,6 +37,9 @@
 
   programs.noctalia-shell = {
     enable = true;
+    package = pkgs.callPackage "${inputs.noctalia}/nix/package.nix" {
+      quickshell = inputs.quickshell.packages.${pkgs.system}.default;
+    };
     settings = {
       settingsVersion = 16;
       setupCompleted = false;
