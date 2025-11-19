@@ -124,7 +124,6 @@
     #开发工具
     devbox
     nodejs_22
-    node2nix # node2nix 工具
     nodePackages_latest.pnpm # 更新到最新版本的 pnpm
 
     ffmpeg # 多媒体处理工具
@@ -132,12 +131,11 @@
     android-studio
     uv
     asdf-vm
-    wrangler
     cargo
     nodePackages_latest.vercel
     unstable.prisma
     unstable.prisma-engines
-    # master.hello # 示例：使用 master 分支的包
+    wrangler
   ];
 
   # git 相关配置
