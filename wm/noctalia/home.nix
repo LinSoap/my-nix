@@ -218,14 +218,15 @@
         ];
       };
       dock = {
+        enabled = false;
         displayMode = "always_visible";
         backgroundOpacity = 1;
         floatingRatio = 1;
+        size = 1;
         onlySameOutput = true;
         monitors = [ ];
         pinnedApps = [ ];
         colorizeIcons = false;
-        size = 1;
       };
       network = {
         wifiEnabled = true;
