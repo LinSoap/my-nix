@@ -73,6 +73,7 @@
     insomnia # Insomnia API 客户端
     appimage-run # AppImage 运行工具
     unstable.claude-code # AI 代码助手
+    unstable.claude-code-router # AI 代码助手 路由器
     koodo-reader # 电子书阅读器
     chromium # Chromium 浏览器
     # google-chrome # Google Chrome 浏览器

@@ -67,6 +67,7 @@
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
+              home-manager.backupFileExtension = "backup";
 
               home-manager.users.linsoap = import ./home.nix;
 
@@ -100,6 +101,7 @@
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
+              home-manager.backupFileExtension = "backup";
 
               home-manager.users.linsoap = import ./home.nix;
 
