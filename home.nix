@@ -63,6 +63,7 @@
     dconf-editor # dconf 配置编辑器
     wpsoffice-cn # WPS 办公软件
     feishu # 飞书
+    qq # QQ 聊天软件
     fragments # 种子下载器
     dbeaver-bin # 数据库管理工具
     discord # Discord 聊天软件
@@ -91,6 +92,7 @@
     noto-fonts-emoji # 🤓️
 
     # 实用工具
+    openssl # SSL 工具包
     zip # 压缩工具
     nixfmt-rfc-style # Nix 格式化工具
     fastfetch # 系统信息展示工具
