@@ -139,7 +139,7 @@
         videoSource = "portal";
       };
       wallpaper = {
-        enabled = true;
+        enabled = false;
         directory = "";
         enableMultiMonitorDirectories = false;
         setWallpaperOnAllMonitors = true;
