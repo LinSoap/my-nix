@@ -93,6 +93,22 @@ output "Samsung Display Corp. ATNA40HQ01-0  Unknown" {
     position x=1737 y=1440
 }
 
+// P25H2G - 左侧显示器
+output "Beihai Century Joint Innovation Technology Co.,Ltd P25H2G 0000000000000" {
+    mode "1920x1080@165.001"
+    scale 1
+    transform "normal"
+    position x=0 y=0
+}
+
+// P24A2G - 右侧显示器
+output "Beihai Century Joint Innovation Technology Co.,Ltd P24A2G 0000000000000" {
+    mode "1920x1080@164.997"
+    scale 1
+    transform "normal"
+    position x=1920 y=0
+}
+
 // 影响窗口定位与大小的设置。
 // 更多信息请见维基：
 // https://yalter.github.io/niri/Configuration:-Layout
