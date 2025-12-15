@@ -123,8 +123,10 @@
     bubblewrap # 沙箱工具
     ripgrep # 快速搜索工具
     socat # 多功能网络工具
+    wget # 文件下载工具
 
     #开发工具
+    sqlite
     devbox
     nodejs_22
     nodePackages_latest.pnpm # 更新到最新版本的 pnpm
@@ -133,7 +135,7 @@
     portaudio
     android-studio
     uv
-    asdf-vm
+    bun
     cargo
     nodePackages_latest.vercel
     unstable.prisma
