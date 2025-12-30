@@ -9,7 +9,7 @@
 
 {
   imports = [
-    ./gnome/home.nix
+    # ./gnome/home.nix
     ./wm/noctalia/home.nix
     ./wofi/home.nix
     # ./waybar/home.nix

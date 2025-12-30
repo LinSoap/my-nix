@@ -104,8 +104,7 @@
   services.xserver.enable = true;
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.displayManager.gdm.wayland = true;
-  services.xserver.desktopManager.gnome.enable = true;
-  environment.gnome.excludePackages = with pkgs.gnome; [ ];
+  services.xserver.desktopManager.gnome.enable = false;
   programs.niri.enable = true;
 
   # 键盘配置
@@ -128,6 +127,8 @@
   };
 
   services.gnome.gnome-keyring.enable = true;
+  services.gvfs.enable = true;
+  programs.dconf.enable = true;
 
   programs.xwayland.enable = true;
   # XDG Desktop Portal 配置
