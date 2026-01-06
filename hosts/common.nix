@@ -53,7 +53,7 @@
 
   # 网络配置
   networking.enableIPv6 = true;
-  networking.proxy.default = "http://127.0.0.1:20122";
+  networking.proxy.default = "http://127.0.0.1:7897";
   networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
   networking.networkmanager.enable = true;
   networking.nameservers = [ "8.8.8.8" ];
@@ -207,6 +207,11 @@
   programs.nautilus-open-any-terminal = {
     enable = true;
     terminal = "kitty";
+  };
+
+  programs.clash-verge = {
+    enable = true;
+    autoStart = true;
   };
 
   programs.nix-ld = {

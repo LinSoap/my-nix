@@ -56,8 +56,8 @@
     obsidian # 笔记软件
     unstable.wechat # 微信客户端
     unstable.vscode # Visual Studio Code 编辑器
-    master.antigravity # ai editor
-    gui-for-singbox # Sing-box 的图形界面
+    # clash-verge-rev # Clash Verge 客户端
+    #    gui-for-singbox # Sing-box 的图形界面
     krita # 数字绘画软件
     krita-plugin-gmic # GMIC 插件
     dconf-editor # dconf 配置编辑器
