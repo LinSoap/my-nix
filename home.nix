@@ -25,6 +25,15 @@
   home.username = "linsoap";
   home.homeDirectory = "/home/linsoap";
 
+  # 设置默认终端为 kitty
+  xdg.mime.enable = true;
+  xdg.mimeApps = {
+    enable = true;
+    defaultApplications = {
+      "terminal.desktop" = "kitty.desktop";
+    };
+  };
+
   fonts.fontconfig.enable = true;
 
   # 直接将当前文件夹的配置文件，链接到 Home 目录下的指定位置

@@ -259,6 +259,7 @@
     QT_AUTO_SCREEN_SCALE_FACTOR = "1";
     NIXOS_OZONE_WL = "1";
     GDK_BACKEND = "wayland";
+    TERMINAL = "kitty"; # 设置默认终端
     # QS_ICON_THEME = "Adwaita,Papirus";
   };
 
