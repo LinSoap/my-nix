@@ -109,6 +109,14 @@ output "Beihai Century Joint Innovation Technology Co.,Ltd P24A2G 0000000000000"
     position x=1920 y=0
 }
 
+// Haier 4K TV - 内置显示器上方（直接相连）
+output "Qingdao Haier Electronics Co., Ltd. HAIER TV 0x00000001" {
+    mode "3840x2160@60.000"
+    scale 2.0
+    transform "normal"
+    position x=1599 y=360
+}
+
 // 影响窗口定位与大小的设置。
 // 更多信息请见维基：
 // https://yalter.github.io/niri/Configuration:-Layout
