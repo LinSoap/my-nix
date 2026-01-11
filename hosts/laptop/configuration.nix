@@ -49,6 +49,8 @@
     naturalScrolling = true;
     disableWhileTyping = true;
   };
+  # 电源管理服务
+  services.upower.enable = true;
 
   # 亮度控制
   programs.light.enable = true;

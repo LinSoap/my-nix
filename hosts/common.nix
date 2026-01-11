@@ -131,6 +131,7 @@
   programs.dconf.enable = true;
 
   programs.xwayland.enable = true;
+  programs.gpu-screen-recorder.enable = true;
   # XDG Desktop Portal 配置
   xdg.portal = {
     enable = true;
@@ -232,16 +233,18 @@
   # 系统包
   nixpkgs.config.allowUnfree = true;
   environment.systemPackages = with pkgs; [
-    nautilus
-    vim
-    tree
-    gnumake
-    gcc
-    libglibutil
-    glib
-    firefoxpwa
-    wineWowPackages.waylandFull
-    winetricks
+    nautilus # 文件管理器
+    vim # 终端文本编辑器
+    unzip # 解压缩工具
+    tree # 目录树查看工具
+    gnumake # GNU Make 工具
+    gcc # GNU 编译器集合
+    libglibutil # GLib 工具库
+    glib # GLib 库
+    firefoxpwa # Firefox PWA 支持
+    wineWowPackages.waylandFull # 带有 Wayland 支持的 Wine
+    winetricks # Wine 辅助脚本
+    gpu-screen-recorder-gtk # GPU加速屏幕录制工具
     xwayland-satellite # XWayland 卫星程序
     xdg-desktop-portal-gnome # XDG 桌面门户 GNOME 后端
     xdg-desktop-portal-gtk # XDG 桌面门户

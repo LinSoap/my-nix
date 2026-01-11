@@ -44,61 +44,137 @@
       settingsVersion = 16;
       setupCompleted = false;
       bar = {
-        position = "top";
         backgroundOpacity = 0.85;
-        monitors = [ ];
+        capsuleOpacity = 1;
         density = "default";
-        showCapsule = true;
+        exclusive = true;
         floating = true;
-        marginVertical = 0.1;
-        marginHorizontal = 0.25;
+        marginHorizontal = 5;
+        marginVertical = 2;
+        monitors = [ ];
+        outerCorners = true;
+        position = "top";
+        showCapsule = true;
+        showOutline = false;
+        useSeparateOpacity = false;
         widgets = {
-          left = [
-            {
-              id = "Workspace";
-              characterCount = 4;
-            }
-
-            {
-              id = "ActiveWindow";
-            }
-            {
-              id = "MediaMini";
-            }
-          ];
           center = [
             {
+              hideWhenZero = false;
               id = "NotificationHistory";
+              showUnreadBadge = true;
             }
             {
-              id = "Clock";
+              customFont = "";
               formatHorizontal = "MM/dd HH:mm ddd";
               formatVertical = "MM/HH mm - dd ";
+              id = "Clock";
+              tooltipFormat = "HH:mm ddd, MMM dd";
+              useCustomFont = false;
+              usePrimaryColor = false;
+            }
+            {
+              defaultSettings = {
+                completedCount = 0;
+                count = 0;
+                showBackground = true;
+                showCompleted = true;
+                todos = [ ];
+              };
+              id = "plugin:todo";
+            }
+          ];
+          left = [
+            {
+              characterCount = 4;
+              colorizeIcons = false;
+              enableScrollWheel = true;
+              followFocusedScreen = false;
+              groupedBorderOpacity = 1;
+              hideUnoccupied = false;
+              iconScale = 0.8;
+              id = "Workspace";
+              labelMode = "index";
+              showApplications = false;
+              showLabelsOnlyWhenOccupied = true;
+              unfocusedIconsOpacity = 1;
+            }
+            {
+              colorizeIcons = false;
+              hideMode = "hidden";
+              id = "ActiveWindow";
+              maxWidth = 145;
+              scrollingMode = "hover";
+              showIcon = true;
+              useFixedWidth = false;
+            }
+            {
+              compactMode = false;
+              compactShowAlbumArt = true;
+              compactShowVisualizer = false;
+              hideMode = "hidden";
+              hideWhenIdle = false;
+              id = "MediaMini";
+              maxWidth = 145;
+              panelShowAlbumArt = true;
+              panelShowVisualizer = true;
+              scrollingMode = "hover";
+              showAlbumArt = true;
+              showArtistFirst = true;
+              showProgressRing = true;
+              showVisualizer = false;
+              useFixedWidth = false;
+              visualizerType = "linear";
             }
           ];
           right = [
             {
+              blacklist = [ ];
+              colorizeIcons = false;
+              drawerEnabled = true;
+              hidePassive = false;
               id = "Tray";
+              pinned = [ ];
             }
             {
-              id = "ScreenRecorder";
-            }
-            {
+              compactMode = true;
+              diskPath = "/";
               id = "SystemMonitor";
               showCpuTemp = false;
+              showCpuUsage = true;
+              showDiskUsage = false;
+              showGpuTemp = false;
+              showLoadAverage = false;
+              showMemoryAsPercent = false;
+              showMemoryUsage = true;
               showNetworkStats = true;
+              useMonospaceFont = true;
+              usePrimaryColor = false;
             }
             {
+              displayMode = "onhover";
               id = "Volume";
+              middleClickCommand = "pwvucontrol || pavucontrol";
             }
             {
+              displayMode = "onhover";
               id = "Brightness";
             }
             {
-              id = "Battery";
+              deviceNativePath = "";
               displayMode = "alwaysShow";
+              hideIfNotDetected = true;
+              id = "Battery";
+              showNoctaliaPerformance = false;
+              showPowerProfiles = false;
+              warningThreshold = 30;
             }
             {
+              colorizeDistroLogo = false;
+              colorizeSystemIcon = "none";
+              customIconPath = "";
+              enableColorization = false;
+              icon = "noctalia";
               id = "ControlCenter";
               useDistroLogo = true;
             }
@@ -120,7 +196,7 @@
         language = "zh-CN";
       };
       location = {
-        name = "Huzhou";
+        name = "Hangzhou";
         weatherEnabled = true;
         useFahrenheit = false;
         use12hourFormat = false;
