@@ -223,13 +223,6 @@
     ];
   };
 
-  programs.steam = {
-    enable = true;
-    remotePlay.openFirewall = true;
-    dedicatedServer.openFirewall = true;
-    localNetworkGameTransfers.openFirewall = true;
-  };
-
   # 系统包
   nixpkgs.config.allowUnfree = true;
   environment.systemPackages = with pkgs; [

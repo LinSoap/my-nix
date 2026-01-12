@@ -218,11 +218,11 @@
         videoSource = "portal";
       };
       wallpaper = {
-        enabled = false;
-        directory = "";
+        enabled = true;
+        directory = "~/my-nix/assets";
         enableMultiMonitorDirectories = false;
         setWallpaperOnAllMonitors = true;
-        defaultWallpaper = "";
+        defaultWallpaper = "~/my-nix/assets/wallpaper.jpg";
         fillMode = "crop";
         fillColor = "#000000";
         randomEnabled = false;

@@ -98,7 +98,7 @@ output "Beihai Century Joint Innovation Technology Co.,Ltd P25H2G 0000000000000"
     mode "1920x1080@165.001"
     scale 1
     transform "normal"
-    position x=0 y=0
+    position x=1920 y=0
 }
 
 // P24A2G - 右侧显示器
@@ -106,7 +106,7 @@ output "Beihai Century Joint Innovation Technology Co.,Ltd P24A2G 0000000000000"
     mode "1920x1080@164.997"
     scale 1
     transform "normal"
-    position x=1920 y=0
+    position x=0 y=0
 }
 
 // Haier 4K TV - 内置显示器上方（直接相连）
