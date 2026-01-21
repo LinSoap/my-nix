@@ -278,6 +278,9 @@
   hardware.bluetooth.enable = true;
   services.blueman.enable = true;
 
+  # 启用 envfs 以解决 #!/usr/bin/env 等路径不一致问题
+  services.envfs.enable = true;
+
   # 系统版本
   system.stateVersion = "25.11";
 }

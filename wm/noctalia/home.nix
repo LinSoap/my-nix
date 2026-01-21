@@ -83,6 +83,9 @@
               };
               id = "plugin:todo";
             }
+            {
+              id = "plugin:simple-notes";
+            }
           ];
           left = [
             {

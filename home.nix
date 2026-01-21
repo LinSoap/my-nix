@@ -135,21 +135,24 @@
     wget # 文件下载工具
 
     #开发工具
-    sqlite
-    devbox
-    nodejs_22
+    sqlite # 轻量级数据库
+    devbox # Devbox 开发环境管理工具
+    nodejs_22 # Node.js 22 版本
     nodePackages_latest.pnpm # 更新到最新版本的 pnpm
+    kubectl # Kubernetes 命令行工具
+    cri-tools
 
     ffmpeg # 多媒体处理工具
-    portaudio
-    android-studio
-    uv
-    bun
-    cargo
-    nodePackages_latest.vercel
-    unstable.prisma
-    unstable.prisma-engines
-    wrangler
+    portaudio # 音频处理库
+    android-studio # Android Studio IDE
+    uv # UV Python 工具
+    bun # Bun JavaScript 运行时
+    cargo # Rust 包管理器
+    nodePackages_latest.vercel # Vercel CLI
+    unstable.prisma # Prisma ORM 工具
+    unstable.prisma-engines # Prisma 引擎
+    wrangler # Cloudflare Workers CLI
+    biome # Biome 代码工具
   ];
 
   # git 相关配置

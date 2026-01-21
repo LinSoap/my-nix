@@ -4,6 +4,7 @@
     "description": "Global Node.js packages managed by Nix",
     "dependencies": {
         "@anthropic-ai/sandbox-runtime": "latest",
-        "@google/gemini-cli": "preview"
+        "@google/gemini-cli": "preview",
+        "opencode-ai": "latest"
     }
 }
