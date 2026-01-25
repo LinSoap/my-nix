@@ -141,6 +141,7 @@
     nodePackages_latest.pnpm # 更新到最新版本的 pnpm
     kubectl # Kubernetes 命令行工具
     cri-tools
+    rustc # Rust 编译器
 
     ffmpeg # 多媒体处理工具
     portaudio # 音频处理库
@@ -210,6 +211,9 @@
     initContent = ''
       export PATH="$PATH:$HOME/bin:$HOME/.local/bin:$HOME/go/bin"
       export SSL_CERT_FILE=${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt
+
+      # Rust 源码路径
+      export RUST_SRC_PATH="${pkgs.rust.packages.stable.rustPlatform.rustLibSrc}";
 
       # Fix for gnome-keyring
       if [ -z "$SSH_AUTH_SOCK" ]; then
