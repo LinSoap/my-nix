@@ -121,6 +121,7 @@
     lazydocker # Docker 管理工具
     lazygit # Git 管理工具
     lazysql # SQL 管理工具
+    unstable.lazyssh # SSH 管理工具
     scrcpy # Android 设备屏幕投射工具
     postgresql # PostgreSQL 数据库
     jq # JSON 处理工具
@@ -150,13 +151,18 @@
     bun # Bun JavaScript 运行时
     cargo # Rust 包管理器
     nodePackages_latest.vercel # Vercel CLI
-    unstable.prisma # Prisma ORM 工具
-    unstable.prisma-engines # Prisma 引擎
+    prisma # Prisma ORM 工具
+    prisma-engines
     wrangler # Cloudflare Workers CLI
     biome # Biome 代码工具
   ];
 
-  # git 相关配置
+  home.sessionVariables = {
+    PRISMA_SCHEMA_ENGINE_BINARY = "${pkgs.prisma-engines}/bin/schema-engine";
+    PRISMA_QUERY_ENGINE_BINARY = "${pkgs.prisma-engines}/bin/query-engine";
+    PRISMA_QUERY_ENGINE_LIBRARY = "${pkgs.prisma-engines}/lib/libquery_engine.node";
+  };
+
   programs.git = {
     enable = true;
     userName = "LinSoap";
@@ -221,11 +227,9 @@
       fi
 
       # Prisma 环境变量
-      export PRISMA_FMT_BINARY="${unstable.prisma-engines}/bin/prisma-fmt"
-      export PRISMA_QUERY_ENGINE_BINARY="${unstable.prisma-engines}/bin/query-engine"
-      export PRISMA_QUERY_ENGINE_LIBRARY="${unstable.prisma-engines}/lib/libquery_engine.node"
-      export PRISMA_SCHEMA_ENGINE_BINARY="${unstable.prisma-engines}/bin/schema-engine"
-      export PRISMA_INTROSPECTION_ENGINE_BINARY="${unstable.prisma-engines}/bin/introspection-engine"
+      export PRISMA_SCHEMA_ENGINE_BINARY="${pkgs.prisma-engines}/bin/schema-engine"
+      export PRISMA_QUERY_ENGINE_BINARY="${pkgs.prisma-engines}/bin/query-engine"
+      export PRISMA_QUERY_ENGINE_LIBRARY="${pkgs.prisma-engines}/lib/libquery_engine.node"
 
       eval "$(${pkgs.z-lua}/bin/z --init zsh)"
       # --- 常用的命令行快捷键配置 (Emacs 风格) ---
