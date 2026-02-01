@@ -143,6 +143,7 @@
     kubectl # Kubernetes 命令行工具
     cri-tools
     rustc # Rust 编译器
+    cmake # 跨平台构建工具
 
     ffmpeg # 多媒体处理工具
     portaudio # 音频处理库
