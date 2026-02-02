@@ -218,7 +218,7 @@
         videoSource = "portal";
       };
       wallpaper = {
-        enabled = true;
+        enabled = false;
         directory = "~/my-nix/assets";
         enableMultiMonitorDirectories = false;
         setWallpaperOnAllMonitors = true;
