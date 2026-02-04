@@ -134,6 +134,8 @@
     ripgrep # 快速搜索工具
     socat # 多功能网络工具
     wget # 文件下载工具
+    bat # cat 命令的增强版
+    ripgrep # 快速文本搜索工具
 
     #开发工具
     sqlite # 轻量级数据库
@@ -144,6 +146,7 @@
     cri-tools
     rustc # Rust 编译器
     cmake # 跨平台构建工具
+    kompose # Docker Compose 工具
 
     ffmpeg # 多媒体处理工具
     portaudio # 音频处理库
@@ -213,6 +216,8 @@
       icat = "kitty +kitten icat";
       ssh = "kitty +kitten ssh";
       jo = "joshuto";
+      cat = "bat";
+      grep = "rg";
     };
     history.size = 10000;
     initContent = ''
