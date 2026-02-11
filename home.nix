@@ -31,6 +31,10 @@
     enable = true;
     defaultApplications = {
       "terminal.desktop" = "kitty.desktop";
+      "text/html" = "zen-beta.desktop";
+      "x-scheme-handler/http" = "zen-beta.desktop";
+      "x-scheme-handler/https" = "zen-beta.desktop";
+      "x-scheme-handler/about" = "zen-beta.desktop";
     };
   };
 
@@ -165,6 +169,7 @@
     PRISMA_SCHEMA_ENGINE_BINARY = "${pkgs.prisma-engines}/bin/schema-engine";
     PRISMA_QUERY_ENGINE_BINARY = "${pkgs.prisma-engines}/bin/query-engine";
     PRISMA_QUERY_ENGINE_LIBRARY = "${pkgs.prisma-engines}/lib/libquery_engine.node";
+    BROWSER = "zen-beta";
   };
 
   programs.git = {
@@ -202,6 +207,10 @@
     };
   };
 
+  programs.atuin = {
+    enable = true;
+  };
+
   programs.zen-browser.enable = true;
 
   programs.zsh = {
@@ -217,7 +226,6 @@
       ssh = "kitty +kitten ssh";
       jo = "joshuto";
       cat = "bat";
-      grep = "rg";
     };
     history.size = 10000;
     initContent = ''
