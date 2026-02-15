@@ -3,8 +3,8 @@
     "version": "1.0.0",
     "description": "Global Node.js packages managed by Nix",
     "dependencies": {
-        "@anthropic-ai/sandbox-runtime": "latest",
-        "@google/gemini-cli": "preview",
-        "opencode-ai": "latest"
+        "@anthropic-ai/sandbox-runtime": "^0.0.37",
+        "@google/gemini-cli": "^0.29.0-preview.3",
+        "opencode-ai": "^1.2.4"
     }
 }

@@ -7,10 +7,13 @@ pkgs.buildNpmPackage {
 
   # The first time you run this, it will fail and tell you the correct hash.
   # Replace this with the correct hash.
-  npmDepsHash = "sha256-knXqC8a4XSweZpeKvikSaFybV6i7EYmDLveb/ZeTEZA=";
+  npmDepsHash = "sha256-IbE3THMSW1blNijNE3s2XmF5zvE+ZvWTA88PJU2HuWc=";
 
   # The package.json doesn't have a build script, so we disable it.
   dontNpmBuild = true;
+
+  nativeBuildInputs = [ pkgs.pkg-config ];
+  buildInputs = [ pkgs.libsecret ];
 
   postInstall = ''
     mkdir -p $out/bin
