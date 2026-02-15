@@ -93,6 +93,14 @@ output "Samsung Display Corp. ATNA40HQ01-0  Unknown" {
     position x=1737 y=1440
 }
 
+// Samsung 1080p (HDMI-A-1) - 放置在内置显示器的上方
+output "Samsung Electric Company S24D360 0x304A4B36" {
+    mode "1920x1080@60.000"
+    scale 1
+    transform "normal"
+    position x=1599 y=360
+}
+
 // P25H2G - 左侧显示器
 output "Beihai Century Joint Innovation Technology Co.,Ltd P25H2G 0000000000000" {
     mode "1920x1080@165.001"

@@ -68,7 +68,7 @@
     # GUI 软件
     obsidian # 笔记软件
     unstable.wechat # 微信客户端
-    unstable.vscode # Visual Studio Code 编辑器
+    master.vscode # Visual Studio Code 编辑器
     # clash-verge-rev # Clash Verge 客户端
     #    gui-for-singbox # Sing-box 的图形界面
     krita # 数字绘画软件
