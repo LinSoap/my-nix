@@ -109,12 +109,12 @@ output "Beihai Century Joint Innovation Technology Co.,Ltd P25H2G 0000000000000"
     position x=1920 y=0
 }
 
-// P24A2G - 右侧显示器
+// P24A2G - 内置显示器正上方
 output "Beihai Century Joint Innovation Technology Co.,Ltd P24A2G 0000000000000" {
-    mode "1920x1080@164.997"
+    mode "1920x1080@120.000"
     scale 1
     transform "normal"
-    position x=0 y=0
+    position x=1600 y=360
 }
 
 // Haier 4K TV - 内置显示器上方（直接相连）
@@ -246,7 +246,7 @@ binds {
     // 建议用于运行程序的绑定：终端、应用程序启动器、屏幕锁定器。
     Mod+E { spawn "nautilus" "--new-window"; }
     Ctrl+Alt+T hotkey-overlay-title="Open a Terminal: kitty" { spawn "kitty"; }
-    Super+D hotkey-overlay-title="Run an Application: wofi" { spawn-sh "wofi -S drun"; }
+    Super+D hotkey-overlay-title="Run an Application: wofi" { spawn-sh "noctalia-shell ipc call launcher toggle"; }
     Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
 
 
