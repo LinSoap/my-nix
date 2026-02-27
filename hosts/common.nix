@@ -218,6 +218,7 @@
   programs.nix-ld = {
     enable = true;
     libraries = with pkgs; [
+      stdenv.cc.cc.lib
       uv
       asdf-vm
     ];
@@ -232,6 +233,10 @@
     tree # 目录树查看工具
     gnumake # GNU Make 工具
     gcc # GNU 编译器集合
+    libgcc # GNU 编译器集合的运行时库
+    gnumake # GNU Make 工具
+    cmake # 跨平台构建系统
+    extra-cmake-modules # CMake 模块集合
     libglibutil # GLib 工具库
     glib # GLib 库
     firefoxpwa # Firefox PWA 支持
