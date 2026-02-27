@@ -11,7 +11,7 @@
   imports = [
     # ./gnome/home.nix
     ./wm/noctalia/home.nix
-    ./wofi/home.nix
+    # ./wofi/home.nix
     # ./waybar/home.nix
     ./wlogout/home.nix
     ./fcitx5/home.nix
@@ -89,8 +89,8 @@
     unstable.claude-code # AI 代码助手
     unstable.claude-code-router # AI 代码助手 路由器
     koodo-reader # 电子书阅读器
-    chromium # Chromium 浏览器
-    # google-chrome # Google Chrome 浏览器
+    # chromium # Chromium 浏览器
+    inputs.browser-previews.packages.${pkgs.system}.google-chrome-beta # Google Chrome Beta 浏览器 (来自 browser-previews flake)
     localsend # LocalSend 局域网文件传输工具
     element-desktop # Element 聊天软件
     grim # 截图工具
@@ -140,13 +140,14 @@
     wget # 文件下载工具
     bat # cat 命令的增强版
     ripgrep # 快速文本搜索工具
+    rclone # 云存储同步工具
 
     #开发工具
     sqlite # 轻量级数据库
     devbox # Devbox 开发环境管理工具
     nodejs_22 # Node.js 22 版本
     nodePackages_latest.pnpm # 更新到最新版本的 pnpm
-    kubectl # Kubernetes 命令行工具
+    kubectl # Kubernetes 命令行工k具
     cri-tools
     rustc # Rust 编译器
     cmake # 跨平台构建工具
@@ -163,13 +164,14 @@
     prisma-engines
     wrangler # Cloudflare Workers CLI
     biome # Biome 代码工具
+    kdePackages.qttools
   ];
 
   home.sessionVariables = {
     PRISMA_SCHEMA_ENGINE_BINARY = "${pkgs.prisma-engines}/bin/schema-engine";
     PRISMA_QUERY_ENGINE_BINARY = "${pkgs.prisma-engines}/bin/query-engine";
     PRISMA_QUERY_ENGINE_LIBRARY = "${pkgs.prisma-engines}/lib/libquery_engine.node";
-    BROWSER = "zen-beta";
+    BROWSER = "google-chrome-beta";
   };
 
   programs.git = {
@@ -206,6 +208,8 @@
       jo = "joshuto";
     };
   };
+
+  services.kdeconnect.enable = true;
 
   programs.atuin = {
     enable = true;
