@@ -31,10 +31,10 @@
     enable = true;
     defaultApplications = {
       "terminal.desktop" = "kitty.desktop";
-      "text/html" = "zen-beta.desktop";
-      "x-scheme-handler/http" = "zen-beta.desktop";
-      "x-scheme-handler/https" = "zen-beta.desktop";
-      "x-scheme-handler/about" = "zen-beta.desktop";
+      "text/html" = "google-chrome-beta.desktop";
+      "x-scheme-handler/http" = "google-chrome-beta.desktop";
+      "x-scheme-handler/https" = "google-chrome-beta.desktop";
+      "x-scheme-handler/about" = "google-chrome-beta.desktop";
     };
   };
 
@@ -148,10 +148,12 @@
     nodejs_22 # Node.js 22 版本
     nodePackages_latest.pnpm # 更新到最新版本的 pnpm
     kubectl # Kubernetes 命令行工k具
-    cri-tools
+    cri-tools # Kubernetes CRI 工具
     rustc # Rust 编译器
     cmake # 跨平台构建工具
+    unstable.ultralytics # Ultralytis 目标检测工具
     kompose # Docker Compose 工具
+    vesktop # Custom Discord
 
     ffmpeg # 多媒体处理工具
     portaudio # 音频处理库
@@ -164,7 +166,7 @@
     prisma-engines
     wrangler # Cloudflare Workers CLI
     biome # Biome 代码工具
-    kdePackages.qttools
+    kdePackages.qttools # Qt 工具集
   ];
 
   home.sessionVariables = {
