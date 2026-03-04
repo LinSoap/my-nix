@@ -224,7 +224,7 @@
     enableCompletion = true;
     # enableBashCompletion = true;
     autosuggestion.enable = true;
-    syntaxHighlighting.enable = true;
+    syntaxHighlighting.enable = false;
     shellAliases = {
       ls = "eza";
       vim = "lvim";
@@ -269,6 +269,15 @@
 
       # 清屏
       bindkey '^L' clear-screen           # Ctrl+L: 清空终端屏幕，当前命令行会移到顶部
+
+      # 延迟加载 fast-syntax-highlighting 以优化启动速度
+      autoload -Uz add-zsh-hook
+      _load_fast_syntax_highlighting() {
+        source ${pkgs.zsh-fast-syntax-highlighting}/share/zsh/site-functions/fast-syntax-highlighting.plugin.zsh
+        add-zsh-hook -d precmd _load_fast_syntax_highlighting
+        unset -f _load_fast_syntax_highlighting
+      }
+      add-zsh-hook precmd _load_fast_syntax_highlighting
     '';
     oh-my-zsh = {
       enable = true;
