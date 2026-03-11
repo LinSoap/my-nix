@@ -4,6 +4,7 @@
   inputs,
   unstable,
   master,
+  lib,
   ...
 }:
 
@@ -167,6 +168,7 @@
     wrangler # Cloudflare Workers CLI
     biome # Biome 代码工具
     kdePackages.qttools # Qt 工具集
+    playwright-driver.browsers # Playwright 浏览器驱动
   ];
 
   home.sessionVariables = {
@@ -174,7 +176,31 @@
     PRISMA_QUERY_ENGINE_BINARY = "${pkgs.prisma-engines}/bin/query-engine";
     PRISMA_QUERY_ENGINE_LIBRARY = "${pkgs.prisma-engines}/lib/libquery_engine.node";
     BROWSER = "google-chrome-beta";
+    PLAYWRIGHT_BROWSERS_PATH = "${pkgs.playwright-driver.browsers}";
+    PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS = "1";
   };
+
+  # 为 agent-browser 创建符号链接，匹配其期望的目录结构
+  home.activation.linkPlaywrightBrowsers = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    PLAYWRIGHT_CACHE="$HOME/.cache/ms-playwright"
+    mkdir -p "$PLAYWRIGHT_CACHE"
+
+    NIX_BROWSERS="${pkgs.playwright-driver.browsers}"
+
+    # chromium headless shell - 需要特殊的目录结构
+    HEADLESS_DIR="$PLAYWRIGHT_CACHE/chromium_headless_shell-1208"
+    rm -rf "$HEADLESS_DIR"
+    mkdir -p "$HEADLESS_DIR/chrome-headless-shell-linux64"
+    ln -sf "$NIX_BROWSERS/chromium_headless_shell-1169/chrome-linux/headless_shell" \
+           "$HEADLESS_DIR/chrome-headless-shell-linux64/chrome-headless-shell"
+
+    # chromium regular
+    CHROMIUM_DIR="$PLAYWRIGHT_CACHE/chromium-1208"
+    rm -rf "$CHROMIUM_DIR"
+    mkdir -p "$CHROMIUM_DIR/chrome-linux"
+    ln -sf "$NIX_BROWSERS/chromium-1169/chrome-linux/chrome" \
+           "$CHROMIUM_DIR/chrome-linux/chrome"
+  '';
 
   programs.git = {
     enable = true;
