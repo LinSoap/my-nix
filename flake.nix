@@ -14,10 +14,6 @@
       # IMPORTANT: we're using "libgbm" and is only available in unstable so ensure
       # to have it up-to-date or simply don't specify the nixpkgs input
     };
-    quickshell = {
-      url = "github:outfoxxed/quickshell";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     noctalia = {
       url = "github:noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -60,12 +56,6 @@
             ./hosts/desktop/configuration.nix
             ./wm/noctalia/noctalia.nix
 
-            {
-              nixpkgs.overlays = [
-                inputs.quickshell.overlays.default
-              ];
-            }
-
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
@@ -93,12 +83,6 @@
           modules = [
             ./hosts/laptop/configuration.nix
             ./wm/noctalia/noctalia.nix
-
-            {
-              nixpkgs.overlays = [
-                inputs.quickshell.overlays.default
-              ];
-            }
 
             home-manager.nixosModules.home-manager
             {
