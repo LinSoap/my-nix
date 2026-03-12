@@ -119,8 +119,7 @@
     iftop # 网络流量监控工具
     lsof # 查看打开文件的工具
     joshuto # 终端文件管理器
-    lua # Lua 语言
-    z-lua # zsh 的 cd 命令替代工具
+    zoxide # 常用目录快速跳转工具
     wl-clipboard # 终端剪贴板工具
     cacert # CA 证书
     lazydocker # Docker 管理工具
@@ -261,7 +260,7 @@
     };
     history.size = 10000;
     initContent = ''
-      export PATH="$PATH:$HOME/bin:$HOME/.local/bin:$HOME/go/bin"
+      export PATH="$PATH:$HOME/bin:$HOME/.local/bin:$HOME/go/bin:$HOME/.bun/bin"
       export SSL_CERT_FILE=${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt
 
       # Rust 源码路径
@@ -277,7 +276,7 @@
       export PRISMA_QUERY_ENGINE_BINARY="${pkgs.prisma-engines}/bin/query-engine"
       export PRISMA_QUERY_ENGINE_LIBRARY="${pkgs.prisma-engines}/lib/libquery_engine.node"
 
-      eval "$(${pkgs.z-lua}/bin/z --init zsh)"
+      eval "$(${pkgs.zoxide}/bin/zoxide init zsh)"
       # --- 常用的命令行快捷键配置 (Emacs 风格) ---
       # 光标移动
       bindkey '^A' beginning-of-line       # Ctrl+A: 移动到行首
@@ -311,7 +310,6 @@
         "git"
         "sudo"
         "docker"
-        "z"
         "vi-mode"
         "copypath"
         "copyfile"
