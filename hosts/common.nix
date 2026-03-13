@@ -69,6 +69,7 @@
       fcitx5-chinese-addons
       rime-data
       librime
+      (callPackage ../packages/voice-input/package.nix { })
     ];
   };
 

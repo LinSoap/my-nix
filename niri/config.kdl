@@ -245,6 +245,7 @@ binds {
 
     // 建议用于运行程序的绑定：终端、应用程序启动器、屏幕锁定器。
     Mod+E { spawn "nautilus" "--new-window"; }
+    Ctrl+Super+E { spawn "voice-input" "toggle"; }
     Ctrl+Alt+T hotkey-overlay-title="Open a Terminal: kitty" { spawn "kitty"; }
     Super+D hotkey-overlay-title="Run an Application: wofi" { spawn-sh "noctalia-shell ipc call launcher toggle"; }
     Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }

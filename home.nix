@@ -19,6 +19,7 @@
     ./cli/kitty/home.nix
     ./cli/fastfetch/home.nix
     ./niri/home.nix
+    ./packages/voice-input/home.nix
     ./node-global/home.nix # 使用 node2nix 管理的全局 Node.js 包
     inputs.zen-browser.homeModules.beta
   ];
