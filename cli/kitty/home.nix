@@ -1,34 +1,6 @@
 { config, pkgs, ... }:
 
 {
-  # 创建自定义的 lvim.desktop 文件，强制使用 kitty
-  xdg.desktopEntries.lvim = {
-    name = "LunarVim";
-    comment = "An IDE layer for Neovim with sane defaults";
-    type = "Application";
-    terminal = false;
-    exec = "kitty --name lvim lvim %F";
-    icon = "lvim";
-    categories = [ "Utility" "TextEditor" ];
-    mimeType = [
-      "text/english"
-      "text/plain"
-      "text/x-makefile"
-      "text/x-c++hdr"
-      "text/x-c++src"
-      "text/x-chdr"
-      "text/x-csrc"
-      "text/x-java"
-      "text/x-moc"
-      "text/x-pascal"
-      "text/x-tcl"
-      "text/x-tex"
-      "application/x-shellscript"
-      "text/x-c"
-      "text/x-c++"
-    ];
-  };
-
   home.file.".config/kitty/kitty.conf" = {
     text = ''
       include current-theme.conf

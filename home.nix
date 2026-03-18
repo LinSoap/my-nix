@@ -18,10 +18,10 @@
     ./fcitx5/home.nix
     ./cli/kitty/home.nix
     ./cli/fastfetch/home.nix
+    ./cli/nvim/home.nix
     ./niri/home.nix
     ./packages/voice-input/home.nix
     ./node-global/home.nix # 使用 node2nix 管理的全局 Node.js 包
-    inputs.zen-browser.homeModules.beta
   ];
 
   home.username = "linsoap";
@@ -93,6 +93,8 @@
     koodo-reader # 电子书阅读器
     # chromium # Chromium 浏览器
     inputs.browser-previews.packages.${pkgs.system}.google-chrome-beta # Google Chrome Beta 浏览器 (来自 browser-previews flake)
+    unstable.google-chrome # Google Chrome 稳定版 (来自 nixpkgs)
+
     localsend # LocalSend 局域网文件传输工具
     element-desktop # Element 聊天软件
     grim # 截图工具
@@ -131,7 +133,7 @@
     postgresql # PostgreSQL 数据库
     jq # JSON 处理工具
     tmux # 终端复用工具
-    lunarvim # LVIM 编辑器
+    neovim # Neovim 编辑器 (LazyVim)
     mpv # MPV 媒体播放器
     libnotify # 消息通知库
     pandoc # 文档转换工具
@@ -243,8 +245,6 @@
     enable = true;
   };
 
-  programs.zen-browser.enable = true;
-
   programs.zsh = {
     enable = true;
     enableCompletion = true;
@@ -253,7 +253,7 @@
     syntaxHighlighting.enable = false;
     shellAliases = {
       ls = "eza";
-      vim = "lvim";
+      vim = "nvim";
       icat = "kitty +kitten icat";
       ssh = "kitty +kitten ssh";
       jo = "joshuto";

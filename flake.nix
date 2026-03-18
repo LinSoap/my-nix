@@ -9,11 +9,7 @@
       url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    zen-browser = {
-      url = "github:0xc000022070/zen-browser-flake";
-      # IMPORTANT: we're using "libgbm" and is only available in unstable so ensure
-      # to have it up-to-date or simply don't specify the nixpkgs input
-    };
+
     noctalia = {
       url = "github:noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs";
