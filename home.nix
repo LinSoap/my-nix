@@ -21,7 +21,6 @@
     ./cli/nvim/home.nix
     ./niri/home.nix
     ./packages/voice-input/home.nix
-    ./node-global/home.nix # 使用 node2nix 管理的全局 Node.js 包
   ];
 
   home.username = "linsoap";
@@ -170,7 +169,6 @@
     wrangler # Cloudflare Workers CLI
     biome # Biome 代码工具
     kdePackages.qttools # Qt 工具集
-    playwright-driver.browsers # Playwright 浏览器驱动
   ];
 
   home.sessionVariables = {
@@ -178,31 +176,9 @@
     PRISMA_QUERY_ENGINE_BINARY = "${pkgs.prisma-engines}/bin/query-engine";
     PRISMA_QUERY_ENGINE_LIBRARY = "${pkgs.prisma-engines}/lib/libquery_engine.node";
     BROWSER = "google-chrome-beta";
-    PLAYWRIGHT_BROWSERS_PATH = "${pkgs.playwright-driver.browsers}";
-    PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS = "1";
   };
 
   # 为 agent-browser 创建符号链接，匹配其期望的目录结构
-  home.activation.linkPlaywrightBrowsers = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-    PLAYWRIGHT_CACHE="$HOME/.cache/ms-playwright"
-    mkdir -p "$PLAYWRIGHT_CACHE"
-
-    NIX_BROWSERS="${pkgs.playwright-driver.browsers}"
-
-    # chromium headless shell - 需要特殊的目录结构
-    HEADLESS_DIR="$PLAYWRIGHT_CACHE/chromium_headless_shell-1208"
-    rm -rf "$HEADLESS_DIR"
-    mkdir -p "$HEADLESS_DIR/chrome-headless-shell-linux64"
-    ln -sf "$NIX_BROWSERS/chromium_headless_shell-1169/chrome-linux/headless_shell" \
-           "$HEADLESS_DIR/chrome-headless-shell-linux64/chrome-headless-shell"
-
-    # chromium regular
-    CHROMIUM_DIR="$PLAYWRIGHT_CACHE/chromium-1208"
-    rm -rf "$CHROMIUM_DIR"
-    mkdir -p "$CHROMIUM_DIR/chrome-linux"
-    ln -sf "$NIX_BROWSERS/chromium-1169/chrome-linux/chrome" \
-           "$CHROMIUM_DIR/chrome-linux/chrome"
-  '';
 
   programs.git = {
     enable = true;
@@ -263,6 +239,9 @@
     initContent = ''
       export PATH="$PATH:$HOME/bin:$HOME/.local/bin:$HOME/go/bin:$HOME/.bun/bin"
       export SSL_CERT_FILE=${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt
+
+      # 设置 agent-browser 使用本地安装的 Chrome
+      export AGENT_BROWSER_EXECUTABLE_PATH=$(which google-chrome-beta)
 
       # Rust 源码路径
       export RUST_SRC_PATH="${pkgs.rust.packages.stable.rustPlatform.rustLibSrc}";
